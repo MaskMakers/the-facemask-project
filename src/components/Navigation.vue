@@ -14,7 +14,7 @@
 
 <script>
 export default {
-    name: 'Navigation',
-    props: {}
+  name: 'Navigation',
+  props: {}
 }
 </script>

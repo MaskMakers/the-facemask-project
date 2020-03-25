@@ -1,8 +1,17 @@
 const path = require('path');
 
 module.exports = {
+    runtimeCompiler: true,
+
     chainWebpack: config => {
-        config.module.rules.delete('eslint');
+        config.resolve.symlinks(false)
+
+        config.module
+        .rule('eslint')
+        .use('eslint-loader')
+        .options({
+            fix: true
+        })
     },
 
     css: {

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Sewing from '../views/Sewing.vue'
 import HospitalList from '../views/HospitalList.vue'
+import HospitalInput from '../views/HospitalInput.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
     path: '/hospital-list',
     name: 'HospitalList',
     component: HospitalList
+  },
+  {
+    path: '/hospital-input',
+    name: 'HospitalInput',
+    component: HospitalInput
   },
   {
     path: '/about',

@@ -16,7 +16,7 @@
 export default {
   name: 'Sewing',
   components: {},
-  mounted() {
+  mounted () {
 
   },
   methods: {}
