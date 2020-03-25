@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>My Hospitals Need Facemaks!</h1>
+    <h1>My Hospital Needs Facemaks!</h1>
     <router-link tag="button" to="/hospital-list">Back To List Of Hospitals</router-link>
     <form id="hospital-input" @submit.prevent="addHospital()">
         <div>
@@ -26,25 +26,25 @@
 
 <script>
 export default {
-    data() {
-        return {
-            newHospital: {
-                name: '',
-                city: '',
-                address: '',
-                facemaskNeed: ''
-            }
-        }
-    },
-
-    methods: {
-        addHospital() {
-            this.$store.dispatch('hospitals/setHospital', this.newHospital)
-            .then(() => {
-                this.$router.push('/hospital-list')
-            })
-        }
+  data () {
+    return {
+      newHospital: {
+        name: '',
+        city: '',
+        address: '',
+        facemaskNeed: ''
+      }
     }
+  },
+
+  methods: {
+    addHospital () {
+      this.$store.dispatch('hospitals/setHospital', this.newHospital)
+        .then(() => {
+          this.$router.push('/hospital-list')
+        })
+    }
+  }
 }
 </script>
 

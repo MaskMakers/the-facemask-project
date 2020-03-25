@@ -26,9 +26,9 @@ import { mapState } from 'vuex'
 export default {
   name: 'Sewing',
   computed: {
-      ...mapState('hospitals', [
-          'hospitals'
-      ])
+    ...mapState('hospitals', [
+      'hospitals'
+    ])
   }
 }
 </script>
