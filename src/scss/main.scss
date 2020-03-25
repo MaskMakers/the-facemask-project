@@ -1,0 +1,17 @@
+// ===========================
+// Global Styles
+// ===========================
+// @import './shared/variables';
+@import './shared/mixins';
+@import './shared/fonts';
+@import './shared/base';
+
+// ===========================
+// Component Styles
+// ===========================
+@import './components/navigation';
+
+// ===========================
+// Page Specific Styles
+// ===========================
+@import './pages/home';

@@ -1,4 +1,4 @@
-# the-facemask-project
+# The Facemask Project
 
 ## Project setup
 ```
