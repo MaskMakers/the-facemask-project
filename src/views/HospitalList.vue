@@ -14,13 +14,16 @@
         <div class="address">Address</div>
         <div class="need">Need</div>
       </div>
-      <div v-if="currentHospitalsPage">
-        <div class="list-item" v-for="{ name, city, address, facemaskNeed } in currentHospitalsPage" :key="name">
-          <div class="name">{{ name }}</div>
-          <div class="location">{{ city }}</div>
-          <div class="address">{{ address }}</div>
-          <div class="need">{{ formatFacemaskNeed(facemaskNeed) }}</div>
+      <div v-if="hospitalsArray.length > 0">
+         <div v-if="currentHospitalsPageData.length > 0">
+          <div class="list-item" v-for="{ name, city, address, facemaskNeed } in currentHospitalsPageData" :key="name">
+            <div class="name">{{ name }}</div>
+            <div class="location">{{ city }}</div>
+            <div class="address">{{ address }}</div>
+            <div class="need">{{ formatFacemaskNeed(facemaskNeed) }}</div>
+          </div>
         </div>
+        <p v-else>No results for '{{ searchText }}'</p>
       </div>
       <loading v-else />
     </div>
@@ -30,6 +33,7 @@
         v-for="page in paginatedHospitalsLength"
         :key="page"
         @click="goToPage(page)"
+        :class="{ 'active': page === currentPage }"
       >
         {{ page }}
       </button>
@@ -80,7 +84,7 @@ export default {
     },
 
     filteredHospitals () {
-      const searchText = this.searchText && this.searchText.toLowerCase()
+      const searchText = this.searchText && this.searchText.toLowerCase().trim()
 
       if (searchText) {
         return this.hospitalsArray.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
@@ -108,12 +112,12 @@ export default {
       return this.filteredHospitals
     },
 
-    currentHospitalsPage () {
-      return this.paginatedHospitals[this.currentPage]
+    currentHospitalsPageData () {
+      return this.paginatedHospitals[this.currentPage] || []
     },
 
     paginatedHospitalsLength () {
-      return this.paginatedHospitals.length
+      return this.paginatedHospitals && this.paginatedHospitals.length
     }
   },
 
