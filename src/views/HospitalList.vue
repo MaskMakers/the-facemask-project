@@ -33,7 +33,7 @@
         v-for="page in paginatedHospitalsLength"
         :key="page"
         @click="goToPage(page)"
-        :class="{ 'active': page === currentPage }"
+        :class="{ 'active' : page - 1 === currentPage }"
       >
         {{ page }}
       </button>
@@ -171,6 +171,14 @@ p {
   > div {
     width: 25%;
     padding: 8px;
+  }
+}
+
+.pagination {
+  button {
+    &.active {
+      color: $blue;
+    }
   }
 }
 </style>
