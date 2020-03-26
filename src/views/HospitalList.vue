@@ -14,12 +14,15 @@
         <div class="address">Address</div>
         <div class="need">Need</div>
       </div>
-      <div class="list-item" v-for="{ name, city, address, facemaskNeed } in currentHospitalsPage" :key="name">
-        <div class="name">{{ name }}</div>
-        <div class="location">{{ city }}</div>
-        <div class="address">{{ address }}</div>
-        <div class="need">{{ formatFacemaskNeed(facemaskNeed) }}</div>
+      <div v-if="currentHospitalsPage">
+        <div class="list-item" v-for="{ name, city, address, facemaskNeed } in currentHospitalsPage" :key="name">
+          <div class="name">{{ name }}</div>
+          <div class="location">{{ city }}</div>
+          <div class="address">{{ address }}</div>
+          <div class="need">{{ formatFacemaskNeed(facemaskNeed) }}</div>
+        </div>
       </div>
+      <loading v-else />
     </div>
     <div class="pagination" v-if="paginatedHospitalsLength > 1">
       <button @click="goToPage('back')">&lt;</button>
