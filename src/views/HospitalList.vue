@@ -6,7 +6,7 @@
     <div class="actions-container">
       <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
       <select v-model="pageSize">
-        <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
+        <option v-for="option in pageSizeOptions" :key="option" @keyup="currentPage = 0">{{ option }}</option>
       </select>
     </div>
     <div class="list-container">
@@ -156,15 +156,20 @@ export default {
 
 .actions-container {
   width: 100%;
-  padding: 0 70px;
+  padding: 0;
   margin: 100px 0 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
 
   > * {
-    margin: 0 10px;
+    margin: 0 7px;
+  }
+
+  input {
+    width: 25%;
+    min-width: 150px;
   }
 }
 
@@ -187,6 +192,14 @@ p {
   > div {
     width: 25%;
     padding: 8px;
+  }
+
+  .name {
+    text-align: left;
+  }
+
+  .need {
+    text-align: right;
   }
 }
 
