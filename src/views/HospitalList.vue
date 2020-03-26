@@ -175,6 +175,8 @@ p {
 }
 
 .pagination {
+  margin-top: 20px;
+
   button {
     &.active {
       color: $blue;
