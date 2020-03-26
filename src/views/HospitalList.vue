@@ -165,7 +165,7 @@ p {
   display: flex;
 
   &.list-header {
-      font-weight: bold;
+    font-weight: bold;
   }
 
   > div {
