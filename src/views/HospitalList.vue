@@ -194,8 +194,14 @@ p {
   margin-top: 20px;
 
   button {
+    margin: 0 6px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+
     &.active {
-      color: $blue;
+      color: $gray;
+      border: 1px solid $gray;
     }
   }
 }
