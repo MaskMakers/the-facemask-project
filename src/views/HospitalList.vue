@@ -134,9 +134,7 @@ export default {
     },
 
     formatFacemaskNeed (facemaskNeed) {
-      const facemaskNumber = facemaskNeed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-
-      return facemaskNumber
+      return facemaskNeed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
   }
 }
