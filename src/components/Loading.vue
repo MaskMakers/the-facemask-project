@@ -26,11 +26,11 @@ export default {
 <style lang="scss" scoped>
 @keyframes spinner {
   0% {
-      transform: rotate(0deg)
+    transform: rotate(0deg)
   }
 
   to {
-      transform: rotate(359deg)
+    transform: rotate(359deg)
   }
 }
 
