@@ -3,6 +3,10 @@
     <h1>FIND A HOSPITAL THAT NEEDS FACEMASKS!</h1>
     <router-link tag="button" to="/hospital-input">Add your hospital!</router-link>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+    <input v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
+    <select v-model="pageSize">
+      <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
+    </select>
     <div class="list-container">
       <div class="list-item list-header">
         <div class="name">Hospital</div>
@@ -14,10 +18,11 @@
         <div class="name">{{ name }}</div>
         <div class="location">{{ city }}</div>
         <div class="address">{{ address }}</div>
-        <div class="need">{{ facemaskNeed }}</div>
+        <div class="need">{{ formatFacemaskNeed(facemaskNeed) }}</div>
       </div>
     </div>
     <div class="pagination" v-if="paginatedHospitalsLength > 1">
+      <button @click="goToPage('back')">&lt;</button>
       <button
         v-for="page in paginatedHospitalsLength"
         :key="page"
@@ -25,6 +30,7 @@
       >
         {{ page }}
       </button>
+      <button @click="goToPage('forward')">&gt;</button>
     </div>
   </div>
 </template>
@@ -38,7 +44,17 @@ export default {
   data () {
     return {
       currentPage: 0,
-      pageSize: 3
+      pageSize: 10,
+      pageSizeOptions: [
+        5,
+        10,
+        25,
+        50,
+        100,
+        500,
+        1000
+      ],
+      searchText: ''
     }
   },
 
@@ -47,7 +63,7 @@ export default {
       'hospitals'
     ]),
 
-    paginatedHospitals () {
+    hospitalsArray () {
       // Create array from Object
       let hospitalsArray = []
 
@@ -57,9 +73,23 @@ export default {
         })
       }
 
+      return hospitalsArray
+    },
+
+    filteredHospitals () {
+      const searchText = this.searchText && this.searchText.toLowerCase()
+
+      if (searchText) {
+        return this.hospitalsArray.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
+      }
+
+      return this.hospitalsArray
+    },
+
+    paginatedHospitals () {
       // Splice array into chunks
-      if (hospitalsArray.length > 0) {
-        return hospitalsArray.reduce((resultArray, item, index) => {
+      if (this.filteredHospitals.length > 0 && this.pageSize !== 'All') {
+        return this.filteredHospitals.reduce((resultArray, item, index) => {
           const chunkIndex = Math.floor(index / this.pageSize)
 
           if (!resultArray[chunkIndex]) {
@@ -72,7 +102,7 @@ export default {
         }, [])
       }
 
-      return hospitalsArray
+      return this.filteredHospitals
     },
 
     currentHospitalsPage () {
@@ -86,7 +116,27 @@ export default {
 
   methods: {
     goToPage (pageIndex) {
-      this.currentPage = pageIndex - 1
+      if (pageIndex === 'back') {
+        if (this.currentPage <= 0) {
+          this.currentPage = this.paginatedHospitalsLength - 1
+        } else {
+          this.currentPage = this.currentPage - 1
+        }
+      } else if (pageIndex === 'forward') {
+        if (this.currentPage >= this.paginatedHospitalsLength - 1) {
+          this.currentPage = 0
+        } else {
+          this.currentPage = this.currentPage + 1
+        }
+      } else {
+        this.currentPage = pageIndex - 1
+      }
+    },
+
+    formatFacemaskNeed (facemaskNeed) {
+      const facemaskNumber = facemaskNeed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+      return facemaskNumber
     }
   }
 }
@@ -94,28 +144,28 @@ export default {
 
 <style lang="scss" scoped>
 .hospital-list-container {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .list-container {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 p {
-    max-width: 800px;
-    margin: 20px auto 50px;
+  max-width: 800px;
+  margin: 20px auto 50px;
 }
 
 .list-item {
-    display: flex;
+  display: flex;
 
-    &.list-header {
-        font-weight: bold;
-    }
+  &.list-header {
+      font-weight: bold;
+  }
 
-    > div {
-        width: 25%;
-        padding: 8px;
-    }
+  > div {
+    width: 25%;
+    padding: 8px;
+  }
 }
 </style>
