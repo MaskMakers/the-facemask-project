@@ -46,9 +46,21 @@ button {
   }
 }
 
+select {
+  appearance: none;
+  padding: 10px 14px;
+  border: 1px solid $navy;
+  border-radius: 0;
+  background: url('./assets/img/select-arrow.svg') no-repeat;
+  background-position: calc(100% - 1em) 50%;
+  background-size: 8px;
+  padding-right: 2.5em;
+}
+
 input {
   padding: 10px;
   box-sizing: border-box;
+  border: 1px solid $navy;
 }
 
 .basic-page-container {
