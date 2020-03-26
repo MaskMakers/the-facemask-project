@@ -14,7 +14,7 @@ html, body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: $navy;
   text-align: center;
 
   @media screen and (max-width: $bp-s) {
@@ -32,6 +32,25 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 10px 14px;
+  border: 1px solid $navy;
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $navy;
+    color: #fff;
+  }
+}
+
+input {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .basic-page-container {
   margin: 0 auto 50px;
   padding: 0 30px;
@@ -41,6 +60,24 @@ a {
 
   @media screen and (max-width: $bp-s) {
     padding: 0 20px;
+  }
+}
+
+.link {
+  color: $navy;
+
+  &:hover {
+    color: $gray-dark;
+  }
+
+  &.link-back {
+    &:before {
+      content: '<';
+      position: relative;
+      display: inline-block;
+      padding: 0 10px 5px;
+      font-size: .8em;
+    }
   }
 }
 

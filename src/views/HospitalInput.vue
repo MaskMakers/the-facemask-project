@@ -1,8 +1,8 @@
 <template>
 <div>
   <h1>My Hospital Needs Facemaks!</h1>
-  <router-link tag="button" to="/hospital-list">Back To List Of Hospitals</router-link>
-  <form id="hospital-input" @submit.prevent="addHospital()">
+  <router-link to="/hospital-list" class="link link-back">Back to List of Hospitals</router-link>
+  <form class="hospital-input" id="hospital-input" @submit.prevent="addHospital()">
     <div>
       <label for="name">What is your hospital's name?</label>
       <input type="text" name="name" v-model="newHospital.name" required>
@@ -49,16 +49,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#hospital-input {
+.hospital-input {
   max-width: 500px;
-  margin: 1em auto;
+  margin: 5em auto 1em;
 
-  div {
+  > div {
     text-align: left;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 
     label, input {
       display: block;
+    }
+
+    label {
+      margin-bottom: 10px;
     }
 
     input {
