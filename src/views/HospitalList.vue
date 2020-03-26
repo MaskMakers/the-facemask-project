@@ -1,12 +1,14 @@
 <template>
   <div class="hospital-list-container basic-page-container">
     <h1>FIND A HOSPITAL THAT NEEDS FACEMASKS!</h1>
-    <router-link tag="button" to="/hospital-input">Add your hospital!</router-link>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
-    <input v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
-    <select v-model="pageSize">
-      <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
-    </select>
+    <router-link tag="button" to="/hospital-input">Add your hospital</router-link>
+    <div class="actions-container">
+      <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
+      <select v-model="pageSize">
+        <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
+      </select>
+    </div>
     <div class="list-container">
       <div class="list-item list-header">
         <div class="name">Hospital</div>
@@ -152,13 +154,27 @@ export default {
   margin-top: 50px;
 }
 
+.actions-container {
+  width: 100%;
+  padding: 0 70px;
+  margin: 100px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  > * {
+    margin: 0 10px;
+  }
+}
+
 .list-container {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 p {
   max-width: 800px;
-  margin: 20px auto 50px;
+  margin: 20px auto;
 }
 
 .list-item {
@@ -178,8 +194,14 @@ p {
   margin-top: 20px;
 
   button {
+    margin: 0 6px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+
     &.active {
-      color: $blue;
+      color: $gray;
+      border: 1px solid $gray;
     }
   }
 }
