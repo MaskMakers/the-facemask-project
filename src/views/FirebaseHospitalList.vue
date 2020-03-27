@@ -2,7 +2,7 @@
   <div class="hospital-list-container basic-page-container">
     <h1>FIND A HOSPITAL THAT NEEDS FACEMASKS!</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
-    <!-- <router-link tag="button" to="/hospital-input">Add your hospital</router-link> -->
+    <router-link tag="button" to="/hospital-input">Add your hospital</router-link>
     <div class="actions-container">
       <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
       <select v-model="pageSize">
