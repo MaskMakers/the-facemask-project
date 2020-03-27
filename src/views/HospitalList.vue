@@ -9,11 +9,11 @@
       </p>
     <div class="actions-container">
       <div class="search-container">
-        <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
+        <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="updatePageAndURL()" />
         <span v-if="currentHospitalsPageData.length > 0">{{ hospitals.length }} hospitals in need</span>
       </div>
       <select v-model="pageSize">
-        <option v-for="option in pageSizeOptions" :key="option" @keyup="currentPage = 0">{{ option }}</option>
+        <option v-for="option in pageSizeOptions" :key="option" @keyup="updatePageAndURL()">{{ option }}</option>
       </select>
     </div>
     <div class="list-container">
@@ -29,7 +29,7 @@
         </div>
         <div v-if="hospitals.length > 0">
           <div v-if="currentHospitalsPageData.length > 0">
-            <div class="list-item" v-for="{ name, address, state, phone, need, pattern, delivery } in currentHospitalsPageData" :key="name">
+            <div class="list-item" v-for="({ name, address, state, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
               <div class="name">{{ name }}</div>
               <div class="address">{{ address }}</div>
               <div class="state">{{ state }}</div>
@@ -78,7 +78,7 @@ export default {
         500,
         1000
       ],
-      searchText: ''
+      searchText: decodeURI(window.location.search.replace('?search=', ''))
     }
   },
 
@@ -90,7 +90,7 @@ export default {
     filteredHospitals () {
       const searchText = this.searchText && this.searchText.toLowerCase().trim()
 
-      if (searchText) {
+      if (searchText && this.hospitals.length > 0) {
         return this.hospitals.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
       }
 
@@ -144,6 +144,18 @@ export default {
       }
 
       document.querySelector('.list-header').scrollIntoView({ behavior: 'smooth' })
+    },
+
+    updatePageAndURL () {
+      let query = window.location.protocol + '//' + window.location.host + window.location.pathname
+
+      if (this.searchText !== '') {
+        query += '?search=' + this.searchText
+      }
+
+      window.history.replaceState(null, null, query)
+
+      this.currentPage = 0
     }
   }
 }
