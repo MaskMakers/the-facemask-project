@@ -1,13 +1,4 @@
-import firebase from 'firebase/app'
-import 'firebase/database'
-
-// firebase setup
-firebase.initializeApp({
-  apiKey: 'AIzaSyBmxq9lhljIr45GZ9zvlyeDh3cd0blBvPQ',
-  authDomain: 'the-facemask-project.firebaseapp.com',
-  databaseURL: 'https://the-facemask-project.firebaseio.com',
-  storageBucket: 'the-facemask-project.appspot.com'
-})
+import Tabletop from 'tabletop'
 
 export default {
   namespaced: true,
@@ -24,16 +15,33 @@ export default {
 
   actions: {
     getHospitals (store) {
-      firebase.database().ref('hospitals').once('value').then((snapshot) => {
-        store.commit('setHospitals', snapshot.val())
-      })
-    },
+      // get Sheet
+      Tabletop.init({
+        key: 'https://docs.google.com/spreadsheets/d/1rmgPd6HEt8xRymQTVyFzbPgP0WCvA00i3Xn7rr2Ohfk/pubhtml',
+        simpleSheet: true
+      }).then((data) => {
+        let formattedArray = []
 
-    setHospital ({ dispatch }, hospital) {
-      firebase.database().ref('hospitals/' + hospital.name).set(hospital)
-        .then(() => {
-          dispatch('getHospitals')
+        // format data
+        data.forEach(hospital => {
+          if (
+            Object.prototype.hasOwnProperty.bind(hospital, 'Delivery Instructions') &&
+            hospital['Delivery Instructions'] !== 'Delivery Instructions'
+          ) {
+            formattedArray.push({
+              name: hospital['Facility Name'],
+              state: hospital['State'],
+              address: hospital['Facility Address'],
+              phone: hospital['Facility Phone Number'],
+              need: hospital['Quantity Needed'],
+              pattern: hospital['Specific Pattern Request?'],
+              delivery: hospital['Delivery Instructions']
+            })
+          }
         })
+
+        store.commit('setHospitals', formattedArray)
+      })
     }
   }
 }
