@@ -142,6 +142,8 @@ export default {
       } else {
         this.currentPage = pageIndex - 1
       }
+
+      document.querySelector('.list-header').scrollIntoView({ behavior: 'smooth' })
     }
   }
 }
