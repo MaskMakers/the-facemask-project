@@ -4,7 +4,8 @@ export default {
   namespaced: true,
 
   state: {
-    hospitals: []
+    hospitals: [],
+    steps: []
   },
 
   mutations: {
@@ -14,17 +15,19 @@ export default {
   },
 
   actions: {
-    getHospitals (store) {
+    getSheet (store) {
       if (store.state.hospitals.length <= 0) {
         // get Sheet
         Tabletop.init({
-          key: 'https://docs.google.com/spreadsheets/d/1rmgPd6HEt8xRymQTVyFzbPgP0WCvA00i3Xn7rr2Ohfk/pubhtml',
-          simpleSheet: true
+          key: 'https://docs.google.com/spreadsheets/d/1rmgPd6HEt8xRymQTVyFzbPgP0WCvA00i3Xn7rr2Ohfk/pubhtml'
         }).then((data) => {
+          // first sheet is Hospitals
+          const hospitals = data.Sheet1.elements
+
           let formattedArray = []
 
           // format data
-          data.forEach(hospital => {
+          hospitals.forEach(hospital => {
             if (
               Object.prototype.hasOwnProperty.bind(hospital, 'Delivery Instructions') &&
               hospital['Delivery Instructions'] !== 'Delivery Instructions'

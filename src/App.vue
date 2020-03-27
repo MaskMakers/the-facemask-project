@@ -13,7 +13,7 @@ export default {
     Navigation
   },
   beforeMount () {
-    this.$store.dispatch('hospitals/getHospitals')
+    this.$store.dispatch('tabletop/getSheet')
   }
 }
 </script>

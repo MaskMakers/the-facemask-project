@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'Sewing',
+  name: 'MakeMask',
   components: {},
   mounted () {
 
