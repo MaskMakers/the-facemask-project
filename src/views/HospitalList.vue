@@ -29,7 +29,7 @@
         </div>
         <div v-if="hospitals.length > 0">
           <div v-if="currentHospitalsPageData.length > 0">
-            <div class="list-item" v-for="{ name, address, state, phone, need, pattern, delivery } in currentHospitalsPageData" :key="name">
+            <div class="list-item" v-for="({ name, address, state, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
               <div class="name">{{ name }}</div>
               <div class="address">{{ address }}</div>
               <div class="state">{{ state }}</div>
