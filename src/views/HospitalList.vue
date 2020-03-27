@@ -2,6 +2,11 @@
   <div class="hospital-list-container basic-page-container">
     <h1>FIND A HOSPITAL THAT NEEDS FACEMASKS!</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+     <p>
+        This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
+        If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
+        or email <a href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
+      </p>
     <div class="actions-container">
       <div class="search-container">
         <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
