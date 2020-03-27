@@ -4,41 +4,30 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
     <!-- <router-link tag="button" to="/hospital-input">Add your hospital</router-link> -->
     <div class="actions-container">
-      <div class="search-container">
-        <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
-        <span v-if="currentHospitalsPageData.length > 0">{{ hospitals.length }} hospitals in need</span>
-      </div>
+      <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="currentPage = 0" />
       <select v-model="pageSize">
         <option v-for="option in pageSizeOptions" :key="option" @keyup="currentPage = 0">{{ option }}</option>
       </select>
     </div>
     <div class="list-container">
-      <div class="list">
-        <div class="list-header">
-          <div class="name">Facility Name</div>
-          <div class="address">Address</div>
-          <div class="state">State</div>
-          <div class="phone">Phone Number</div>
-          <div class="need">Quantity Needed</div>
-          <div class="pattern">Specific Pattern Request?</div>
-          <div class="delivery">Delivery Instructions</div>
-        </div>
-        <div v-if="hospitals.length > 0">
-          <div v-if="currentHospitalsPageData.length > 0">
-            <div class="list-item" v-for="{ name, address, state, phone, need, pattern, delivery } in currentHospitalsPageData" :key="name">
-              <div class="name">{{ name }}</div>
-              <div class="address">{{ address }}</div>
-              <div class="state">{{ state }}</div>
-              <div class="phone">{{ phone }}</div>
-              <div class="need">{{ need }}</div>
-              <div class="pattern">{{ pattern }}</div>
-              <div class="delivery">{{ delivery }}</div>
-            </div>
-          </div>
-          <p v-else>No results for '{{ searchText }}'</p>
-        </div>
-        <loading v-else />
+      <div class="list-item list-header">
+        <div class="name">Hospital</div>
+        <div class="location">Location</div>
+        <div class="address">Address</div>
+        <div class="need">Need</div>
       </div>
+      <div v-if="hospitalsArray.length > 0">
+         <div v-if="currentHospitalsPageData.length > 0">
+          <div class="list-item" v-for="{ name, city, address, facemaskNeed } in currentHospitalsPageData" :key="name">
+            <div class="name">{{ name }}</div>
+            <div class="location">{{ city }}</div>
+            <div class="address">{{ address }}</div>
+            <div class="need">{{ formatFacemaskNeed(facemaskNeed) }}</div>
+          </div>
+        </div>
+        <p v-else>No results for '{{ searchText }}'</p>
+      </div>
+      <loading v-else />
     </div>
     <div class="pagination" v-if="paginatedHospitalsLength > 1">
       <button @click="goToPage('back')">&lt;</button>
@@ -64,7 +53,7 @@ export default {
   data () {
     return {
       currentPage: 0,
-      pageSize: 50,
+      pageSize: 10,
       pageSizeOptions: [
         5,
         10,
@@ -83,14 +72,27 @@ export default {
       'hospitals'
     ]),
 
+    hospitalsArray () {
+      // Create array from Object
+      let hospitalsArray = []
+
+      if (Object.keys(this.hospitals).length > 0) {
+        Object.keys(this.hospitals).forEach(hospital => {
+          hospitalsArray.push(this.hospitals[hospital])
+        })
+      }
+
+      return hospitalsArray
+    },
+
     filteredHospitals () {
       const searchText = this.searchText && this.searchText.toLowerCase().trim()
 
       if (searchText) {
-        return this.hospitals.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
+        return this.hospitalsArray.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
       }
 
-      return this.hospitals
+      return this.hospitalsArray
     },
 
     paginatedHospitals () {
@@ -138,6 +140,10 @@ export default {
       } else {
         this.currentPage = pageIndex - 1
       }
+    },
+
+    formatFacemaskNeed (facemaskNeed) {
+      return facemaskNeed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     }
   }
 }
@@ -157,28 +163,18 @@ export default {
   align-items: center;
   box-sizing: border-box;
 
-  .search-container {
-    input {
-      width: 25%;
-      min-width: 150px;
-    }
-
-    span {
-      font-size: 0.9em;
-      margin-left: 1rem;
-      color: $red;
-    }
+  > * {
+    margin: 0 7px;
   }
 
+  input {
+    width: 25%;
+    min-width: 150px;
+  }
 }
 
 .list-container {
   margin-top: 30px;
-  overflow-y: scroll;
-
-  .list {
-    min-width: 1000px;
-  }
 }
 
 p {
@@ -186,33 +182,25 @@ p {
   margin: 20px auto;
 }
 
-.list-item, .list-header {
-  display: grid;
-  grid-template-columns: 1fr 1.25fr 1fr 1.5fr 1fr 1fr 2fr;
-  grid-column-gap: 1em;
-  padding: 1em 0;
-  border-bottom: 1px solid $gray;
-  align-items: center;
-
-  &:last-of-type {
-    border-bottom: 0;
-  }
+.list-item {
+  display: flex;
 
   &.list-header {
     font-weight: bold;
   }
 
-  .name, .address {
+  > div {
+    width: 25%;
+    padding: 8px;
+  }
+
+  .name {
     text-align: left;
   }
 
-  .delivery {
+  .need {
     text-align: right;
   }
-}
-
-.list-item {
-  font-size: 0.9em;
 }
 
 .pagination {
