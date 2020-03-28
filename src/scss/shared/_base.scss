@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap');
+
 html, body {
   font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11,7 +13,7 @@ html, body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $primary-color;
@@ -47,6 +49,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 1px;
   cursor: pointer;
+  font-size: 1em;
 
   &:hover {
     background-color: $primary-color;
@@ -63,12 +66,14 @@ select {
   background-position: calc(100% - 1em) 50%;
   background-size: 8px;
   padding-right: 2.5em;
+  font-size: 1em;
 }
 
 input {
   padding: 10px;
   box-sizing: border-box;
   border: 1px solid $primary-color;
+  font-size: 1em;
 }
 
 .basic-page-container {

@@ -172,19 +172,23 @@ export default {
   margin: 100px 0 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
 
   .search-container {
+    text-align: left;
+    flex-grow: 1;
+
     input {
       width: 25%;
-      min-width: 150px;
+      min-width: 170px;
+      margin-right: 1rem;
     }
 
     span {
       font-size: 0.9em;
-      margin-left: 1rem;
       color: $red;
+      white-space: nowrap;
     }
   }
 
