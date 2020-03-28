@@ -15,7 +15,11 @@
           <option value="" selected>All States</option>
           <option v-for="state in states" :key="state">{{ state }}</option>
         </select>
-        <span v-if="currentHospitalsPageData.length > 0">{{ hospitals.length }} hospitals in need</span>
+        <button @click="clearSearch()">Clear</button>
+        <p v-if="hospitals.length > 0">
+          <span v-if="hospitals.length > filteredHospitals.length">showing {{ filteredHospitals.length }} of </span>
+          {{ hospitals.length }} hospitals in need
+        </p>
       </div>
       <select v-model="pageSize" @change="updatePageAndURL()">
         <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
@@ -188,6 +192,12 @@ export default {
       if (number) number.toString().replace(/,/g, '')
       if (!number) return '-'
       return `<p><a href="tel:${number}">${phone}</a></p>`
+    },
+
+    clearSearch () {
+      this.currentState = ''
+      this.searchText = ''
+      this.updatePageAndURL()
     }
   }
 }
@@ -217,20 +227,26 @@ export default {
       margin-right: 1rem;
     }
 
-    @media(max-width: $bp-xs + 50) {
+    @media(max-width: $bp-s) {
       display: flex;
       flex-flow: column;
+      align-items: flex-start;
 
-      select {
+      select, button {
         margin-top: 1em;
       }
     }
 
-    span {
+    button {
+      margin-right: 1em;
+      width: auto;
+    }
+
+    p {
+      display: inline-block;
       font-size: 0.9em;
       color: $red;
-      white-space: nowrap;
-      margin-right: 1em;
+      margin: 1em 0 0 0;
     }
   }
 
