@@ -60,7 +60,7 @@ export default {
     },
 
     aOrAn () {
-      if (this.currentMask.name.toLowerCase().includes('accordion')) {
+      if (this.currentMask.name.toLowerCase().startsWith('a')) {
         return 'An'
       }
 

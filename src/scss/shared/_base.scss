@@ -45,6 +45,17 @@ a {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+
+  a {
+    text-decoration: underline;
+    color: $text-color;
+    transition: color .25s;
+
+    &:hover {
+      color: $primary-color;
+      transition: color .25s;
+    }
+  }
 }
 
 button, .button {
