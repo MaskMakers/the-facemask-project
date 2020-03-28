@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <router-link tag="button" to="/send-a-mask" @click.native="scrollToTop()">Send your mask to a facility</router-link>
+      <router-link tag="button" to="/send-a-mask">Send your mask to a facility</router-link>
     </div>
     <loading v-else />
   </div>
@@ -75,13 +75,6 @@ export default {
           title: `Make ${this.aOrAn} ${mask.name}`
         })
       }
-    }
-  },
-  methods: {
-    scrollToTop () {
-      this.$nextTick(() => {
-        window.scrollTo(0, 0)
-      })
     }
   }
 }
