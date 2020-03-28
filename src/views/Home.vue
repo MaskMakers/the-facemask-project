@@ -1,7 +1,11 @@
 <template>
   <div class="home-container basic-page-container">
     <h1 class="visuallyhidden">The Facemask Project</h1>
-    <h2>Make a facemask at home. Send it to a hospital that&nbsp;needs&nbsp;one.</h2>
+    <h2>
+      Make a facemask at home.
+      <br>
+      Send it to a hospital that needs one
+    </h2>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link">
         <div class="image"></div>
