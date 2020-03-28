@@ -4,7 +4,7 @@
       <h1>Make a {{ currentMask.name }}</h1>
       <p>{{ currentMask.description }}</p>
       <div class="steps">
-        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="id">
+        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
           <vue-image
             :source='image'
             :width='500'
@@ -18,6 +18,7 @@
           </div>
         </div>
       </div>
+      <router-link tag="button" to="/send-a-mask" @click.native="scrollToTop()">Send the mask to a hospital</router-link>
     </div>
     <loading v-else />
   </div>
@@ -56,6 +57,13 @@ export default {
 
       return steps
     }
+  },
+  methods: {
+    scrollToTop () {
+      this.$nextTick(() => {
+        window.scrollTo(0, 0)
+      })
+    }
   }
 }
 </script>
@@ -74,10 +82,19 @@ export default {
     grid-gap: 3%;
     padding-top: 1em;
     margin-top: 50px;
+    margin-bottom: 100px;
 
     @media screen and (max-width: $bp-m) {
       grid-template-columns: 1fr 1fr;
       grid-gap: 4%;
+    }
+
+    @media screen and (max-width: $bp-xs) {
+      display: block;
+
+      .step {
+        margin-bottom: 3em;
+      }
     }
 
     .step {
