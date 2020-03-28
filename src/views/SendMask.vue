@@ -36,7 +36,7 @@
             <div class="list-item" v-for="({ name, address, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
               <div class="name">{{ name }}</div>
               <div class="address">{{ address }}</div>
-              <div class="phone">{{ phone }}</div>
+              <div class="phone" v-html="generatePhoneText(phone)"></div>
               <div class="need">{{ need }}</div>
               <div class="pattern">{{ pattern }}</div>
               <div class="delivery">{{ delivery }}</div>
@@ -181,6 +181,13 @@ export default {
       window.history.replaceState(null, null, query)
 
       this.currentPage = 0
+    },
+
+    generatePhoneText (phone) {
+      var number = phone.match(/\d+/g)
+      if (number) number.toString().replace(/,/g, '')
+      if (!number) return '-'
+      return `<p><a href="tel:${number}">${phone}</a></p>`
     }
   }
 }
