@@ -254,7 +254,7 @@ export default {
 
 .list-container {
   margin-top: 30px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 
   .list {
     min-width: 1000px;
@@ -279,6 +279,15 @@ p {
 
   &.list-header {
     font-weight: bold;
+    position: sticky;
+    background-color: $white;
+    top: 0;
+    border-bottom: 1px solid $gray;
+    margin-bottom: 30px;
+
+    > h3 {
+      margin-bottom: 0;
+    }
   }
 }
 
