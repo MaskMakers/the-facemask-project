@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { setMeta } from '../helpers/meta/setMeta'
 import Home from '../views/Home.vue'
 import MakeMask from '../views/MakeMask.vue'
 import MaskDetail from '../views/MaskDetail.vue'
@@ -50,6 +51,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  setMeta(to)
+  next()
 })
 
 export default router
