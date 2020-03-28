@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <router-link tag="button" to="/send-a-mask" @click.native="scrollToTop()">Send the mask to a hospital</router-link>
+      <router-link tag="button" to="/send-a-mask" @click.native="scrollToTop()">Send your mask to a facility</router-link>
     </div>
     <loading v-else />
   </div>

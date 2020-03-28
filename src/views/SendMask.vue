@@ -9,7 +9,7 @@
       </p>
     <div class="actions-container">
       <div class="search-container">
-        <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="updatePageAndURL()" />
+        <input class="input-search" v-model="searchText" placeholder="Search Facilities" @keyup="updatePageAndURL()" />
         <select v-model="currentState" @change="updatePageAndURL()">
           <option disabled>Select A State</option>
           <option value="" selected>All States</option>
