@@ -55,6 +55,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   setMeta(to)
+  window.scrollTo(0, 0)
   next()
 })
 
