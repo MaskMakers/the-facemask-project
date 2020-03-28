@@ -46,7 +46,7 @@ export default {
     transform: rotate(0deg);
     animation: spinner .6s infinite linear;
     border: 4px solid $white;
-    border-top: 4px solid $navy;
+    border-top: 4px solid $primary-color;
     border-radius: 50%;
     stroke: $white;
 
@@ -54,7 +54,7 @@ export default {
       width: 24px;
       height: 24px;
       border: 2px solid $white;
-      border-top: 2px solid $navy;
+      border-top: 2px solid $primary-color;
     }
   }
 }

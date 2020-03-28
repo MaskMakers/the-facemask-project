@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import hospitals from './modules/hospitals'
+import tabletop from './modules/tabletop'
 import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
-  modules: ['hospitals']
+  modules: ['tabletop']
 })
 
 // reset when storage is more than 24 hours
@@ -35,7 +35,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    hospitals
+    tabletop
   },
   plugins: localPlugins
 })

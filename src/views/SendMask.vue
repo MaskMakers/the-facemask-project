@@ -1,6 +1,6 @@
 <template>
   <div class="hospital-list-container basic-page-container">
-    <h1>FIND A HOSPITAL THAT NEEDS FACEMASKS!</h1>
+    <h1>Send A Mask</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
      <p>
         This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
@@ -12,20 +12,20 @@
         <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="updatePageAndURL()" />
         <span v-if="currentHospitalsPageData.length > 0">{{ hospitals.length }} hospitals in need</span>
       </div>
-      <select v-model="pageSize">
-        <option v-for="option in pageSizeOptions" :key="option" @keyup="updatePageAndURL()">{{ option }}</option>
+      <select v-model="pageSize" @change="updatePageAndURL()">
+        <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
       </select>
     </div>
     <div class="list-container">
       <div class="list">
         <div class="list-header">
-          <div class="name">Facility Name</div>
-          <div class="address">Address</div>
-          <div class="state">State</div>
-          <div class="phone">Phone Number</div>
-          <div class="need">Quantity Needed</div>
-          <div class="pattern">Specific Pattern Request?</div>
-          <div class="delivery">Delivery Instructions</div>
+          <h3 class="name">Facility Name</h3>
+          <h3 class="address">Facility Address</h3>
+          <h3 class="state">Facility State</h3>
+          <h3 class="phone">Facility Phone</h3>
+          <h3 class="need">Quantity Needed</h3>
+          <h3 class="pattern">Pattern Request?</h3>
+          <h3 class="delivery">Delivery Instructions</h3>
         </div>
         <div v-if="hospitals.length > 0">
           <div v-if="currentHospitalsPageData.length > 0">
@@ -63,7 +63,7 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'Sewing',
+  name: 'SendMask',
 
   data () {
     return {
@@ -83,7 +83,7 @@ export default {
   },
 
   computed: {
-    ...mapState('hospitals', [
+    ...mapState('tabletop', [
       'hospitals'
     ]),
 
@@ -172,19 +172,23 @@ export default {
   margin: 100px 0 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   box-sizing: border-box;
 
   .search-container {
+    text-align: left;
+    flex-grow: 1;
+
     input {
       width: 25%;
-      min-width: 150px;
+      min-width: 170px;
+      margin-right: 1rem;
     }
 
     span {
       font-size: 0.9em;
-      margin-left: 1rem;
       color: $red;
+      white-space: nowrap;
     }
   }
 
@@ -206,11 +210,10 @@ p {
 
 .list-item, .list-header {
   display: grid;
-  grid-template-columns: 1fr 1.25fr 1fr 1.5fr 1fr 1fr 2fr;
-  grid-column-gap: 1em;
-  padding: 1em 0;
-  border-bottom: 1px solid $gray;
-  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-column-gap: 1.5em;
+  padding: 0.75em 0;
+  text-align: left;
 
   &:last-of-type {
     border-bottom: 0;
@@ -218,14 +221,6 @@ p {
 
   &.list-header {
     font-weight: bold;
-  }
-
-  .name, .address {
-    text-align: left;
-  }
-
-  .delivery {
-    text-align: right;
   }
 }
 
@@ -241,11 +236,6 @@ p {
     padding: 0;
     width: 30px;
     height: 30px;
-
-    &.active {
-      color: $gray;
-      border: 1px solid $gray;
-    }
   }
 }
 </style>

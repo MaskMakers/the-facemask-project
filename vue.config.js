@@ -17,7 +17,10 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: `@import "@/scss/shared/_variables.scss";`,
+        prependData: `
+          @import "@/scss/shared/_variables.scss";
+          @import "@/scss/shared/_mixins.scss";
+        `,
         sassOptions: {
           scoped: false
         }
