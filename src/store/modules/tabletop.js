@@ -19,7 +19,7 @@ export default {
     },
 
     setSteps (state, steps) {
-      state.masks = steps
+      state.steps = steps
     }
   },
 

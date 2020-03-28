@@ -236,11 +236,6 @@ p {
     padding: 0;
     width: 30px;
     height: 30px;
-
-    &.active {
-      color: $gray;
-      border: 1px solid $gray;
-    }
   }
 }
 </style>

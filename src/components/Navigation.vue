@@ -40,15 +40,15 @@ export default {
 
     a {
       margin: 6px 0 6px 18px;
-      color: black;
+      color: $secondary-color;
       position: relative;
       line-height: 1.1;
 
       &.router-link-exact-active {
-        color: $gray-dark;
+        color: $primary-color;
       }
 
-      &:hover {
+      &:hover, &.router-link-exact-active {
         &:after {
           left: 0;
           right: auto;
@@ -59,7 +59,7 @@ export default {
       &:after {
         content: '';
         position: absolute;
-        background-color: $blue;
+        background-color: $primary-color;
         bottom: -3px;
         right: 0;
         width: 0%;
