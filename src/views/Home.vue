@@ -82,6 +82,10 @@ export default {
       margin: 0 auto;
       display: none;
     }
+
+    .link-text {
+      margin-bottom: 0;
+    }
   }
 
   .featured-info {
