@@ -42,7 +42,10 @@
               <div class="delivery">{{ delivery }}</div>
             </div>
           </div>
-          <p v-else>No results for '{{ searchText }}'</p>
+          <p v-else>
+            No results for '{{ searchText }}'
+            <span v-if="currentState"> in {{ currentState }}</span>
+          </p>
         </div>
         <loading v-else />
       </div>
