@@ -14,7 +14,7 @@
             <h3 class="step">{{ step }}</h3>
             <h2 class="title">{{ title }}</h2>
             <p class="description" v-if="description">{{ description }}</p>
-            <button v-if="templateLink">Download Template</button>
+            <a class="button" v-if="templateLink" :href="templateLink" target="_blank">Download Template</a>
           </div>
         </div>
       </div>
@@ -63,39 +63,44 @@ export default {
 <style lang="scss" scoped>
 .mask-detail-container {
   margin-top: 50px;
-}
 
-.steps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 3%;
-  padding-top: 1em;
-  margin-top: 50px;
-
-  @media screen and (max-width: $bp-m) {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 4%;
+  /deep/ .loading-wrapper, .steps {
+    margin-top: 50px;
   }
 
-  .step {
-    text-align: left;
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 3%;
+    padding-top: 1em;
+    margin-top: 50px;
 
-    a {
-      color: $secondary-color;
-    }
-
-    .image {
-      width: 100%;
-      height: 300px;
-      background-color: $gray-light;
+    @media screen and (max-width: $bp-m) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4%;
     }
 
     .step {
-      margin-bottom: 5px;
-    }
+      text-align: left;
 
-    .title {
-      margin-top: 0;
+      a {
+        color: $secondary-color;
+      }
+
+      .image {
+        width: 100%;
+        height: 300px;
+        background-color: $gray-light;
+      }
+
+      .step {
+        margin-top: 1em;
+        margin-bottom: 0.25em;
+      }
+
+      .title {
+        margin-top: 0;
+      }
     }
   }
 }
