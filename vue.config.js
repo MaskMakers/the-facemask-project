@@ -19,7 +19,7 @@ module.exports = {
       sass: {
         prependData: `
           @import "@/scss/shared/_variables.scss";
-          @import "@/scss/shared/mixins.scss";
+          @import "@/scss/shared/_mixins.scss";
         `,
         sassOptions: {
           scoped: false
