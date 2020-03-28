@@ -52,7 +52,20 @@ module.exports = {
       ],
       useRenderEvent: true,
       headless: true,
-      onlyProduction: true
+      onlyProduction: true,
+      postProcess: route => {
+        // Remove /index.html from the output path if the dir name ends with a .html file extension.
+        // For example: /dist/dir/special.html/index.html -> /dist/dir/special.html
+        if (route.route.endsWith('.html')) {
+          route.outputPath = route.join(__dirname, 'dist', route.route)
+        }
+
+        // Defer scripts and tell Vue it's been server rendered to trigger hydration
+        route.html = route.html
+          .replace(/<script (.*?)>/g, '<script $1 defer>')
+          .replace('id="app"', 'id="app" data-server-rendered="true"')
+        return route
+      }
     }
   }
 }
