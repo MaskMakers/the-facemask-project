@@ -10,6 +10,11 @@
     <div class="actions-container">
       <div class="search-container">
         <input class="input-search" v-model="searchText" placeholder="Search Hospitals" @keyup="updatePageAndURL()" />
+        <select v-model="currentState" @change="updatePageAndURL()">
+          <option disabled>Select A State</option>
+          <option value="" selected>All States</option>
+          <option v-for="state in states" :key="state">{{ state }}</option>
+        </select>
         <span v-if="currentHospitalsPageData.length > 0">{{ hospitals.length }} hospitals in need</span>
       </div>
       <select v-model="pageSize" @change="updatePageAndURL()">
@@ -21,7 +26,6 @@
         <div class="list-header">
           <h3 class="name">Facility Name</h3>
           <h3 class="address">Facility Address</h3>
-          <h3 class="state">Facility State</h3>
           <h3 class="phone">Facility Phone</h3>
           <h3 class="need">Quantity Needed</h3>
           <h3 class="pattern">Pattern Request?</h3>
@@ -29,10 +33,9 @@
         </div>
         <div v-if="hospitals.length > 0">
           <div v-if="currentHospitalsPageData.length > 0">
-            <div class="list-item" v-for="({ name, address, state, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
+            <div class="list-item" v-for="({ name, address, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
               <div class="name">{{ name }}</div>
               <div class="address">{{ address }}</div>
-              <div class="state">{{ state }}</div>
               <div class="phone">{{ phone }}</div>
               <div class="need">{{ need }}</div>
               <div class="pattern">{{ pattern }}</div>
@@ -78,23 +81,31 @@ export default {
         500,
         1000
       ],
-      searchText: decodeURI(window.location.search.replace('?search=', ''))
+      searchText: '',
+      currentState: ''
     }
   },
 
   computed: {
     ...mapState('tabletop', [
-      'hospitals'
+      'hospitals',
+      'states'
     ]),
 
     filteredHospitals () {
       const searchText = this.searchText && this.searchText.toLowerCase().trim()
+      const selectedState = this.currentState && this.currentState.toLowerCase().trim()
+      let hospitalsClone = this.hospitals
 
       if (searchText && this.hospitals.length > 0) {
-        return this.hospitals.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
+        hospitalsClone = hospitalsClone.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(searchText) > -1))
       }
 
-      return this.hospitals
+      if (selectedState) {
+        hospitalsClone = hospitalsClone.filter(row => Object.keys(row).some(key => String(row[key]).toLowerCase().indexOf(selectedState) > -1))
+      }
+
+      return hospitalsClone
     },
 
     paginatedHospitals () {
@@ -125,6 +136,12 @@ export default {
     }
   },
 
+  mounted () {
+    const searchParams = new URLSearchParams(window.location.search)
+    this.currentState = searchParams.get('state') || ''
+    this.searchText = searchParams.get('search') || ''
+  },
+
   methods: {
     goToPage (pageIndex) {
       if (pageIndex === 'back') {
@@ -153,6 +170,11 @@ export default {
         query += '?search=' + this.searchText
       }
 
+      if (this.currentState !== '') {
+        const prepend = this.searchText !== '' ? '&' : '?'
+        query += `${prepend}state=${this.currentState}`
+      }
+
       window.history.replaceState(null, null, query)
 
       this.currentPage = 0
@@ -179,16 +201,26 @@ export default {
     text-align: left;
     flex-grow: 1;
 
-    input {
+    input, select {
       width: 25%;
       min-width: 170px;
       margin-right: 1rem;
+    }
+
+    @media(max-width: $bp-xs + 50) {
+      display: flex;
+      flex-flow: column;
+
+      select {
+        margin-top: 1em;
+      }
     }
 
     span {
       font-size: 0.9em;
       color: $red;
       white-space: nowrap;
+      margin-right: 1em;
     }
   }
 
@@ -210,7 +242,7 @@ p {
 
 .list-item, .list-header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1.25fr 1.25fr 1fr 1fr 2fr;
   grid-column-gap: 1.5em;
   padding: 0.75em 0;
   text-align: left;
