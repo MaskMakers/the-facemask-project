@@ -6,6 +6,7 @@ import store from './store'
 Vue.config.productionTip = false
 
 Vue.component('loading', () => import('@/components/Loading'))
+Vue.component('vue-image', () => import('@/components/VueImage'))
 
 new Vue({
   router,

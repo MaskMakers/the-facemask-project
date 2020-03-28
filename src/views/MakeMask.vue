@@ -1,20 +1,27 @@
 <template>
   <div class="make-a-mask-container basic-page-container">
-    <h1>Make A Mask</h1>
-    <h2>Choose A Mask Template</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <div class="masks">
-      <div class="mask" v-for="{ id, name, subtitle, description } in masks" :key="id">
-        <router-link :to="'/mask/' + id">
-          <div :class="'image image-' + id"></div>
-          <div class="copy">
-            <h3 class="name">{{name}}</h3>
-            <p class="subtitle">{{ subtitle }}</p>
-            <p class="description">{{ description }}</p>
+      <h1>Make A Mask</h1>
+      <h2>Choose A Mask Template</h2>
+      <p>The template you choose will be dependant on who you are making them for and what materials you have available.</p>
+      <div v-if="masks.length > 0">
+        <div class="masks">
+          <div class="mask" v-for="{ id, name, subtitle, description } in masks" :key="id">
+            <router-link :to="'/mask/' + id">
+              <vue-image
+                :source='image'
+                :width='500'
+                :height='500'
+              ></vue-image>
+              <div class="copy">
+                <h3 class="name">{{name}}</h3>
+                <p class="subtitle">{{ subtitle }}</p>
+                <p class="description">{{ description }}</p>
+              </div>
+            </router-link>
           </div>
-        </router-link>
-      </div>
+        </div>
     </div>
+    <loading v-else />
   </div>
 </template>
 
@@ -35,40 +42,38 @@ export default {
 <style lang="scss" scoped>
 .make-a-mask-container {
   margin: 50px auto 100px;
-}
 
-.masks {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 3%;
-  padding-top: 1em;
-  margin-top: 50px;
-
-  @media screen and (max-width: $bp-m) {
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 4%;
+  /deep/ .loading-wrapper {
+    padding-top: 2em;
   }
-}
 
-.mask {
-  text-align: left;
+  .masks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3%;
+    padding-top: 3em;
 
-  a {
-    color: $secondary-color;
+    @media screen and (max-width: $bp-m) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 4%;
+    }
   }
-}
 
-.image {
-  width: 100%;
-  height: 300px;
-  background-color: $gray-light;
-}
+  .mask {
+    text-align: left;
 
-.name {
-  margin-bottom: 5px;
-}
+    a {
+      color: $secondary-color;
+    }
+  }
 
-.subtitle {
-  margin-top: 0;
+  .name {
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+  }
+
+  .subtitle {
+    margin-top: 0;
+  }
 }
 </style>
