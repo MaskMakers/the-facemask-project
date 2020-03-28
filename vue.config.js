@@ -36,5 +36,23 @@ module.exports = {
         fix: true
       })
     ]
+  },
+
+  pluginOptions: {
+    prerenderSpa: {
+      registry: undefined,
+      renderRoutes: [
+        '/',
+        '/send-a-mask',
+        '/make-a-mask',
+        '/mask/accordion-mask-1',
+        '/mask/accordion-mask-2',
+        '/mask/filtered-mask-1',
+        '/mask/filtered-mask-2'
+      ],
+      useRenderEvent: true,
+      headless: true,
+      onlyProduction: true
+    }
   }
 }

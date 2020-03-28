@@ -12,8 +12,13 @@ export default {
   components: {
     Navigation
   },
-  beforeMount () {
-    this.$store.dispatch('tabletop/getSheet')
+  async beforeMount () {
+    await this.$store.dispatch('tabletop/getSheet')
+
+    // wait a few seconds to fetch all the data
+    setTimeout(() => {
+      document.dispatchEvent(new Event('x-app-rendered'))
+    }, 2000)
   }
 }
 </script>
