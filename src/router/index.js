@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MakeMask from '../views/MakeMask.vue'
+import MaskDetail from '../views/MaskDetail.vue'
 import SendMask from '../views/SendMask.vue'
 // import HospitalInput from '../views/HospitalInput.vue'
 
@@ -17,6 +18,11 @@ const routes = [
     path: '/make-a-mask',
     name: 'MakeMask',
     component: MakeMask
+  },
+  {
+    path: '/mask/:maskId',
+    name: 'MaskDetail',
+    component: MaskDetail
   },
   {
     path: '/send-a-mask',
