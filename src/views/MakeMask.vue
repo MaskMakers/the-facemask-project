@@ -56,6 +56,11 @@ export default {
       grid-template-columns: 1fr 1fr;
       grid-gap: 4%;
     }
+
+    @media screen and (max-width: $bp-s) {
+      grid-template-columns: 1fr;
+      grid-gap: 2em;
+    }
   }
 
   .mask {
