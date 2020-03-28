@@ -14,7 +14,7 @@
             <h3 class="step">{{ step }}</h3>
             <h2 class="title">{{ title }}</h2>
             <p class="description" v-if="description">{{ description }}</p>
-            <a class="button" v-if="templateLink" :href="templateLink" target="_blank">Download Template</a>
+            <a class="button" v-if="templateLink" :href="templateLink" target="_blank" download>Download Template</a>
           </div>
         </div>
       </div>
