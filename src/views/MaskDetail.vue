@@ -1,10 +1,10 @@
 <template>
   <div class="mask-detail-container basic-page-container">
     <div v-if="currentMask">
-      <h1>Make a {{ currentMask.name }}</h1>
+      <h1>Make {{ aOrAn }} {{ currentMask.name }}</h1>
       <p>{{ currentMask.description }}</p>
       <div class="steps">
-        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="id">
+        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
           <vue-image
             :source='image'
             :width='500'
@@ -18,6 +18,7 @@
           </div>
         </div>
       </div>
+      <router-link tag="button" to="/send-a-mask" @click.native="scrollToTop()">Send your mask to a facility</router-link>
     </div>
     <loading v-else />
   </div>
@@ -25,9 +26,10 @@
 
 <script>
 import { mapState } from 'vuex'
+import { setMetaForMaskDetail } from '../helpers/meta/setMeta'
 
 export default {
-  name: 'MakeMask',
+  name: 'MaskDetail',
   components: {},
   computed: {
     ...mapState('tabletop', [
@@ -55,6 +57,31 @@ export default {
       })
 
       return steps
+    },
+
+    aOrAn () {
+      if (this.currentMask.name.toLowerCase().includes('accordion')) {
+        return 'An'
+      }
+
+      return 'A'
+    }
+  },
+  watch: {
+    currentMask: {
+      immediate: true,
+      handler (mask) {
+        setMetaForMaskDetail({
+          title: `Make ${this.aOrAn} ${mask.name}`
+        })
+      }
+    }
+  },
+  methods: {
+    scrollToTop () {
+      this.$nextTick(() => {
+        window.scrollTo(0, 0)
+      })
     }
   }
 }
@@ -74,10 +101,19 @@ export default {
     grid-gap: 3%;
     padding-top: 1em;
     margin-top: 50px;
+    margin-bottom: 100px;
 
     @media screen and (max-width: $bp-m) {
       grid-template-columns: 1fr 1fr;
       grid-gap: 4%;
+    }
+
+    @media screen and (max-width: $bp-xs) {
+      display: block;
+
+      .step {
+        margin-bottom: 3em;
+      }
     }
 
     .step {

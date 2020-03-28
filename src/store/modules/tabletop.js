@@ -5,6 +5,7 @@ export default {
 
   state: {
     hospitals: [],
+    states: [],
     masks: [],
     steps: []
   },
@@ -12,6 +13,10 @@ export default {
   mutations: {
     setHospitals (state, hospitals) {
       state.hospitals = hospitals
+    },
+
+    pushState (state, sentState) {
+      state.states.push(sentState)
     },
 
     setMasks (state, masks) {
@@ -32,6 +37,7 @@ export default {
         }).then((data) => {
           const hospitals = data['Hospitals'].elements
           store.dispatch('formatHospitals', hospitals)
+          store.dispatch('formatStates', hospitals)
 
           const masks = data['Masks'].elements
           store.dispatch('formatMasks', masks)
@@ -64,6 +70,15 @@ export default {
       })
 
       store.commit('setHospitals', formattedArray)
+    },
+
+    formatStates (store, hospitals) {
+      hospitals.forEach(hospital => {
+        const currentState = hospital['State']
+        if (!store.state.states.includes(currentState)) {
+          store.commit('pushState', currentState)
+        }
+      })
     },
 
     formatMasks (store, masks) {

@@ -8,7 +8,6 @@
           <div class="mask" v-for="{ id, name, subtitle, description } in masks" :key="id">
             <router-link :to="'/mask/' + id">
               <vue-image
-                :source='image'
                 :width='500'
                 :height='500'
               ></vue-image>
