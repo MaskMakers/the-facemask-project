@@ -1,13 +1,15 @@
 const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const ZeitRoutes = require(path.resolve(__dirname, 'zeit-routes.json'))
 
-// pull routes from zeit-routes.js
-// creates a single source of truth for prerendering and Zeit
-let renderRoutes = []
-ZeitRoutes.forEach((route) => {
-  renderRoutes.push(route.src)
-})
+// @TODO doesnt work in Zeit?
+// const ZeitRoutes = require(path.resolve(__dirname, 'now.json'))
+
+// // pull routes from zeit-routes.js
+// // creates a single source of truth for prerendering and Zeit
+// let renderRoutes = []
+// ZeitRoutes.forEach((route) => {
+//   renderRoutes.push(route.src)
+// })
 
 module.exports = {
   runtimeCompiler: true,
@@ -50,7 +52,17 @@ module.exports = {
   pluginOptions: {
     prerenderSpa: {
       registry: undefined,
-      renderRoutes: renderRoutes,
+      // @TODO Fix somehow?
+      // renderRoutes,
+      renderRoutes: [
+        '/',
+        '/send-a-mask',
+        '/make-a-mask',
+        '/mask/accordion-mask-1',
+        '/mask/accordion-mask-2',
+        '/mask/filtered-mask-1',
+        '/mask/filtered-mask-2'
+      ],
       useRenderEvent: true,
       headless: true,
       onlyProduction: true,

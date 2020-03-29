@@ -1,9 +1,0 @@
-[
-  { "src": "/", "dest": "/index.html" },
-  { "src": "/send-a-mask", "dest": "/send-a-mask.html" },
-  { "src": "/make-a-mask", "dest": "/make-a-mask.html" },
-  { "src": "/mask/accordion-mask-1", "dest": "/mask/accordion-mask-1.html" },
-  { "src": "/mask/accordion-mask-2", "dest": "/mask/accordion-mask-2.html" },
-  { "src": "/mask/filtered-mask-1", "dest": "/mask/filtered-mask-1.html" },
-  { "src": "/mask/filtered-mask-2", "dest": "/mask/filtered-mask-2.html" }
-]
