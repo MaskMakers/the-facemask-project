@@ -54,7 +54,7 @@
         <loading v-else />
       </div>
     </div>
-    <div class="pagination" v-if="paginatedHospitalsLength > 1">
+    <div class="pagination" v-if="paginatedHospitalsLength > 1 && pageSize !== 'All'">
       <button @click="goToPage('back')">&lt;</button>
       <button
         v-for="page in paginatedHospitalsLength"
@@ -86,7 +86,7 @@ export default {
         50,
         100,
         500,
-        1000
+        'All'
       ],
       searchText: '',
       currentState: ''
@@ -135,6 +135,7 @@ export default {
     },
 
     currentHospitalsPageData () {
+      if (this.pageSize === 'All') return this.paginatedHospitals
       return this.paginatedHospitals[this.currentPage] || []
     },
 
