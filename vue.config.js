@@ -1,11 +1,11 @@
 const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const NowConfig = require(path.resolve(__dirname, 'now.json'))
+const ZeitRoutes = require(path.resolve(__dirname, 'zeit-routes.json'))
 
-// pull routes from now.json
-// creates a single source of truth as now.json for prerendering
+// pull routes from zeit-routes.js
+// creates a single source of truth for prerendering and Zeit
 let renderRoutes = []
-NowConfig.routes.forEach((route) => {
+ZeitRoutes.forEach((route) => {
   renderRoutes.push(route.src)
 })
 
