@@ -7,7 +7,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 // // pull routes from zeit-routes.js
 // // creates a single source of truth for prerendering and Zeit
 // let renderRoutes = []
-// ZeitRoutes.forEach((route) => {
+// ZeitRoutes.routes.forEach((route) => {
 //   renderRoutes.push(route.src)
 // })
 
