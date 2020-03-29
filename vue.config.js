@@ -1,5 +1,13 @@
 const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const NowConfig = require('./now.json')
+
+// pull routes from now.json
+// creates a single source of truth as now.json for prerendering
+let renderRoutes = []
+NowConfig.routes.forEach((route) => {
+  renderRoutes.push(route.src)
+})
 
 module.exports = {
   runtimeCompiler: true,
@@ -42,15 +50,7 @@ module.exports = {
   pluginOptions: {
     prerenderSpa: {
       registry: undefined,
-      renderRoutes: [
-        '/',
-        '/send-a-mask',
-        '/make-a-mask',
-        '/mask/accordion-mask-1',
-        '/mask/accordion-mask-2',
-        '/mask/filtered-mask-1',
-        '/mask/filtered-mask-2'
-      ],
+      renderRoutes,
       useRenderEvent: true,
       headless: true,
       onlyProduction: true,
