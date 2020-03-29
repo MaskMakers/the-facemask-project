@@ -1,6 +1,6 @@
 const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const NowConfig = require('./now.json')
+const NowConfig = require(path.resolve(__dirname, 'now.json'))
 
 // pull routes from now.json
 // creates a single source of truth as now.json for prerendering
