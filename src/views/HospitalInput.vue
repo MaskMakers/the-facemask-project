@@ -51,11 +51,11 @@ export default {
 <style lang="scss" scoped>
 .hospital-input {
   max-width: 500px;
-  margin: 5em auto 1em;
+  margin: $space-l auto $space-s;
 
   > div {
     text-align: left;
-    margin-bottom: 2em;
+    margin-bottom: $space-s;
 
     label, input {
       display: block;

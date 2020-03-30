@@ -25,12 +25,14 @@
 
 // Neumorphism effect
 // article - https://uxplanet.org/neumorphism-in-user-interface-tutorial-c353698ac5c0
-@mixin neumorphism($x-offset: 7px, $y-offset: 7px, $blur: 16px, $opacity-light: .8, $opacity-dark: .2) {
+@mixin neumorphism($hover: true, $x-offset: 7px, $y-offset: 7px, $blur: 16px, $opacity-light: .8, $opacity-dark: .2) {
   background-color: $off-white;
   box-shadow: $x-offset $y-offset $blur rgba(163, 177, 198, $opacity-dark), (-$x-offset) (-$y-offset) $blur rgba(255, 255, 255, $opacity-light);
 
-  &:hover {
-    box-shadow: calc(#{$x-offset} * 2) calc(#{$y-offset} * 2) $blur rgba(163, 177, 198, $opacity-dark), calc((-#{$x-offset} * 2)) calc((-#{$y-offset} * 2)) $blur rgba(255, 255, 255, $opacity-light);
+  @if $hover {
+    &:hover {
+      box-shadow: calc(#{$x-offset} * 2) calc(#{$y-offset} * 2) $blur rgba(163, 177, 198, $opacity-dark), calc((-#{$x-offset} * 2)) calc((-#{$y-offset} * 2)) $blur rgba(255, 255, 255, $opacity-light);
+    }
   }
 }
 
@@ -50,6 +52,6 @@
 
   @media screen and (max-width: $bp-s) {
     grid-template-columns: 1fr;
-    grid-gap: 2em;
+    grid-gap: $space-m;
   }
 }

@@ -1,25 +1,40 @@
 <template>
   <div class="hospital-list-container basic-page-container">
-    <h1>Send A Mask</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
-     <p>
-        This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
-        If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
-        or email <a href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
-      </p>
+    <div class="header-grid">
+      <div class="mask-header-image">
+        <vue-image
+          :source='image'
+          :width='500'
+          :height='500'
+        ></vue-image>
+        <h1>Send <br> A Mask</h1>
+      </div>
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>
+          This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
+          If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
+          or email <a href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
+        </p>
+        <br>
+        <div class="gradient-bar"></div>
+      </div>
+    </div>
     <div class="actions-container">
       <div class="search-container">
-        <input class="input-search" v-model="searchText" placeholder="Search Facilities" @keyup="updatePageAndURL()" />
+        <div class="input-container">
+          <input class="input-search" v-model="searchText" placeholder="Search Facilities" @keyup="updatePageAndURL()" />
+          <p v-if="hospitals.length > 0">
+            <span v-if="hospitals.length > filteredHospitals.length">showing {{ filteredHospitals.length }} of </span>
+            {{ hospitals.length }} hospitals in need
+          </p>
+        </div>
         <select v-model="currentState" @change="updatePageAndURL()">
           <option disabled>Select A State</option>
           <option value="" selected>All States</option>
           <option v-for="state in states" :key="state">{{ state }}</option>
         </select>
         <button @click="clearSearch()">Clear</button>
-        <p v-if="hospitals.length > 0">
-          <span v-if="hospitals.length > filteredHospitals.length">showing {{ filteredHospitals.length }} of </span>
-          {{ hospitals.length }} hospitals in need
-        </p>
       </div>
       <select v-model="pageSize" @change="updatePageAndURL()">
         <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
@@ -28,18 +43,20 @@
     <div class="list-container">
       <div class="list">
         <div class="list-header">
-          <h3 class="name">Facility Name</h3>
-          <h3 class="address">Facility Address</h3>
-          <h3 class="phone">Facility Phone</h3>
-          <h3 class="need">Quantity Needed</h3>
-          <h3 class="pattern">Pattern Request?</h3>
-          <h3 class="delivery">Delivery Instructions</h3>
+          <div class="name">Facility<br>Name</div>
+          <div class="address">Facility<br>Address</div>
+          <div class="state">State</div>
+          <div class="phone">Facility<br>Phone</div>
+          <div class="need">Quantity<br>Needed</div>
+          <div class="pattern">Pattern<br>Request?</div>
+          <div class="delivery">Delivery<br>Instructions</div>
         </div>
         <div v-if="hospitals.length > 0">
           <div v-if="currentHospitalsPageData.length > 0">
-            <div class="list-item" v-for="({ name, address, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
+            <div class="list-item" v-for="({ name, address, state, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
               <div class="name">{{ name }}</div>
               <div class="address">{{ address }}</div>
+              <div class="state">{{ state }}</div>
               <div class="phone" v-html="generatePhoneText(phone)"></div>
               <div class="need">{{ need }}</div>
               <div class="pattern">{{ pattern }}</div>
@@ -219,12 +236,24 @@ export default {
   box-sizing: border-box;
 
   .search-container {
+    display: flex;
+    align-items: flex-start;
     text-align: left;
     flex-grow: 1;
 
-    input, select {
-      width: 25%;
-      min-width: 170px;
+    .input-container {
+      display: flex;
+      flex-flow: column;
+      text-align: center;
+
+      input {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .input-container, select {
+      width: 50%;
       margin-right: 1rem;
     }
 
@@ -234,20 +263,21 @@ export default {
       align-items: flex-start;
 
       select, button {
-        margin-top: 1em;
+        margin-top: $space-s;
       }
     }
 
     button {
-      margin-right: 1em;
+      margin-right: $space-s;
       width: auto;
     }
 
     p {
       display: inline-block;
       font-size: 0.9em;
-      color: $red;
-      margin: 1em 0 0 0;
+      font-weight: bold;
+      color: $turquoise;
+      margin: $space-s 0 0 0;
     }
   }
 
@@ -269,10 +299,11 @@ p {
 
 .list-item, .list-header {
   display: grid;
-  grid-template-columns: 1fr 1.25fr 1.25fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1.25fr 1fr 1.25fr 1fr 1fr 2fr;
   grid-column-gap: 1.5em;
-  padding: 0.75em 0;
+  padding: $space-s;
   text-align: left;
+  border-bottom: 1px solid $gray;
 
   &:last-of-type {
     border-bottom: 0;
@@ -283,18 +314,14 @@ p {
   }
 }
 
-.list-item {
-  font-size: 0.9em;
-}
-
 .pagination {
   margin-top: 20px;
 
   button {
     margin: 0 6px;
     padding: 0;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
 }
 </style>

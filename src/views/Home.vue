@@ -2,22 +2,47 @@
   <div class="home-container basic-page-container">
     <h1 class="visuallyhidden">Mask Makers</h1>
     <h2>
-      Make a facemask at home.
+      Make a mask at home.
       <br>
       Send it to a hospital that needs one
     </h2>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
         <div class="image"></div>
-        <h2 class="link-text">MAKE A MASK</h2>
+        <h2 class="link-text">
+          Make
+          <div class="gradient-bar"></div>
+          A Mask
+        </h2>
       </router-link>
       <router-link to="/send-a-mask" class="hero-link card">
         <div class="image"></div>
-        <h2 class="link-text">SEND A MASK</h2>
+        <h2 class="link-text">
+          Send
+          <div class="gradient-bar"></div>
+          A Mask
+        </h2>
       </router-link>
     </div>
-    <div class="featured-info">
-      <p>The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of the pandemic!</p>
+    <div class="about-container">
+      <div class="featured-info">
+        <div class="gradient-bar"></div>
+        <br>
+        <p>The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of the pandemic!</p>
+      </div>
+      <vue-image
+        :source='image'
+        :width='500'
+        :height='500'
+      ></vue-image>
+    </div>
+    <div class="featured-info quote">
+      <h2>
+      “I have good news, Its all going to get better
+        And its all going to get worse
+        And its up to us to make the worse parts better.”
+      </h2>
+      <span>John Maeda</span>
     </div>
   </div>
 </template>
@@ -25,7 +50,6 @@
 <script>
 export default {
   name: 'Home',
-  components: {},
   mounted () {
 
   },
@@ -35,7 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 .home-container {
-  margin: 50px auto 0;
+  margin: $space-m auto 0;
 
   .hero-links-container {
     display: grid;
@@ -43,15 +67,15 @@ export default {
     grid-gap: 100px;
     max-width: 900px;
     margin: 0 auto;
-    padding: 50px 0 100px;
+    padding: $space-s 0 $space-l;
 
     @media screen and (max-width: $bp-m) {
-      grid-gap: 40px;
+      grid-gap: $space-m;
     }
 
     @media screen and (max-width: $bp-s) {
       display: block;
-      padding-bottom: 50px;
+      padding-bottom: $space-m;
     }
   }
 
@@ -59,7 +83,7 @@ export default {
     min-height: 240px;
     text-decoration: none;
     font-weight: 700;
-    padding: 30px;
+    padding: $space-m;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -82,15 +106,37 @@ export default {
 
     .link-text {
       margin-bottom: 0;
+      font-size: $header-large;
+      text-align: left;
+
+      .gradient-bar {
+        width: 205px;
+      }
     }
   }
 
-  .featured-info {
-    padding: 100px 0;
-    border-top: 1px solid $gray;
+  .about-container {
+    @include grid-2-column();
+    align-items: center;
+  }
 
-    @media screen and (max-width: $bp-s) {
-      padding: 50px 0;
+  .featured-info {
+    padding: $space-l 0;
+
+    &.quote {
+      max-width: 500px;
+      margin: 0 auto;
+      padding-bottom: 0;
+
+      span      {
+        font-weight: bold;
+        font-size: $base-small;
+      }
+    }
+
+    .gradient-bar {
+      width: 100px;
+      margin: 0 auto;
     }
 
     p {

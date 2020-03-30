@@ -21,16 +21,18 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
-  padding: 20px;
+  padding: 0.75em 1.25em;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid $gray;
+  @include neumorphism(false);
 
   .logo-container {
     max-width: 140px;
 
     img {
-      width: 100%;
+      display: inline-block;
+      width: 60px;
+      margin: -0.25em 0 -0.5em;
     }
   }
 
@@ -39,7 +41,7 @@ export default {
     align-items: center;
 
     a {
-      margin: 6px 0 6px 18px;
+      margin: 0.25em 0 0.25em $space-s;
       color: $text-color;
       position: relative;
       line-height: 1.1;
