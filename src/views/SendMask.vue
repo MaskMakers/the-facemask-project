@@ -242,7 +242,7 @@ export default {
       const listContainer = document.querySelector('.list-container')
       const list = document.querySelector('.list')
 
-      listContainer.scrollLeft = `${(list.scrollWidth - listContainer.offsetWidth) * (this.scrollPercent / 100)}`
+      listContainer.scrollLeft = (list.scrollWidth - listContainer.offsetWidth) * (this.scrollPercent / 100)
     },
 
     updateScrollPositionFromEl () {
