@@ -25,16 +25,18 @@
       </router-link>
     </div>
     <div class="about-container">
-      <div class="featured-info">
-        <div class="gradient-bar"></div>
-        <br>
-        <p>The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of the pandemic!</p>
+      <div class="about">
+        <div class="featured-info">
+          <div class="gradient-bar"></div>
+          <br>
+          <p>The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of the pandemic!</p>
+        </div>
+        <vue-image
+          :width="1000"
+          :height="500"
+          :background-color="variables.accent"
+        ></vue-image>
       </div>
-      <vue-image
-        :width="1000"
-        :height="500"
-        :background-color="variables.accent"
-      ></vue-image>
     </div>
     <div class="featured-info quote">
       <h2>
@@ -116,7 +118,7 @@ export default {
 
       @media screen and (max-width: $bp-s) {
         font-size: 3em;
-        line-height: 1;
+        line-height: 1.1;
       }
 
       .gradient-bar {
@@ -126,8 +128,12 @@ export default {
   }
 
   .about-container {
-    @include grid-2-column();
-    align-items: center;
+    overflow: hidden;
+
+    .about {
+      @include grid-2-column();
+      align-items: center;
+    }
   }
 
   .featured-info {

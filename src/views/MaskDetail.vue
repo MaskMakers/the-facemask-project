@@ -13,7 +13,7 @@
         <h1>{{ currentMask.name }}</h1>
         <div class="gradient-bar"></div>
         <br>
-        <p>{{ currentMask.description }}</p>
+        <p class="subtitle">{{ currentMask.description }}</p>
       </div>
     </div>
       <div class="steps">
