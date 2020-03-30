@@ -38,3 +38,18 @@
 @mixin inverse-neumorphism() {
   box-shadow: inset 11px 14px 30px 0px rgba(163, 177, 198, 0.25), inset 0px -34px 50px 0px rgba(255, 255, 255, 1);
 }
+
+// Grids
+@mixin grid-2-column() {
+  max-width: $grid-container-width;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-gap: 10%;
+  grid-template-columns: 1fr 1fr;
+
+  @media screen and (max-width: $bp-s) {
+    grid-template-columns: 1fr;
+    grid-gap: 2em;
+  }
+}

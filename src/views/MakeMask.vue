@@ -48,17 +48,9 @@ export default {
   }
 
   .masks {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10%;
+    @include grid-2-column();
     padding-top: 1em;
-    max-width: 1000px;
     margin: 50px auto 200px;
-
-    @media screen and (max-width: $bp-s) {
-      grid-template-columns: 1fr;
-      grid-gap: 2em;
-    }
   }
 
   .mask {
