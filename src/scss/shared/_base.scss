@@ -64,7 +64,6 @@ p {
   }
 
   a {
-    text-decoration: underline;
     color: $text-color;
     transition: color .25s;
 
@@ -87,11 +86,9 @@ button, .button, select {
   border: none;
   border-radius: 40px;
   font-weight: 700;
-  transition: .3s;
 
   &:hover, &.active {
     color: $accent-color;
-    transition: .3s;
   }
 
   &.button-small {
