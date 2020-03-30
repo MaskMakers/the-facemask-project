@@ -31,15 +31,15 @@
         <p>The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of the pandemic!</p>
       </div>
       <vue-image
-        :source='image'
-        :width='500'
-        :height='500'
+        :width="1000"
+        :height="500"
+        :background-color="variables.accent"
       ></vue-image>
     </div>
     <div class="featured-info quote">
       <h2>
-        “I have good news, Its all going to get better
-        And its all going to get worse
+        “I have good news, Its all going to get better<br>
+        And its all going to get worse<br>
         And its up to us to make the worse parts better.”
       </h2>
       <span>John Maeda</span>
@@ -48,10 +48,15 @@
 </template>
 
 <script>
+import variables from '../scss/shared/_variables.scss'
+
 export default {
   name: 'Home',
-  mounted () {
-
+  mounted () {},
+  data () {
+    return {
+      variables
+    }
   },
   methods: {}
 }
@@ -129,13 +134,19 @@ export default {
     padding: $space-l 0;
 
     &.quote {
-      max-width: 500px;
+      max-width: 700px;
       margin: 0 auto;
       padding-bottom: 0;
 
-      span      {
+      span {
         font-weight: bold;
         font-size: $base-small;
+      }
+
+      @media(max-width: $bp-s) {
+        br {
+          display: none;
+        }
       }
     }
 
@@ -147,6 +158,14 @@ export default {
     p {
       max-width: 700px;
       margin: 0 auto;
+    }
+  }
+
+  /deep/ .vue-image {
+    @media(min-width: $bp-s + 1) {
+      width: 200%;
+      max-width: 200%;
+      margin-right: -100%;
     }
   }
 }

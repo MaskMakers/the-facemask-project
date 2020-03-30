@@ -3,8 +3,9 @@
     <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :width='500'
-          :height='500'
+          :width="1000"
+          :height="500"
+          :background-color="variables.accent"
         ></vue-image>
         <h1>Send <br> A Mask</h1>
       </div>
@@ -90,12 +91,14 @@
 
 <script>
 import { mapState } from 'vuex'
+import variables from '../scss/shared/_variables.scss'
 
 export default {
   name: 'SendMask',
 
   data () {
     return {
+      variables,
       currentPage: 0,
       pageSize: 50,
       pageSizeOptions: [

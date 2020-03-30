@@ -4,9 +4,9 @@
       <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :source='image'
-          :width='500'
+          :width='1000'
           :height='500'
+          :background-color="variables.accent"
         ></vue-image>
       </div>
       <div>
@@ -42,7 +42,11 @@
           </div>
         </div>
         <div class="step step-place-holder" v-if="currentMaskSteps.length % 2">
-          <div class="image-container"></div>
+          <vue-image
+            :width='1000'
+            :height='500'
+            :background-color="variables.accent"
+          ></vue-image>
         </div>
       </div>
     </div>
@@ -53,10 +57,16 @@
 <script>
 import { mapState } from 'vuex'
 import { setMetaForMaskDetail } from '../helpers/meta/setMeta'
+import variables from '../scss/shared/_variables.scss'
 
 export default {
   name: 'MaskDetail',
   components: {},
+  data () {
+    return {
+      variables
+    }
+  },
   computed: {
     ...mapState('tabletop', [
       'masks',
@@ -97,9 +107,12 @@ export default {
     currentMask: {
       immediate: true,
       handler (mask) {
-        setMetaForMaskDetail({
-          title: `Make ${this.aOrAn} ${mask.name}`
-        })
+        if (mask && mask.name) {
+          setMetaForMaskDetail({
+            title: `${mask.name}`,
+            description: `Make ${this.aOrAn} ${mask.name}`
+          })
+        }
       }
     }
   }
@@ -147,12 +160,12 @@ export default {
 
       .step-number {
         font-size: $base-large * 3;
-        line-height: 0;
+        line-height: 1.05;
+        margin-bottom: 0;
       }
 
       .title {
-        margin-top: 0;
-        margin-left: $space-s;
+        margin: 0 0 0 $space-s;
         width: 125px;
       }
 
@@ -173,13 +186,9 @@ export default {
         display: none;
       }
 
-      .image-container {
-        position: absolute;
-        left: 0;
-        top: 0;
+      /deep/ .vue-image {
         width: 200%;
         height: 100%;
-        background: $accent-color;
       }
     }
   }
