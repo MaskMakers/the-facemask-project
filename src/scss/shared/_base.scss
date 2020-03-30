@@ -104,7 +104,7 @@ select {
   padding-right: 2.5em;
 }
 
-input {
+input:not([type="range"]) {
   @include inverse-neumorphism();
   font-weight: 600;
   font-size: $base-small;
@@ -114,6 +114,68 @@ input {
   border: none;
   border-radius: 40px;
   appearance: none;
+}
+
+// dope ass range slider
+// don't care about IE (Sorry!)
+input[type=range] {
+  height: 26px;
+  margin: 10px 0;
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+
+  // remove outline on chrome
+  &:focus {
+    outline: none;
+  }
+
+  // remove outline on firefox
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  // for whatever reason, SCSS doesn't work with combined pseudo-selectors
+  // so lets use mixins!
+  @mixin track() {
+    width: 100%;
+    height: 14px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: $gray;
+    border-radius: 14px;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  @mixin thumb() {
+    height: 14px;
+    width: 20%;
+    border-radius: 14px;
+    border: none;
+    background: $gradient;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include track();
+  }
+
+  &::-moz-range-track {
+    @include track();
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb();
+  }
+
+  &::-moz-range-thumb {
+    @include thumb();
+  }
 }
 
 .basic-page-container {

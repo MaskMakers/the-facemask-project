@@ -43,8 +43,17 @@
         </select>
       </div>
     </div>
-    <div class="list-container">
-      <div class="list" :class="{ 'loading': hospitals.length === 0 }">
+    <input
+      class="scrollbar"
+      type="range"
+      v-model="scrollPercent"
+      min="0"
+      max="100"
+      @input="updateScrollPositionFromRange()"
+      :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }"
+    />
+    <div class="list-container" @scroll="updateScrollPositionFromEl()">
+      <div class="list" :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }">
         <div class="list-header">
           <div class="name">Facility<br>Name</div>
           <div class="address">Facility<br>Address</div>
@@ -111,7 +120,8 @@ export default {
         'All'
       ],
       searchText: '',
-      currentState: ''
+      currentState: '',
+      scrollPercent: 0
     }
   },
 
@@ -170,6 +180,10 @@ export default {
     const searchParams = new URLSearchParams(window.location.search)
     this.currentState = searchParams.get('state') || ''
     this.searchText = searchParams.get('search') || ''
+
+    window.addEventListener('resize', () => {
+      this.resetRangeSlider()
+    })
   },
 
   methods: {
@@ -208,6 +222,7 @@ export default {
       window.history.replaceState(null, null, query)
 
       this.currentPage = 0
+      this.resetRangeSlider()
     },
 
     generatePhoneText (phone) {
@@ -221,6 +236,25 @@ export default {
       this.currentState = ''
       this.searchText = ''
       this.updatePageAndURL()
+    },
+
+    updateScrollPositionFromRange () {
+      const listContainer = document.querySelector('.list-container')
+      const list = document.querySelector('.list')
+
+      listContainer.scrollLeft = `${(list.scrollWidth - listContainer.offsetWidth) * (this.scrollPercent / 100)}`
+    },
+
+    updateScrollPositionFromEl () {
+      const listContainer = document.querySelector('.list-container')
+      const list = document.querySelector('.list')
+
+      this.scrollPercent = listContainer.scrollLeft / (list.scrollWidth - listContainer.offsetWidth) * 100
+    },
+
+    resetRangeSlider () {
+      this.scrollPercent = 0
+      this.updateScrollPositionFromRange()
     }
   }
 }
@@ -311,16 +345,41 @@ export default {
   }
 }
 
+.scrollbar {
+  margin: 0;
+  height: 0;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.35s;
+
+  @media(max-width: $page-width - 101) {
+    &:not(.loading):not(.no-results) {
+      margin: 2em 0 0;
+      opacity: 1;
+      height: auto;
+    }
+  }
+}
+
 .list-container {
   margin-top: 30px;
   overflow-y: scroll;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 
   .list {
+    position: relative;
+
     &.loading {
       width: 100%;
     }
 
-    &:not(.loading) {
+    &:not(.loading):not(.no-results) {
       min-width: $page-width - 100;
     }
   }
