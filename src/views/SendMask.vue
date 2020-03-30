@@ -14,7 +14,7 @@
         <p>
           This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
           If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
-          or email <a href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
+          or email <a class="hover" href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
         </p>
         <br>
         <div class="gradient-bar"></div>

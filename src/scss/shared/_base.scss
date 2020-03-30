@@ -68,7 +68,7 @@ p {
     color: $text-color;
     transition: color .25s;
 
-    &:hover {
+    &:hover, &.hover {
       color: $secondary-color;
       transition: color .25s;
     }
@@ -186,10 +186,14 @@ input {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-33%, -50%);
+      transform: translate(-50%, -50%);
       text-align: left;
       white-space: nowrap;
       color: $white;
+
+      @media(min-width: $bp-s + 1) {
+        transform: translate(-33%, -50%);
+      }
     }
   }
 
