@@ -11,10 +11,7 @@
       </div>
       <div>
         <h2>Choose a mask template</h2>
-        <p>
-          The template you choose will be dependant on who you are making
-          them for and what materials you have available.
-        </p>
+        <p class="subtitle">The template you choose will be dependant on who you are making them for and what materials you have available.</p>
         <br>
         <div class="gradient-bar"></div>
       </div>
@@ -58,7 +55,7 @@ export default {
 
 <style lang="scss" scoped>
 .make-a-mask-container {
-  margin: 50px auto 100px;
+  margin: 50px auto;
 
   /deep/ .loading-wrapper {
     padding-top: $space-m;
@@ -67,7 +64,7 @@ export default {
   .masks {
     @include grid-2-column();
     padding-top: $space-s;
-    margin: 50px auto 200px;
+    margin: 50px auto 100px;
   }
 
   .mask {

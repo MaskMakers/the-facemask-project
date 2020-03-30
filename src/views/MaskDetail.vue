@@ -17,8 +17,8 @@
       </div>
     </div>
       <div class="steps">
-        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
-          <div class="card">
+        <div class="step" v-for="({ id, step, title, description, templateLink, image }, index) in currentMaskSteps" :key="step">
+          <div class="step-card">
             <div class="copy">
               <div class="copy-title">
                 <h2 class="step-number">{{ step }}</h2>
@@ -35,11 +35,16 @@
             ></vue-image>
           </div>
           <div class="download-button" v-if="templateLink">
-            <a class="button" :href="templateLink" target="_blank" download>Download Template</a>
+            <a class="button" :href="'/assets/mask-templates/' + templateLink" target="_blank" download>Download Template</a>
+          </div>
+          <div class="send-button" v-if="index == currentMaskSteps.length - 1">
+            <router-link class="button" to="/send-a-mask">Send a mask</router-link>
           </div>
         </div>
+        <div class="step step-place-holder" v-if="currentMaskSteps.length % 2">
+          <div class="image-container"></div>
+        </div>
       </div>
-      <router-link tag="button" to="/send-a-mask">Send your mask to a facility</router-link>
     </div>
     <loading v-else />
   </div>
@@ -104,6 +109,7 @@ export default {
 <style lang="scss" scoped>
 .mask-detail-container {
   margin-top: 50px;
+  overflow: hidden;
 
   /deep/ .loading-wrapper, .steps {
     margin-top: 50px;
@@ -111,11 +117,22 @@ export default {
 
   .steps {
     @include grid-2-column();
-    padding-top: $space-s;
-    margin: 50px auto 200px;
+    margin: $space-l auto;
+
+    @media screen and (max-width: $bp-s) {
+      margin-bottom: 0;
+      padding-bottom: 20px;
+    }
 
     .step {
       text-align: left;
+
+      .step-card {
+        @include neumorphism(false);
+        padding: 24px;
+        box-sizing: border-box;
+        border-radius: 24px;
+      }
 
       .image {
         width: 100%;
@@ -143,9 +160,26 @@ export default {
         width: 75%;
       }
 
-      .download-button {
+      .download-button, .send-button {
         margin: $space-m auto 0;
         text-align: center;
+      }
+    }
+
+    .step-place-holder {
+      position: relative;
+
+      @media screen and (max-width: $bp-s) {
+        display: none;
+      }
+
+      .image-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200%;
+        height: 100%;
+        background: $accent-color;
       }
     }
   }

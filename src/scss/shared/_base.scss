@@ -31,7 +31,15 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 100;
 }
 
-h1 { font-size: $header-large; }
+h1 {
+  font-size: $header-large;
+
+  @media screen and (max-width: $bp-s) {
+    font-size: 3em;
+    line-height: 1;
+  }
+
+}
 
 h2, h3, h4 { font-size: $header-base; }
 
