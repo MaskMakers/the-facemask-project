@@ -9,7 +9,7 @@
             <router-link :to="'/mask/' + id">
               <vue-image
                 :width='500'
-                :height='500'
+                :height='300'
               ></vue-image>
               <div class="copy">
                 <h3 class="name">{{name}}</h3>
@@ -49,14 +49,11 @@ export default {
 
   .masks {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 3%;
-    padding-top: 3em;
-
-    @media screen and (max-width: $bp-m) {
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 4%;
-    }
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10%;
+    padding-top: 1em;
+    max-width: 1000px;
+    margin: 50px auto 200px;
 
     @media screen and (max-width: $bp-s) {
       grid-template-columns: 1fr;

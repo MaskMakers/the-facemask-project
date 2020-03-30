@@ -91,17 +91,12 @@ export default {
   .steps {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 3%;
+    grid-gap: 10%;
     padding-top: 1em;
-    margin-top: 50px;
-    margin-bottom: 100px;
+    max-width: 1000px;
+    margin: 50px auto 200px;
 
-    @media screen and (max-width: $bp-m) {
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 4%;
-    }
-
-    @media screen and (max-width: $bp-xs) {
+    @media screen and (max-width: $bp-s) {
       display: block;
 
       .step {
