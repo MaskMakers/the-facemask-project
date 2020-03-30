@@ -68,7 +68,6 @@ p {
 }
 
 button, .button, select {
-  // global button/link styles
   @include neumorphism();
   font-size: $base-small;
   color: $text-color;
@@ -83,7 +82,6 @@ button, .button, select {
   transition: .3s;
 
   &:hover, &.active {
-    // background-color: $text-color;
     color: $accent-color;
     transition: .3s;
   }

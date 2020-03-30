@@ -49,25 +49,8 @@ export default {
       }
 
       &:hover, &.router-link-exact-active {
-        // &:after {
-        //   left: 0;
-        //   right: auto;
-        //   width: 100%;
-        // }
         color: $accent-color;
       }
-
-      // &:after {
-      //   content: '';
-      //   position: absolute;
-      //   background-color: $primary-color;
-      //   bottom: -3px;
-      //   right: 0;
-      //   width: 0%;
-      //   height: 2px;
-      //   opacity: .7;
-      //   transition: width .2s ease-in-out;
-      // }
     }
   }
 }
