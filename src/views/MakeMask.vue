@@ -3,9 +3,9 @@
     <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :source='image'
-          :width='500'
+          :width='1000'
           :height='500'
+          :background-color='variables.accent'
         ></vue-image>
         <h1>Make <br> A Mask</h1>
       </div>
@@ -41,6 +41,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import variables from '../scss/shared/_variables.scss'
 
 export default {
   name: 'MakeMask',
@@ -49,6 +50,11 @@ export default {
     ...mapState('tabletop', [
       'masks'
     ])
+  },
+  data () {
+    return {
+      variables
+    }
   }
 }
 </script>

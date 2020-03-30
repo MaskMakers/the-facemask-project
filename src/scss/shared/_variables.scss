@@ -47,3 +47,7 @@ $space-s: 1em;
 $space-m: 2em;
 $space-l: 3em;
 $space-xl: 5em;
+
+:export {
+  accent: $accent-color;
+}

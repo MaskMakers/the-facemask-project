@@ -68,7 +68,7 @@ p {
     color: $text-color;
     transition: color .25s;
 
-    &:hover {
+    &:hover, &.hover {
       color: $secondary-color;
       transition: color .25s;
     }
@@ -116,6 +116,7 @@ input {
   padding: 15px 50px;
   border: none;
   border-radius: 40px;
+  appearance: none;
 }
 
 .basic-page-container {
@@ -124,6 +125,7 @@ input {
   max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
+  overflow-y: hidden;
 
   @media screen and (max-width: $bp-s) {
     padding: 0 20px;
@@ -172,13 +174,26 @@ input {
   .mask-header-image {
     position: relative;
 
+    @media(min-width: $bp-s + 1) {
+      .vue-image {
+        width: 200%;
+        max-width: 200%;
+        margin-left: -100%;
+      }
+    }
+
     h1 {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-33%, -50%);
+      transform: translate(-50%, -50%);
       text-align: left;
       white-space: nowrap;
+      color: $white;
+
+      @media(min-width: $bp-s + 1) {
+        transform: translate(-33%, -50%);
+      }
     }
   }
 

@@ -3,8 +3,9 @@
     <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :width='500'
-          :height='500'
+          :width="1000"
+          :height="500"
+          :background-color="variables.accent"
         ></vue-image>
         <h1>Send <br> A Mask</h1>
       </div>
@@ -13,7 +14,7 @@
         <p>
           This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
           If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
-          or email <a href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
+          or email <a class="hover" href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks@gmail.com</a> for more info!
         </p>
         <br>
         <div class="gradient-bar"></div>
@@ -90,12 +91,14 @@
 
 <script>
 import { mapState } from 'vuex'
+import variables from '../scss/shared/_variables.scss'
 
 export default {
   name: 'SendMask',
 
   data () {
     return {
+      variables,
       currentPage: 0,
       pageSize: 50,
       pageSizeOptions: [
@@ -336,7 +339,7 @@ p {
 }
 
 .pagination {
-  margin-top: 20px;
+  margin: 20px auto;
 
   button {
     margin: 0 6px;
