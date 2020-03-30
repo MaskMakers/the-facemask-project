@@ -352,7 +352,7 @@ export default {
   opacity: 0;
   transition: all 0.35s;
 
-  @media(max-width: $page-width - 101) {
+  @media(max-width: $page-width - 40) {
     &:not(.loading):not(.no-results) {
       margin: 2em 0 0;
       opacity: 1;
