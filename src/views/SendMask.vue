@@ -44,7 +44,7 @@
       </div>
     </div>
     <div class="list-container">
-      <div class="list" :class="{ 'loading': hospitals.length > 0 }">
+      <div class="list" :class="{ 'loading': hospitals.length === 0 }">
         <div class="list-header">
           <div class="name">Facility<br>Name</div>
           <div class="address">Facility<br>Address</div>
@@ -317,7 +317,11 @@ export default {
 
   .list {
     &.loading {
-      min-width: $page-width;
+      width: 100%;
+    }
+
+    &:not(.loading) {
+      min-width: $page-width - 100;
     }
   }
 }
