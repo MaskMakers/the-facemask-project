@@ -4,7 +4,7 @@
     <h2>
       Make a mask at home.
       <br>
-      Send it to a hospital that needs one
+      Send it to a hospital that needs one.
     </h2>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
@@ -109,8 +109,13 @@ export default {
       font-size: $header-large;
       text-align: left;
 
+      @media screen and (max-width: $bp-s) {
+        font-size: 3em;
+        line-height: 1;
+      }
+
       .gradient-bar {
-        width: 205px;
+        max-width: 205px;
       }
     }
   }
