@@ -22,3 +22,19 @@
     bottom: 0;
   }
 }
+
+// Neumorphism effect
+// article - https://uxplanet.org/neumorphism-in-user-interface-tutorial-c353698ac5c0
+@mixin neumorphism($x-offset: 7px, $y-offset: 7px, $blur: 16px, $opacity-light: .8, $opacity-dark: .2) {
+  background-color: $off-white;
+  box-shadow: $x-offset $y-offset $blur rgba(163, 177, 198, $opacity-dark), (-$x-offset) (-$y-offset) $blur rgba(255, 255, 255, $opacity-light);
+
+  &:hover {
+    box-shadow: calc(#{$x-offset} * 2) calc(#{$y-offset} * 2) $blur rgba(163, 177, 198, $opacity-dark), calc((-#{$x-offset} * 2)) calc((-#{$y-offset} * 2)) $blur rgba(255, 255, 255, $opacity-light);
+  }
+}
+
+// Inverse
+@mixin inverse-neumorphism() {
+  box-shadow: inset 11px 14px 30px 0px rgba(163, 177, 198, 0.25), inset 0px -34px 50px 0px rgba(255, 255, 255, 1);
+}

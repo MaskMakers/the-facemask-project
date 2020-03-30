@@ -14,7 +14,8 @@
               <div class="copy">
                 <h3 class="name">{{name}}</h3>
                 <p class="subtitle">{{ subtitle }}</p>
-                <p class="description">{{ description }}</p>
+                <div class="gradient-bar"></div>
+                <p class="subtitle description">{{ description }}</p>
               </div>
             </router-link>
           </div>
@@ -67,7 +68,7 @@ export default {
     text-align: left;
 
     a {
-      color: $secondary-color;
+      color: $text-color;
     }
   }
 

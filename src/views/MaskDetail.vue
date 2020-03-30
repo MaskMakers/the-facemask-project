@@ -112,10 +112,6 @@ export default {
     .step {
       text-align: left;
 
-      a {
-        color: $secondary-color;
-      }
-
       .image {
         width: 100%;
         height: 300px;

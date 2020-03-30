@@ -1,6 +1,6 @@
 <template>
   <div class="home-container basic-page-container">
-    <h1 class="visuallyhidden">The Facemask Project</h1>
+    <h1 class="visuallyhidden">Mask Makers</h1>
     <h2>
       Make a facemask at home.
       <br>
