@@ -187,11 +187,11 @@ input {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      text-align: left;
       white-space: nowrap;
       color: $white;
 
       @media(min-width: $bp-s + 1) {
+        text-align: left;
         transform: translate(-33%, -50%);
       }
     }
