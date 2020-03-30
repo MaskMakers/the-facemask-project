@@ -3,7 +3,6 @@
     <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :source='image'
           :width='500'
           :height='500'
         ></vue-image>
@@ -34,14 +33,17 @@
           <option value="" selected>All States</option>
           <option v-for="state in states" :key="state">{{ state }}</option>
         </select>
-        <button @click="clearSearch()">Clear</button>
+        <button class="hide-s" @click="clearSearch()">Clear</button>
       </div>
-      <select v-model="pageSize" @change="updatePageAndURL()">
-        <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
-      </select>
+      <div class="select-clear">
+        <button class="show-s" @click="clearSearch()">Clear</button>
+        <select v-model="pageSize" @change="updatePageAndURL()">
+          <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
+        </select>
+      </div>
     </div>
     <div class="list-container">
-      <div class="list">
+      <div class="list" :class="{ 'loading': hospitals.length > 0 }">
         <div class="list-header">
           <div class="name">Facility<br>Name</div>
           <div class="address">Facility<br>Address</div>
@@ -235,6 +237,10 @@ export default {
   align-items: flex-start;
   box-sizing: border-box;
 
+  @media(max-width: $bp-s) {
+    flex-flow: column;
+  }
+
   .search-container {
     display: flex;
     align-items: flex-start;
@@ -262,6 +268,10 @@ export default {
       flex-flow: column;
       align-items: flex-start;
 
+      &, .input-container, select {
+        width: 100%;
+      }
+
       select, button {
         margin-top: $space-s;
       }
@@ -281,6 +291,15 @@ export default {
     }
   }
 
+  .select-clear {
+    @media(max-width: $bp-s) {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: $space-s;
+      width: 100%;
+    }
+  }
 }
 
 .list-container {
@@ -288,7 +307,9 @@ export default {
   overflow-y: scroll;
 
   .list {
-    min-width: 1000px;
+    &.loading {
+      min-width: $page-width;
+    }
   }
 }
 

@@ -179,3 +179,15 @@ input {
     margin: 0 auto;
   }
 }
+
+.hide-s {
+  @media(max-width: $bp-s) {
+    display: none;
+  }
+}
+
+.show-s {
+  @media(min-width: $bp-s + 1) {
+    display: none;
+  }
+}
