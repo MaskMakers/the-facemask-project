@@ -4,7 +4,7 @@
       <h1>Make {{ aOrAn }} {{ currentMask.name }}</h1>
       <p>{{ currentMask.description }}</p>
       <div class="steps">
-        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
+        <div class="step card" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
           <vue-image
             :source='image'
             :width='500'

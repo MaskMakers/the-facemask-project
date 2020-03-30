@@ -5,7 +5,7 @@
       <p>The template you choose will be dependant on who you are making them for and what materials you have available.</p>
       <div v-if="masks.length > 0">
         <div class="masks">
-          <div class="mask" v-for="{ id, name, subtitle, description } in masks" :key="id">
+          <div class="mask card" v-for="{ id, name, subtitle, description } in masks" :key="id">
             <router-link :to="'/mask/' + id">
               <vue-image
                 :width='500'
