@@ -11,7 +11,10 @@
       </div>
       <div>
         <h2>Choose a mask template</h2>
-        <p>The template you choose will be dependant on who you are making them for and what materials you have available.</p>
+        <p>
+          The template you choose will be dependant on who you are making
+          them for and what materials you have available.
+        </p>
         <br>
         <div class="gradient-bar"></div>
       </div>

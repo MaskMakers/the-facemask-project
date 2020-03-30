@@ -38,7 +38,7 @@
     </div>
     <div class="featured-info quote">
       <h2>
-      “I have good news, Its all going to get better
+        “I have good news, Its all going to get better
         And its all going to get worse
         And its up to us to make the worse parts better.”
       </h2>
