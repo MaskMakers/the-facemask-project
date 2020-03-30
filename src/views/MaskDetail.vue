@@ -1,20 +1,41 @@
 <template>
   <div class="mask-detail-container basic-page-container">
     <div v-if="currentMask">
-      <h1>Make {{ aOrAn }} {{ currentMask.name }}</h1>
-      <p>{{ currentMask.description }}</p>
+      <div class="header-grid">
+      <div class="mask-header-image">
+        <vue-image
+          :source='image'
+          :width='500'
+          :height='500'
+        ></vue-image>
+      </div>
+      <div>
+        <h1>{{ currentMask.name }}</h1>
+        <div class="gradient-bar"></div>
+        <br>
+        <p>{{ currentMask.description }}</p>
+      </div>
+    </div>
       <div class="steps">
-        <div class="step card" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
-          <vue-image
-            :source='image'
-            :width='500'
-            :height='300'
-          ></vue-image>
-          <div class="copy">
-            <h3 class="step">{{ step }}</h3>
-            <h2 class="title">{{ title }}</h2>
-            <p class="description" v-if="description">{{ description }}</p>
-            <a class="button" v-if="templateLink" :href="templateLink" target="_blank" download>Download Template</a>
+        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
+          <div class="card">
+            <div class="copy">
+              <div class="copy-title">
+                <h2 class="step-number">{{ step }}</h2>
+                <p class="title">{{ title }}</p>
+              </div>
+              <div class="gradient-bar"></div>
+              <br>
+              <p class="description" v-if="description">{{ description }}</p>
+            </div>
+            <vue-image
+              :source='image'
+              :width='500'
+              :height='300'
+            ></vue-image>
+          </div>
+          <div class="download-button" v-if="templateLink">
+            <a class="button" :href="templateLink" target="_blank" download>Download Template</a>
           </div>
         </div>
       </div>
@@ -90,7 +111,7 @@ export default {
 
   .steps {
     @include grid-2-column();
-    padding-top: 1em;
+    padding-top: $space-s;
     margin: 50px auto 200px;
 
     .step {
@@ -102,13 +123,29 @@ export default {
         background-color: $gray-light;
       }
 
-      .step {
-        margin-top: 1em;
-        margin-bottom: 0.25em;
+      .copy-title {
+        display: flex;
+        align-items: center;
+      }
+
+      .step-number {
+        font-size: $base-large * 3;
+        line-height: 0;
       }
 
       .title {
         margin-top: 0;
+        margin-left: $space-s;
+        width: 125px;
+      }
+
+      .gradient-bar {
+        width: 75%;
+      }
+
+      .download-button {
+        margin: $space-m auto 0;
+        text-align: center;
       }
     }
   }

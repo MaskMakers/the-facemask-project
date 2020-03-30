@@ -36,7 +36,7 @@ export default {
 
 .loading-wrapper {
   margin: 0 auto;
-  padding: 0 1.25em 2em;
+  padding: 0 1.25em $space-s;
   text-align: center;
 
   .loading {
@@ -45,15 +45,15 @@ export default {
     margin: 30px auto;
     transform: rotate(0deg);
     animation: spinner .6s infinite linear;
-    border: 4px solid $white;
+    border: 4px solid transparent;
     border-top: 4px solid $primary-color;
     border-radius: 50%;
-    stroke: $white;
+    stroke: transparent;
 
     @media(max-width: $bp-xs) {
       width: 24px;
       height: 24px;
-      border: 2px solid $white;
+      border: 2px solid transparent;
       border-top: 2px solid $primary-color;
     }
   }

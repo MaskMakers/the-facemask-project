@@ -156,3 +156,38 @@ input {
 .visuallyhidden {
   display: none;
 }
+
+.header-grid {
+  @include grid-2-column();
+  align-items: center;
+
+  .mask-header-image {
+    position: relative;
+
+    h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-33%, -50%);
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  .gradient-bar {
+    width: 175px;
+    margin: 0 auto;
+  }
+}
+
+.hide-s {
+  @media(max-width: $bp-s) {
+    display: none;
+  }
+}
+
+.show-s {
+  @media(min-width: $bp-s + 1) {
+    display: none;
+  }
+}
