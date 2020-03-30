@@ -339,7 +339,7 @@ p {
 }
 
 .pagination {
-  margin-top: 20px;
+  margin: 20px auto;
 
   button {
     margin: 0 6px;
