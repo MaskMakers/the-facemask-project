@@ -1,14 +1,22 @@
 /* Color Scheme */
-$blue: dodgerblue;
-$green: #49aeac;
-$navy: #2c3e50;
-$red: #ea0000;
+$turquoise: #4cdac3;
+$navy: #565f6b;
+$red: #e22d48;
 
+// Grayscale
 $white: #ffffff;
+$off-white: #f8fafa;
 $black: #000000;
 $gray-light: #f1f1f1;
 $gray: #ccc;
 $gray-dark: #888;
+
+/* THEME SPECIFIC */
+$primary-color: $navy;
+$secondary-color: $turquoise;
+$text-color: $navy;
+$accent-color: $turquoise;
+$gradient: linear-gradient(to right, #c4d9a2 0%, #45b0ae 100%);
 
 /* Breakpoints */
 // breakpoints should be used with max-width's (non-mobile first)
@@ -19,12 +27,18 @@ $bp-l: 1200px;
 $bp-xl: 1400px;
 
 /* Sizing */
+$page-width: 1400px;
+$grid-container-width: 1000px;
 
 /* Animations */
 
 /* Fonts */
+$serif: 'DM Serif Display', serif;
+$sans-serif: 'Open Sans', sans-serif;
 
-/* THEME SPECIFIC */
-$primary-color: $green;
-$secondary-color: $navy;
-$text-color: $black;
+$base-size: 1em;
+$base-small: .8em;
+$base-large: 1.3em;
+
+$header-base: 1.5em;
+$header-large: 4.1em;

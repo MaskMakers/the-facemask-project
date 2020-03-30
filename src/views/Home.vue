@@ -1,17 +1,17 @@
 <template>
   <div class="home-container basic-page-container">
-    <h1 class="visuallyhidden">The Facemask Project</h1>
+    <h1 class="visuallyhidden">Mask Makers</h1>
     <h2>
       Make a facemask at home.
       <br>
       Send it to a hospital that needs one
     </h2>
     <div class="hero-links-container">
-      <router-link to="/make-a-mask" class="hero-link">
+      <router-link to="/make-a-mask" class="hero-link card">
         <div class="image"></div>
         <h2 class="link-text">MAKE A MASK</h2>
       </router-link>
-      <router-link to="/send-a-mask" class="hero-link">
+      <router-link to="/send-a-mask" class="hero-link card">
         <div class="image"></div>
         <h2 class="link-text">SEND A MASK</h2>
       </router-link>
@@ -57,10 +57,7 @@ export default {
 
   .hero-link {
     min-height: 240px;
-    background-color: $gray-light;
-    color: black;
     text-decoration: none;
-    border-radius: 10px;
     font-weight: 700;
     padding: 30px;
     box-sizing: border-box;

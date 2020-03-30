@@ -1,9 +1,11 @@
 html, body {
-  font-family: Helvetica, sans-serif;
+  font-family: $sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  color: $text-color;
+  background: $off-white;
 
   &.disable-scrolling {
     overflow: hidden;
@@ -11,10 +13,8 @@ html, body {
 }
 
 #app {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: $text-color;
   text-align: center;
 
   @media screen and (max-width: $bp-s) {
@@ -24,14 +24,16 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: $serif;
   margin-top: 0;
   margin-bottom: 1rem;
-  text-transform: uppercase;
+  color: $text-color;
+  font-weight: 100;
 }
 
-h1 {
-  font-size: 2.5em;
-}
+h1 { font-size: $header-large; }
+
+h2, h3, h4 { font-size: $header-base; }
 
 ul {
   margin: 0;
@@ -43,8 +45,15 @@ a {
 }
 
 p {
+  font-size: $base-size;
+  line-height: 1.75;
   margin-top: 0;
   margin-bottom: 1rem;
+
+  &.subtitle {
+    font-size: $base-large;
+    line-height: 1.5;
+  }
 
   a {
     text-decoration: underline;
@@ -52,55 +61,59 @@ p {
     transition: color .25s;
 
     &:hover {
-      color: $primary-color;
+      color: $secondary-color;
       transition: color .25s;
     }
   }
 }
 
-button, .button {
-  display: inline-block;
-  padding: 10px 14px;
-  border: 1px solid $text-color;
+button, .button, select {
+  @include neumorphism();
+  font-size: $base-small;
   color: $text-color;
-  background: transparent;
-  text-transform: uppercase;
+  display: inline-block;
+  padding: 15px 50px;
   text-align: center;
   letter-spacing: 1px;
   cursor: pointer;
-  font-size: 1em;
+  border: none;
+  border-radius: 40px;
+  font-weight: 700;
+  transition: .3s;
 
   &:hover, &.active {
-    background-color: $text-color;
-    color: $white !important;
+    color: $accent-color;
+    transition: .3s;
+  }
+
+  &.button-small {
+    padding: 10px 20px;
   }
 }
 
 select {
   appearance: none;
-  padding: 10px 14px;
-  border: 1px solid $text-color;
-  color: $text-color;
-  border-radius: 0;
   background: url('./assets/img/select-arrow.svg') no-repeat;
-  background-position: calc(100% - 1em) 50%;
+  background-position: calc(100% - 1.5em) 50%;
   background-size: 8px;
   padding-right: 2.5em;
-  font-size: 1em;
 }
 
 input {
-  padding: 10px;
+  @include inverse-neumorphism();
+  font-weight: 600;
+  font-size: $base-small;
+  color: $text-color;
   box-sizing: border-box;
-  border: 1px solid $text-color;
-  border-radius: 0;
-  font-size: 1em;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 40px;
 }
 
 .basic-page-container {
   margin: 0 auto 50px;
   padding: 0 30px;
-  max-width: 1400px;
+  max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
 
@@ -125,6 +138,19 @@ input {
       font-size: .8em;
     }
   }
+}
+
+.card {
+  @include neumorphism();
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 24px;
+}
+
+.gradient-bar {
+  height: 3px;
+  background: $gradient;
+  border-radius: 10px;
 }
 
 .visuallyhidden {

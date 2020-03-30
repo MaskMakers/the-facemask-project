@@ -6,8 +6,8 @@
       </router-link>
     </div>
     <div class="links-container">
-      <router-link to="/make-a-mask">Make A Mask</router-link>
-      <router-link to="/send-a-mask">Send A Mask</router-link>
+      <router-link to="/make-a-mask" class="button button-small">Make A Mask</router-link>
+      <router-link to="/send-a-mask" class="button button-small">Send A Mask</router-link>
     </div>
   </nav>
 </template>
@@ -40,32 +40,16 @@ export default {
 
     a {
       margin: 6px 0 6px 18px;
-      color: $secondary-color;
+      color: $text-color;
       position: relative;
       line-height: 1.1;
 
       &.router-link-exact-active {
-        color: $primary-color;
+        color: $secondary-color;
       }
 
       &:hover, &.router-link-exact-active {
-        &:after {
-          left: 0;
-          right: auto;
-          width: 100%;
-        }
-      }
-
-      &:after {
-        content: '';
-        position: absolute;
-        background-color: $primary-color;
-        bottom: -3px;
-        right: 0;
-        width: 0%;
-        height: 2px;
-        opacity: .7;
-        transition: width .2s ease-in-out;
+        color: $accent-color;
       }
     }
   }

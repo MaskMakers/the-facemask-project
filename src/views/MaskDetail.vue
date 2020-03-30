@@ -4,7 +4,7 @@
       <h1>Make {{ aOrAn }} {{ currentMask.name }}</h1>
       <p>{{ currentMask.description }}</p>
       <div class="steps">
-        <div class="step" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
+        <div class="step card" v-for="{ id, step, title, description, templateLink, image } in currentMaskSteps" :key="step">
           <vue-image
             :source='image'
             :width='500'
@@ -89,32 +89,12 @@ export default {
   }
 
   .steps {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 3%;
+    @include grid-2-column();
     padding-top: 1em;
-    margin-top: 50px;
-    margin-bottom: 100px;
-
-    @media screen and (max-width: $bp-m) {
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 4%;
-    }
-
-    @media screen and (max-width: $bp-xs) {
-      display: block;
-
-      .step {
-        margin-bottom: 3em;
-      }
-    }
+    margin: 50px auto 200px;
 
     .step {
       text-align: left;
-
-      a {
-        color: $secondary-color;
-      }
 
       .image {
         width: 100%;

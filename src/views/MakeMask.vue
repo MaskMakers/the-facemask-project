@@ -5,16 +5,17 @@
       <p>The template you choose will be dependant on who you are making them for and what materials you have available.</p>
       <div v-if="masks.length > 0">
         <div class="masks">
-          <div class="mask" v-for="{ id, name, subtitle, description } in masks" :key="id">
+          <div class="mask card" v-for="{ id, name, subtitle, description } in masks" :key="id">
             <router-link :to="'/mask/' + id">
               <vue-image
                 :width='500'
-                :height='500'
+                :height='300'
               ></vue-image>
               <div class="copy">
                 <h3 class="name">{{name}}</h3>
                 <p class="subtitle">{{ subtitle }}</p>
-                <p class="description">{{ description }}</p>
+                <div class="gradient-bar"></div>
+                <p class="subtitle description">{{ description }}</p>
               </div>
             </router-link>
           </div>
@@ -47,27 +48,16 @@ export default {
   }
 
   .masks {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 3%;
-    padding-top: 3em;
-
-    @media screen and (max-width: $bp-m) {
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 4%;
-    }
-
-    @media screen and (max-width: $bp-s) {
-      grid-template-columns: 1fr;
-      grid-gap: 2em;
-    }
+    @include grid-2-column();
+    padding-top: 1em;
+    margin: 50px auto 200px;
   }
 
   .mask {
     text-align: left;
 
     a {
-      color: $secondary-color;
+      color: $text-color;
     }
   }
 
