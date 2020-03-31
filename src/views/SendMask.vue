@@ -123,7 +123,8 @@ export default {
       ],
       searchText: '',
       currentState: '',
-      scrollPercent: 0
+      scrollPercent: 0,
+      resizeListener: null
     }
   },
 
