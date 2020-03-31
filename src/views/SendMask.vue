@@ -182,8 +182,14 @@ export default {
     const searchParams = new URLSearchParams(window.location.search)
     this.currentState = searchParams.get('state') || ''
     this.searchText = searchParams.get('search') || ''
+    this.resizeListener = debounce(this.resetRangeSlider.bind(this), 250)
 
-    window.addEventListener('resize', debounce(this.resetRangeSlider.bind(this), 250))
+    window.addEventListener('resize', this.resizeListener)
+  },
+
+  beforeRouteLeave (to, from, next) {
+    window.removeEventListener('resize', this.resizeListener)
+    next()
   },
 
   methods: {
