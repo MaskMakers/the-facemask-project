@@ -252,7 +252,6 @@ export default {
     },
 
     resetRangeSlider () {
-      console.log('hi')
       this.scrollPercent = 0
       this.updateScrollPositionFromRange()
     }
