@@ -48,6 +48,7 @@
       type="range"
       v-model="scrollPercent"
       min="0"
+      step="0.1"
       max="100"
       @input="updateScrollPositionFromRange()"
       :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }"
