@@ -48,6 +48,7 @@
       type="range"
       v-model="scrollPercent"
       min="0"
+      step="0.1"
       max="100"
       @input="updateScrollPositionFromRange()"
       :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }"
@@ -101,6 +102,7 @@
 <script>
 import { mapState } from 'vuex'
 import variables from '../scss/shared/_variables.scss'
+import debounce from '../helpers/debounce'
 
 export default {
   name: 'SendMask',
@@ -181,9 +183,7 @@ export default {
     this.currentState = searchParams.get('state') || ''
     this.searchText = searchParams.get('search') || ''
 
-    window.addEventListener('resize', () => {
-      this.resetRangeSlider()
-    })
+    window.addEventListener('resize', debounce(this.resetRangeSlider.bind(this), 250))
   },
 
   methods: {
