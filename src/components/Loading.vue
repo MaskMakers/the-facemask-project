@@ -1,7 +1,7 @@
 <template>
   <div class="loading-wrapper">
     <div class="loading" v-if="!error"></div>
-     <div class="error-message" v-else>
+    <div class="error-message" v-else>
       <h2>Uh oh.. something went wrong. Try reloading the page.</h2>
     </div>
   </div>
@@ -56,6 +56,10 @@ export default {
       border: 2px solid transparent;
       border-top: 2px solid $primary-color;
     }
+  }
+
+  .error-message {
+    margin: $space-s auto;
   }
 }
 </style>
