@@ -35,10 +35,10 @@
             ></vue-image>
           </div>
           <div class="download-button" v-if="templateLink">
-            <a class="button" :href="'/assets/mask-templates/' + templateLink" target="_blank" download>Download Template</a>
+            <a class="button" :href="'/assets/mask-templates/' + templateLink" target="_blank" download><AnimationButton text="Download Template"/></a>
           </div>
           <div class="send-button" v-if="index == currentMaskSteps.length - 1">
-            <router-link class="button" to="/send-a-mask">Send a mask</router-link>
+            <router-link class="button" to="/send-a-mask"><AnimationButton text="Send A Mask"/></router-link>
           </div>
         </div>
         <div class="step step-place-holder" v-if="currentMaskSteps.length % 2">
@@ -58,10 +58,13 @@
 import { mapState } from 'vuex'
 import { setMetaForMaskDetail } from '../helpers/meta/setMeta'
 import variables from '../scss/shared/_variables.scss'
+import AnimationButton from '../components/AnimationButton'
 
 export default {
   name: 'MaskDetail',
-  components: {},
+  components: {
+    AnimationButton
+  },
   data () {
     return {
       variables
@@ -176,6 +179,7 @@ export default {
       .download-button, .send-button {
         margin: $space-m auto 0;
         text-align: center;
+        position: relative;
       }
     }
 

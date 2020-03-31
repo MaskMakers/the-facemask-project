@@ -8,6 +8,7 @@
     "stage": "vue-cli-service build && serve dist"
   },
   "dependencies": {
+    "gsap": "^3.2.6",
     "tabletop": "^1.6.2",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",

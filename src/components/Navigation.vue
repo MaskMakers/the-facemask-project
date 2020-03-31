@@ -6,16 +6,21 @@
       </router-link>
     </div>
     <div class="links-container">
-      <router-link to="/make-a-mask" class="button button-small">Make A Mask</router-link>
-      <router-link to="/send-a-mask" class="button button-small">Send A Mask</router-link>
+      <router-link to="/make-a-mask" class="button button-small"><AnimationButton text="Make A Mask"/></router-link>
+      <router-link to="/send-a-mask" class="button button-small"><AnimationButton text="Send A Mask"/></router-link>
     </div>
   </nav>
 </template>
 
 <script>
+import AnimationButton from './AnimationButton'
+
 export default {
   name: 'Navigation',
-  props: {}
+  props: {},
+  components: {
+    AnimationButton
+  }
 }
 </script>
 
@@ -45,6 +50,8 @@ export default {
       color: $text-color;
       position: relative;
       line-height: 1.1;
+      // border: 1px solid red;
+      overflow: hidden;
 
       &.router-link-exact-active {
         color: $secondary-color;
