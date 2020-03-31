@@ -101,6 +101,7 @@
 <script>
 import { mapState } from 'vuex'
 import variables from '../scss/shared/_variables.scss'
+import debounce from '../helpers/debounce'
 
 export default {
   name: 'SendMask',
@@ -181,9 +182,7 @@ export default {
     this.currentState = searchParams.get('state') || ''
     this.searchText = searchParams.get('search') || ''
 
-    window.addEventListener('resize', () => {
-      this.resetRangeSlider()
-    })
+    window.addEventListener('resize', debounce(this.resetRangeSlider.bind(this), 250))
   },
 
   methods: {
@@ -253,6 +252,7 @@ export default {
     },
 
     resetRangeSlider () {
+      console.log('hi')
       this.scrollPercent = 0
       this.updateScrollPositionFromRange()
     }
