@@ -18,7 +18,8 @@ export default {
   async beforeMount () {
     await this.$store.dispatch('tabletop/getSheet')
 
-    // wait a few seconds to all fetching all the data
+    // wait a few seconds to allow fetching all the data
+    // before emitting the prerender hook
     setTimeout(() => {
       document.dispatchEvent(new Event('x-app-rendered'))
     }, 2000)
