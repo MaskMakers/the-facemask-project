@@ -22,6 +22,12 @@ export default {
     setTimeout(() => {
       document.dispatchEvent(new Event('x-app-rendered'))
     }, 2000)
+
+    // if we still don't have sheet data after 9 seconds
+    // fallback to cached data
+    setTimeout(() => {
+      this.$store.dispatch('tabletop/getFallbackData')
+    }, 9000)
   }
 }
 </script>

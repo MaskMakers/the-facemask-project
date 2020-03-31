@@ -1,4 +1,5 @@
 import Tabletop from 'tabletop'
+import rawFallbackData from '@/assets/fallback-data.json'
 
 export default {
   namespaced: true,
@@ -17,6 +18,10 @@ export default {
 
     pushState (state, sentState) {
       state.states.push(sentState)
+    },
+
+    setStates (state, states) {
+      state.states = states
     },
 
     setMasks (state, masks) {
@@ -45,6 +50,17 @@ export default {
           const steps = data['Steps'].elements
           store.dispatch('formatSteps', steps)
         })
+      }
+    },
+
+    getFallbackData (store) {
+      if (store.state.hospitals.length <= 0) {
+        const fallbackData = rawFallbackData.tabletop
+
+        store.commit('setHospitals', fallbackData.hospitals)
+        store.commit('setStates', fallbackData.states)
+        store.commit('setMasks', fallbackData.masks)
+        store.commit('setSteps', fallbackData.steps)
       }
     },
 
