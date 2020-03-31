@@ -26,7 +26,7 @@
           <input class="input-search" v-model="searchText" placeholder="Search Facilities" @keyup="updatePageAndURL()" />
           <p v-if="hospitals.length > 0">
             <span v-if="hospitals.length > filteredHospitals.length">showing {{ filteredHospitals.length }} of </span>
-            {{ hospitals.length }} hospitals in need
+            {{ hospitals.length }} facilities in need
           </p>
         </div>
         <select v-model="currentState" @change="updatePageAndURL()">
