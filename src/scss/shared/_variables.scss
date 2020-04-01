@@ -1,5 +1,5 @@
 /* Color Scheme */
-$turquoise: #4cdac3;
+$turquoise: #84c7b5;
 $navy: #565f6b;
 $red: #e22d48;
 
@@ -16,7 +16,7 @@ $primary-color: $navy;
 $secondary-color: $turquoise;
 $text-color: $navy;
 $accent-color: $turquoise;
-$gradient: linear-gradient(to right, #c4d9a2 0%, #45b0ae 100%);
+$gradient: linear-gradient(to right, #c4d9a2 0%, $turquoise 100%);
 
 /* Breakpoints */
 // breakpoints should be used with max-width's (non-mobile first)

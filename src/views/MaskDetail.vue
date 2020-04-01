@@ -4,9 +4,10 @@
       <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :width='1000'
+          :width='500'
           :height='500'
           :background-color="variables.accent"
+          :source="require(`@/assets/img/masks/${$route.params.maskId}.jpg`)"
         ></vue-image>
       </div>
       <div>
@@ -32,6 +33,7 @@
               :source='image'
               :width='500'
               :height='300'
+              :background-color='variables.accent'
             ></vue-image>
           </div>
           <div class="download-button" v-if="templateLink">

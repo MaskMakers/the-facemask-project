@@ -238,13 +238,13 @@ input[type="range"] {
   .mask-header-image {
     position: relative;
 
-    @media(min-width: $bp-s + 1) {
-      .vue-image {
-        width: 200%;
-        max-width: 200%;
-        margin-left: -100%;
-      }
-    }
+    // @media(min-width: $bp-s + 1) {
+    //   .vue-image {
+    //     width: 200%;
+    //     max-width: 200%;
+    //     margin-left: -100%;
+    //   }
+    // }
 
     h1 {
       position: absolute;
