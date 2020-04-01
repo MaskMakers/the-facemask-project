@@ -16,6 +16,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  overflow: hidden;
 
   @media screen and (max-width: $bp-s) {
     width: 100%;
@@ -184,7 +185,6 @@ input[type="range"] {
   max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
-  overflow-y: hidden;
 
   @media screen and (max-width: $bp-s) {
     padding: 0 20px;
@@ -211,9 +211,14 @@ input[type="range"] {
 
 .card {
   @include neumorphism();
-  padding: 24px;
+  overflow: hidden;
   box-sizing: border-box;
+  padding: 24px 0 0;
   border-radius: 24px;
+
+  .copy-container {
+    padding: 0 24px 10px;
+  }
 }
 
 .gradient-bar {
@@ -233,13 +238,13 @@ input[type="range"] {
   .mask-header-image {
     position: relative;
 
-    @media(min-width: $bp-s + 1) {
-      .vue-image {
-        width: 200%;
-        max-width: 200%;
-        margin-left: -100%;
-      }
-    }
+    // @media(min-width: $bp-s + 1) {
+    //   .vue-image {
+    //     width: 200%;
+    //     max-width: 200%;
+    //     margin-left: -100%;
+    //   }
+    // }
 
     h1 {
       position: absolute;
@@ -249,10 +254,10 @@ input[type="range"] {
       white-space: nowrap;
       color: $white;
 
-      @media(min-width: $bp-s + 1) {
-        text-align: left;
-        transform: translate(-33%, -50%);
-      }
+      // @media(min-width: $bp-s + 1) {
+      //   text-align: left;
+      //   transform: translate(-33%, -50%);
+      // }
     }
   }
 

@@ -3,7 +3,7 @@
     <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :width="1000"
+          :width="500"
           :height="500"
           :background-color="variables.accent"
         ></vue-image>

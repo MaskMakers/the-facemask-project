@@ -29,7 +29,7 @@
         <div class="featured-info">
           <div class="gradient-bar"></div>
           <br>
-          <p>The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of the pandemic!</p>
+          <p>{{decoder(mission)}}</p>
         </div>
         <vue-image
           :width="1000"
@@ -51,16 +51,20 @@
 
 <script>
 import variables from '../scss/shared/_variables.scss'
+import decoder from '../helpers/decoder.js'
 
 export default {
   name: 'Home',
   mounted () {},
   data () {
     return {
-      variables
+      variables,
+      decoder,
+      mission: 'The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of&nbsp;the&nbsp;pandemic!'
     }
   },
-  methods: {}
+  methods: {
+  }
 }
 </script>
 

@@ -60,8 +60,8 @@ module.exports = {
         '/make-a-mask',
         '/mask/accordion-mask-1',
         '/mask/accordion-mask-2',
-        '/mask/filtered-mask-1',
-        '/mask/filtered-mask-2'
+        '/mask/fitted-mask-1',
+        '/mask/fitted-mask-2'
       ],
       useRenderEvent: true,
       headless: true,

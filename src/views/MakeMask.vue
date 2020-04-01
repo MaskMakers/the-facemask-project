@@ -3,7 +3,7 @@
     <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :width='1000'
+          :width='500'
           :height='500'
           :background-color='variables.accent'
         ></vue-image>
@@ -20,17 +20,17 @@
         <div class="masks">
           <div class="mask card" v-for="{ id, name, subtitle, description } in masks" :key="id">
             <router-link :to="'/mask/' + id">
-              <div class="copy">
+              <div class="copy-container">
                 <h3 class="name">{{name}}</h3>
                 <p class="subtitle">{{ subtitle }}</p>
                 <div class="gradient-bar"></div>
                 <br>
                 <p class="subtitle description">{{ description }}</p>
-                <vue-image
-                  :width='500'
-                  :height='500'
-                ></vue-image>
               </div>
+              <vue-image
+                :background-color="variables.accent"
+                :source="require(`@/assets/img/masks/${id}.jpg`)"
+              ></vue-image>
             </router-link>
           </div>
         </div>
