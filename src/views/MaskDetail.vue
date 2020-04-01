@@ -3,11 +3,7 @@
     <div v-if="currentMask">
       <div class="header-grid">
       <div class="mask-header-image">
-        <vue-image
-          :width='1000'
-          :height='500'
-          :background-color="variables.accent"
-        ></vue-image>
+        <vue-image :source="require('@/assets/img/masks/' + currentMask.id + '.jpg')" />
       </div>
       <div>
         <h1>{{ currentMask.name }}</h1>
@@ -42,11 +38,7 @@
           </div>
         </div>
         <div class="step step-place-holder" v-if="currentMaskSteps.length % 2">
-          <vue-image
-            :width='1000'
-            :height='500'
-            :background-color="variables.accent"
-          ></vue-image>
+          <vue-image :source="require('@/assets/img/placeholder.jpg') "/>
         </div>
       </div>
     </div>
@@ -122,10 +114,14 @@ export default {
 <style lang="scss" scoped>
 .mask-detail-container {
   margin-top: 50px;
-  overflow: hidden;
 
   /deep/ .loading-wrapper, .steps {
     margin-top: 50px;
+  }
+
+  /deep/ .vue-image {
+    width: 100%;
+    margin-left: 0;
   }
 
   .steps {

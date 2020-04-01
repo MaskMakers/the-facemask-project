@@ -16,6 +16,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  overflow: hidden;
 
   @media screen and (max-width: $bp-s) {
     width: 100%;
@@ -184,7 +185,6 @@ input[type="range"] {
   max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
-  overflow-y: hidden;
 
   @media screen and (max-width: $bp-s) {
     padding: 0 20px;
