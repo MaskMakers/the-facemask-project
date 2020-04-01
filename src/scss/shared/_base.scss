@@ -254,10 +254,10 @@ input[type="range"] {
       white-space: nowrap;
       color: $white;
 
-      @media(min-width: $bp-s + 1) {
-        text-align: left;
-        transform: translate(-33%, -50%);
-      }
+      // @media(min-width: $bp-s + 1) {
+      //   text-align: left;
+      //   transform: translate(-33%, -50%);
+      // }
     }
   }
 
