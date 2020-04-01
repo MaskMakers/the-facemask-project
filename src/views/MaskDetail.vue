@@ -48,6 +48,7 @@
             :width='1000'
             :height='500'
             :background-color="variables.accent"
+            :source="require('@/assets/img/placeholder.jpg')"
           ></vue-image>
         </div>
       </div>
@@ -124,7 +125,6 @@ export default {
 <style lang="scss" scoped>
 .mask-detail-container {
   margin-top: 50px;
-  overflow: hidden;
 
   /deep/ .loading-wrapper, .steps {
     margin-top: 50px;
