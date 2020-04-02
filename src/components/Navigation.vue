@@ -27,6 +27,10 @@ export default {
   @include neumorphism(false);
 
   .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     a {
       display: block;
     }

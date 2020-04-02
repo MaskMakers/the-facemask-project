@@ -109,6 +109,8 @@ export default {
     display: block;
 
     @media screen and (max-width: $bp-s) {
+      padding: $space-m $space-s 5em;
+
       &:not(:last-of-type) {
         margin-bottom: 40px;
       }

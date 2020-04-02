@@ -43,10 +43,18 @@ h1, h2, h3, h4, h5, h6 {
 
 .typography-headline {
   font-size: 30px;
+
+  @media screen and (max-width: $bp-s) {
+    font-size: 22px;
+  }
 }
 
 .typography-featured {
   font-size: 22px;
+
+  @media screen and (max-width: $bp-s) {
+    font-size: 18px;
+  }
 }
 
 .typography-base {
@@ -258,6 +266,10 @@ input[type="range"] {
 
   .copy-container {
     padding: 0 40px 10px;
+
+    @media screen and (max-width: $bp-s) {
+      padding: 0 25px 10px;
+    }
   }
 }
 
