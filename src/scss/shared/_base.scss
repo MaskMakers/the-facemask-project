@@ -181,7 +181,7 @@ input[type="range"] {
     width: 20%;
     border-radius: 14px;
     border: none;
-    background: $gradient;
+    background: $accent-color;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
@@ -216,6 +216,13 @@ input[type="range"] {
   }
 }
 
+.content-container {
+  padding: 0 30px;
+  max-width: $page-width;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .link {
   color: $primary-color;
 
@@ -247,9 +254,27 @@ input[type="range"] {
 }
 
 .gradient-bar {
-  height: 3px;
+  width: 80%;
+  height: 4px;
+  max-width: 230px;
   background: $gradient;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card, .step {
+  .gradient-bar {
+    margin: 0;
+  }
+}
+
+.image-bg {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-transform: uppercase;
+  color: $white;
 }
 
 .visuallyhidden {
@@ -257,38 +282,41 @@ input[type="range"] {
 }
 
 .header-grid {
-  @include grid-2-column();
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 60px;
 
-  .mask-header-image {
-    position: relative;
+  @media screen and (max-width: $bp-s) {
+    display: block;
+  }
 
-    // @media(min-width: $bp-s + 1) {
-    //   .vue-image {
-    //     width: 200%;
-    //     max-width: 200%;
-    //     margin-left: -100%;
-    //   }
-    // }
+  &-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    h1 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
+    h1, h2, h3 {
       color: $white;
+      padding: 40px;
 
-      // @media(min-width: $bp-s + 1) {
-      //   text-align: left;
-      //   transform: translate(-33%, -50%);
-      // }
+      @media screen and (max-width: $bp-s) {
+        padding: 150px 20px;
+      }
     }
   }
 
-  .gradient-bar {
-    width: 175px;
-    margin: 0 auto;
+  &-copy {
+    max-width: 400px;
+    margin: auto;
+    padding: 100px 40px;
+
+    @media screen and (max-width: $bp-s) {
+      padding: 70px 20px;
+    }
+
+    p {
+      padding: 0 10px;
+    }
   }
 }
 

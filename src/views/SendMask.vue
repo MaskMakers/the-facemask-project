@@ -1,100 +1,95 @@
 <template>
   <div class="hospital-list-container basic-page-container">
     <div class="header-grid">
-      <div class="mask-header-image">
-        <vue-image
-          :width="500"
-          :height="500"
-          :background-color="variables.accent"
-        ></vue-image>
-        <h1>Send <br> A Mask</h1>
+      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks-envelope.jpg`)}">
+        <h1 class="typography-hero">Send A Mask</h1>
       </div>
-      <div>
-        <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="subtitle">
+      <div class="header-grid-copy">
+        <p class="typography-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p class="typography-base">
           This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
           If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
           or email <a class="email-link hover" href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks<br>@gmail.com</a> for more info!
         </p>
-        <br>
-        <div class="gradient-bar"></div>
       </div>
     </div>
-    <div class="actions-container">
-      <div class="search-container">
-        <div class="input-container">
-          <input class="input-search" v-model="searchText" placeholder="Search Facilities" @keyup="updatePageAndURL()" />
-          <p v-if="hospitals.length > 0">
-            <span v-if="hospitals.length > filteredHospitals.length">showing {{ filteredHospitals.length }} of </span>
-            {{ hospitals.length }} facilities in need
-          </p>
-        </div>
-        <select v-model="currentState" @change="updatePageAndURL()">
-          <option disabled>Select A State</option>
-          <option value="" selected>All States</option>
-          <option v-for="state in states" :key="state">{{ state }}</option>
-        </select>
-        <button class="hide-s" @click="clearSearch()">Clear</button>
-      </div>
-      <div class="select-clear">
-        <button class="show-s" @click="clearSearch()">Clear</button>
-        <select v-model="pageSize" @change="updatePageAndURL()">
-          <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
-        </select>
-      </div>
-    </div>
-    <input
-      class="scrollbar"
-      type="range"
-      v-model="scrollPercent"
-      min="0"
-      step="0.1"
-      max="100"
-      @input="updateScrollPositionFromRange()"
-      :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }"
-    />
-    <div class="list-container" @scroll="updateScrollPositionFromEl()">
-      <div class="list" :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }">
-        <div class="list-header">
-          <div class="name">Facility<br>Name</div>
-          <div class="address">Facility<br>Address</div>
-          <div class="state">State</div>
-          <div class="phone">Facility<br>Phone</div>
-          <div class="need">Quantity<br>Needed</div>
-          <div class="pattern">Pattern<br>Request?</div>
-          <div class="delivery">Delivery<br>Instructions</div>
-        </div>
-        <div v-if="hospitals.length > 0">
-          <div v-if="currentHospitalsPageData.length > 0">
-            <div class="list-item" v-for="({ name, address, state, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
-              <div class="name">{{ name }}</div>
-              <div class="address">{{ address }}</div>
-              <div class="state">{{ state }}</div>
-              <div class="phone" v-html="generatePhoneText(phone)"></div>
-              <div class="need">{{ need }}</div>
-              <div class="pattern">{{ pattern }}</div>
-              <div class="delivery">{{ delivery }}</div>
-            </div>
+    <div class="content-container">
+      <div class="actions-container">
+        <div class="search-container">
+          <div class="input-container">
+            <input class="input-search" v-model="searchText" placeholder="Search Facilities" @keyup="updatePageAndURL()" />
+            <p v-if="hospitals.length > 0">
+              <span v-if="hospitals.length > filteredHospitals.length">showing {{ filteredHospitals.length }} of </span>
+              {{ hospitals.length }} facilities in need
+            </p>
           </div>
-          <p v-else>
-            No results for '{{ searchText }}'
-            <span v-if="currentState"> in {{ currentState }}</span>
-          </p>
+          <select v-model="currentState" @change="updatePageAndURL()">
+            <option disabled>Select A State</option>
+            <option value="" selected>All States</option>
+            <option v-for="state in states" :key="state">{{ state }}</option>
+          </select>
+          <button class="hide-s" @click="clearSearch()">Clear</button>
         </div>
-        <loading v-else />
+        <div class="select-clear">
+          <button class="show-s" @click="clearSearch()">Clear</button>
+          <select v-model="pageSize" @change="updatePageAndURL()">
+            <option v-for="option in pageSizeOptions" :key="option">{{ option }}</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="pagination" v-if="paginatedHospitalsLength > 1 && pageSize !== 'All'">
-      <button @click="goToPage('back')">&lt;</button>
-      <button
-        v-for="page in paginatedHospitalsLength"
-        :key="page"
-        @click="goToPage(page)"
-        :class="{ 'active' : page - 1 === currentPage }"
-      >
-        {{ page }}
-      </button>
-      <button @click="goToPage('forward')">&gt;</button>
+      <input
+        class="scrollbar"
+        type="range"
+        v-model="scrollPercent"
+        min="0"
+        step="0.1"
+        max="100"
+        @input="updateScrollPositionFromRange()"
+        :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }"
+      />
+      <div class="list-container" @scroll="updateScrollPositionFromEl()">
+        <div class="list" :class="{ 'loading': hospitals.length === 0, 'no-results': currentHospitalsPageData.length === 0 }">
+          <div class="list-header">
+            <div class="name">Facility<br>Name</div>
+            <div class="address">Facility<br>Address</div>
+            <div class="state">State</div>
+            <div class="phone">Facility<br>Phone</div>
+            <div class="need">Quantity<br>Needed</div>
+            <div class="pattern">Pattern<br>Request?</div>
+            <div class="delivery">Delivery<br>Instructions</div>
+          </div>
+          <div v-if="hospitals.length > 0">
+            <div v-if="currentHospitalsPageData.length > 0">
+              <div class="list-item" v-for="({ name, address, state, phone, need, pattern, delivery }, i) in currentHospitalsPageData" :key="i">
+                <div class="name">{{ name }}</div>
+                <div class="address">{{ address }}</div>
+                <div class="state">{{ state }}</div>
+                <div class="phone" v-html="generatePhoneText(phone)"></div>
+                <div class="need">{{ need }}</div>
+                <div class="pattern">{{ pattern }}</div>
+                <div class="delivery">{{ delivery }}</div>
+              </div>
+            </div>
+            <p v-else>
+              No results for '{{ searchText }}'
+              <span v-if="currentState"> in {{ currentState }}</span>
+            </p>
+          </div>
+          <loading v-else />
+        </div>
+      </div>
+      <div class="pagination" v-if="paginatedHospitalsLength > 1 && pageSize !== 'All'">
+        <button @click="goToPage('back')">&lt;</button>
+        <button
+          v-for="page in paginatedHospitalsLength"
+          :key="page"
+          @click="goToPage(page)"
+          :class="{ 'active' : page - 1 === currentPage }"
+        >
+          {{ page }}
+        </button>
+        <button @click="goToPage('forward')">&gt;</button>
+      </div>
     </div>
   </div>
 </template>
@@ -269,7 +264,11 @@ export default {
 
 <style lang="scss" scoped>
 .hospital-list-container {
-  margin-top: 50px;
+  padding: 0;
+}
+
+.header-grid-copy {
+  max-width: 433px;
 }
 
 .email-link br {

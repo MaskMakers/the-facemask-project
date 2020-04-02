@@ -69,8 +69,6 @@ export default {
   }
 
   .gradient-bar {
-    max-width: 230px;
-    width: 80%;
     margin: 40px auto 0;
 
     @media screen and (max-width: $bp-s) {
@@ -134,8 +132,6 @@ export default {
   }
 
   .image-bg {
-    background-size: cover;
-    background-repeat: no-repeat;
     padding: 118px $space-l;
 
     @media screen and (max-width: $bp-s) {

@@ -1,18 +1,12 @@
 <template>
   <div class="make-a-mask-container basic-page-container">
     <div class="header-grid">
-      <div class="mask-header-image">
-        <vue-image
-          :width='500'
-          :height='500'
-          :background-color='variables.accent'
-        ></vue-image>
-        <h1>Make <br> A Mask</h1>
+      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-pattern.jpg')}">
+        <h1 class="typography-hero">Make A Mask</h1>
       </div>
-      <div>
-        <h2>Choose a mask template</h2>
-        <p class="subtitle">The template you choose will be dependant on who you are making them for and what materials you have available.</p>
-        <br>
+      <div class="header-grid-copy">
+        <h2 class="typography-headline">Choose a mask template</h2>
+        <p class="typography-featured">The template you choose will be dependant on who you are making them for and what materials you have available.</p>
         <div class="gradient-bar"></div>
       </div>
     </div>
@@ -61,10 +55,16 @@ export default {
 
 <style lang="scss" scoped>
 .make-a-mask-container {
-  margin: 50px auto;
+  padding: 0;
 
   /deep/ .loading-wrapper {
     padding-top: $space-m;
+  }
+
+  .header-grid-copy {
+    .gradient-bar {
+      margin-top: 60px;
+    }
   }
 
   .masks {

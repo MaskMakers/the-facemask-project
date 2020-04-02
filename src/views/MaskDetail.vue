@@ -2,13 +2,9 @@
   <div class="mask-detail-container basic-page-container">
     <div v-if="currentMask">
       <div class="header-grid">
-      <div class="mask-header-image">
-        <vue-image
-          :source="require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)"
-        ></vue-image>
-      </div>
-      <div>
-        <h1>{{ currentMask.name }}</h1>
+      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)}"></div>
+      <div class="header-grid-copy">
+        <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <div class="gradient-bar"></div>
         <br>
         <p class="subtitle">{{ currentMask.description }}</p>
@@ -121,10 +117,22 @@ export default {
 
 <style lang="scss" scoped>
 .mask-detail-container {
-  margin-top: 50px;
+  padding: 0;
 
   /deep/ .loading-wrapper, .steps {
     margin-top: 50px;
+  }
+
+  .header-grid-image {
+    @media screen and (max-width: $bp-s) {
+      @include aspect-ratio(4, 3);
+    }
+  }
+
+  .header-grid-copy {
+    h1 {
+      text-transform: uppercase;
+    }
   }
 
   .steps {
