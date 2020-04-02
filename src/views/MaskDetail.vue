@@ -17,10 +17,9 @@
             <div class="copy">
               <div class="copy-title">
                 <h2 class="step-number">{{ step }}</h2>
-                <p class="title">{{ title }}</p>
+                <p class="typography-featured title">{{ title }}</p>
               </div>
               <div class="gradient-bar"></div>
-              <br>
               <p class="description" v-if="description">{{ description }}</p>
             </div>
             <vue-image
@@ -36,14 +35,6 @@
           <div class="send-button" v-if="index == currentMaskSteps.length - 1">
             <router-link class="button" to="/send-a-mask">Send a mask</router-link>
           </div>
-        </div>
-        <div class="step step-place-holder" v-if="currentMaskSteps.length % 2">
-          <vue-image
-            :width='1000'
-            :height='500'
-            :background-color="variables.accent"
-            :source="require('@/assets/img/masks-pattern.jpg')"
-          ></vue-image>
         </div>
       </div>
     </div>
@@ -132,29 +123,29 @@ export default {
   }
 
   .header-grid-copy {
+    @media screen and (max-width: $bp-s) {
+      padding-bottom: 0;
+    }
+
     h1 {
       text-transform: uppercase;
     }
   }
 
   .steps {
+    @include neumorphism(false);
     @include grid-2-column();
+    padding: 45px 90px;
+    border-radius: 20px;
     margin: $space-l auto;
 
     @media screen and (max-width: $bp-s) {
       margin-bottom: 0;
-      padding-bottom: 20px;
+      padding: 40px;
     }
 
     .step {
       text-align: left;
-
-      .step-card {
-        @include neumorphism(false);
-        padding: 24px;
-        box-sizing: border-box;
-        border-radius: 24px;
-      }
 
       .image {
         width: 100%;
@@ -168,23 +159,28 @@ export default {
       }
 
       .step-number {
-        font-size: $base-large * 3;
+        font-size: 72px;
         line-height: 1.05;
         margin-bottom: 0;
       }
 
       .title {
-        margin: 0 0 0 $space-s;
+        margin: 0 0 0 10px;
         width: 125px;
+        line-height: 1.25;
       }
 
       .gradient-bar {
-        margin: 10px 0;
+        margin: 4px 0 13px;
       }
 
       .download-button, .send-button {
         margin: $space-m auto 0;
         text-align: center;
+
+        a {
+          width: 50%;
+        }
       }
     }
 
