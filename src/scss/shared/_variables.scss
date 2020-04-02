@@ -26,27 +26,24 @@ $bp-m: 1024px;
 $bp-l: 1200px;
 $bp-xl: 1400px;
 
-/* Sizing */
+/* Spacing */
 $page-width: $bp-xl;
 $grid-container-width: 1000px;
 
-/* Animations */
+$space-s: 1em;
+$space-m: 2em;
+$space-l: 3em;
+$space-xl: 4em;
 
 /* Fonts */
-$serif: 'DM Serif Display', serif;
 $sans-serif: 'Open Sans', sans-serif;
+$sans-serif-bold: 'FuturaBold', serif;
+$serif-serif-medium: 'FuturaMedium', serif;
 
 $base-size: 1em;
 $base-small: .8em;
 $base-large: 1.3em;
 
-$header-base: 1.5em;
-$header-large: 4.1em;
-
-$space-s: 1em;
-$space-m: 2em;
-$space-l: 3em;
-$space-xl: 5em;
 
 :export {
   accent: $accent-color;

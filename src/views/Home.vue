@@ -1,27 +1,19 @@
 <template>
   <div class="home-container basic-page-container">
     <h1 class="visuallyhidden">Mask Makers</h1>
-    <h2>
+    <h2 class="typography-headline">
       Make a mask at home.
       <br>
       Send it to a hospital that needs one.
     </h2>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
-        <div class="image"></div>
-        <h2 class="link-text">
-          Make
-          <div class="gradient-bar"></div>
-          A Mask
-        </h2>
+        <h2 class="link-text typography-hero-cta">Make A Mask</h2>
+        <img src="~@/assets/img/icon-sewing-fpo.png" alt="Sewing Machine">
       </router-link>
       <router-link to="/send-a-mask" class="hero-link card">
-        <div class="image"></div>
-        <h2 class="link-text">
-          Send
-          <div class="gradient-bar"></div>
-          A Mask
-        </h2>
+        <h2 class="link-text typography-hero-cta">Send A Mask</h2>
+        <img src="~@/assets/img/icon-sewing-fpo.png" alt="Sewing Machine">
       </router-link>
     </div>
     <div class="about-container">
@@ -72,13 +64,16 @@ export default {
 .home-container {
   margin: $space-m auto 0;
 
+  .typography-headline {
+    margin: 46px 0;
+  }
+
   .hero-links-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 100px;
     max-width: 900px;
-    margin: 0 auto;
-    padding: $space-s 0 $space-l;
+    margin: 0 auto 96px;
 
     @media screen and (max-width: $bp-m) {
       grid-gap: $space-m;
@@ -91,18 +86,12 @@ export default {
   }
 
   .hero-link {
-    min-height: 240px;
-    text-decoration: none;
-    font-weight: 700;
-    padding: $space-m;
+    padding: $space-xl $space-s 5em;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    text-align: center;
+    display: block;
 
     @media screen and (max-width: $bp-s) {
-      display: block;
-      min-height: auto;
       margin-bottom: 20px;
     }
 
@@ -116,18 +105,7 @@ export default {
     }
 
     .link-text {
-      margin-bottom: 0;
-      font-size: $header-large;
-      text-align: left;
-
-      @media screen and (max-width: $bp-s) {
-        font-size: 3em;
-        line-height: 1.1;
-      }
-
-      .gradient-bar {
-        max-width: 205px;
-      }
+      text-transform: uppercase;
     }
   }
 
