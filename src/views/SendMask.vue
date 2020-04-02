@@ -336,7 +336,7 @@ export default {
       display: inline-block;
       font-size: 0.9em;
       font-weight: bold;
-      color: $turquoise;
+      color: $accent-color;
       margin: $space-s 0 0 0;
     }
   }

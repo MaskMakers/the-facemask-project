@@ -1,6 +1,6 @@
 /* Color Scheme */
-$turquoise: #84c7b5;
-$navy: #565f6b;
+$teal: #5BC4A6;
+$navy: #575F6B;
 $red: #e22d48;
 
 // Grayscale
@@ -13,10 +13,10 @@ $gray-dark: #888;
 
 /* THEME SPECIFIC */
 $primary-color: $navy;
-$secondary-color: $turquoise;
+$secondary-color: $teal;
 $text-color: $navy;
-$accent-color: $turquoise;
-$gradient: linear-gradient(to right, #c4d9a2 0%, $turquoise 100%);
+$accent-color: $teal;
+$gradient: linear-gradient(to right, #C3D8A1 0%, #48AFAE 100%);
 
 /* Breakpoints */
 // breakpoints should be used with max-width's (non-mobile first)

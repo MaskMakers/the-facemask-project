@@ -4,10 +4,7 @@
       <div class="header-grid">
       <div class="mask-header-image">
         <vue-image
-          :width='500'
-          :height='500'
-          :background-color="variables.accent"
-          :source="require(`@/assets/img/masks/${$route.params.maskId}.jpg`)"
+          :source="require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)"
         ></vue-image>
       </div>
       <div>
@@ -48,7 +45,7 @@
             :width='1000'
             :height='500'
             :background-color="variables.accent"
-            :source="require('@/assets/img/placeholder.jpg')"
+            :source="require('@/assets/img/masks-pattern.jpg')"
           ></vue-image>
         </div>
       </div>

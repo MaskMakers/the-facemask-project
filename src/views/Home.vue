@@ -1,7 +1,7 @@
 <template>
   <div class="home-container basic-page-container">
     <h1 class="visuallyhidden">Mask Makers</h1>
-    <h2 class="typography-headline">
+    <h2 class="typography-headline home-headline">
       Make a mask at home.
       <br>
       Send it to a hospital that needs one.
@@ -19,24 +19,17 @@
     <div class="about-container">
       <div class="about">
         <div class="featured-info">
+          <p class="typography-base">{{decoder(mission)}}</p>
           <div class="gradient-bar"></div>
-          <br>
-          <p>{{decoder(mission)}}</p>
         </div>
-        <vue-image
-          :width="1000"
-          :height="500"
-          :background-color="variables.accent"
-        ></vue-image>
+        <div class="image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-pattern.jpg')}">
+          <h2 class="typography-hero">Everyday Heroes<br> Helping <br>Everyday Heroes</h2>
+        </div>
       </div>
     </div>
-    <div class="featured-info quote">
-      <h2>
-        “I have good news, Its all going to get better<br>
-        And its all going to get worse<br>
-        And its up to us to make the worse parts better.”
-      </h2>
-      <span>John Maeda</span>
+    <div class="quote-container">
+      <h2 class="typography-headline featured-quote">“I have good news, Its all going to get better and its all going to get worse and its up to us to make the worse parts better.”</h2>
+      <span class="typography-action-small">John Maeda</span>
     </div>
   </div>
 </template>
@@ -62,10 +55,37 @@ export default {
 
 <style lang="scss" scoped>
 .home-container {
+  padding: 0;
   margin: $space-m auto 0;
 
-  .typography-headline {
-    margin: 46px 0;
+  .home-headline, .quote-container, .hero-links-container {
+    @media screen and (max-width: $bp-m) {
+      padding: 0 $space-l;
+    }
+
+    @media screen and (max-width: $bp-m) {
+      padding: 0 $space-m;
+    }
+  }
+
+  .gradient-bar {
+    max-width: 230px;
+    width: 80%;
+    margin: 40px auto 0;
+
+    @media screen and (max-width: $bp-s) {
+      margin-top: 30px;
+    }
+  }
+
+  .home-headline {
+    margin: 46px auto;
+
+    @media screen and (max-width: $bp-s) {
+      margin: 40px auto;
+
+      br { display: none }
+    }
   }
 
   .hero-links-container {
@@ -81,7 +101,6 @@ export default {
 
     @media screen and (max-width: $bp-s) {
       display: block;
-      padding-bottom: $space-m;
     }
   }
 
@@ -92,16 +111,9 @@ export default {
     display: block;
 
     @media screen and (max-width: $bp-s) {
-      margin-bottom: 20px;
-    }
-
-    .image {
-      width: 60px;
-      height: 60px;
-      border: 5px solid $gray-dark;
-      border-radius: 10px;
-      margin: 0 auto;
-      display: none;
+      &:not(:last-of-type) {
+        margin-bottom: 40px;
+      }
     }
 
     .link-text {
@@ -109,44 +121,53 @@ export default {
     }
   }
 
-  .about-container {
-    overflow: hidden;
+  .about {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    margin-bottom: 80px;
 
-    .about {
-      @include grid-2-column();
-      align-items: center;
+    @media screen and (max-width: $bp-s) {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  .image-bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 118px $space-l;
+
+    @media screen and (max-width: $bp-s) {
+      width: 100%;
+      padding: 100px $space-m;
+      margin-bottom: 120px;
+    }
+
+    h2 {
+      color: $white;
+      text-transform: uppercase;
     }
   }
 
   .featured-info {
-    padding: $space-l 0;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 $space-l;
+  }
 
-    &.quote {
-      max-width: 700px;
-      margin: 0 auto;
-      padding-bottom: 0;
+  .quote-container {
+    max-width: 587px;
+    margin: 0 auto;
 
-      span {
-        font-weight: bold;
-        font-size: $base-small;
-      }
-
-      @media(max-width: $bp-s) {
-        br {
-          display: none;
-        }
-      }
+    span {
+      font-weight: bold;
     }
+  }
 
-    .gradient-bar {
-      width: 100px;
-      margin: 0 auto;
-    }
-
-    p {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+  .featured-quote {
+    color: $accent-color;
+    margin-bottom: 18px;
   }
 
   /deep/ .vue-image {

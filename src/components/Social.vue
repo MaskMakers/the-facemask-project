@@ -17,7 +17,7 @@
 
 <style lang="scss" scoped>
 .social-container {
-  margin: $space-xl auto;
+  margin: 80px auto;
 
   .social {
     display: flex;

@@ -29,7 +29,7 @@
               </div>
               <vue-image
                 :background-color="variables.accent"
-                :source="require(`@/assets/img/masks/${id}.jpg`)"
+                :source="require(`@/assets/img/masks/${id}-default.jpg`)"
               ></vue-image>
             </router-link>
           </div>
