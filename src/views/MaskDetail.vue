@@ -10,6 +10,7 @@
         <p class="subtitle">{{ currentMask.description }}</p>
       </div>
     </div>
+    <div class="content-container">
       <div class="steps">
         <div class="step" v-for="({ id, step, title, description, templateLink, image }, index) in currentMaskSteps" :key="step">
           <div class="step-card">
@@ -45,6 +46,7 @@
           ></vue-image>
         </div>
       </div>
+    </div>
     </div>
     <loading v-else />
   </div>
@@ -177,7 +179,7 @@ export default {
       }
 
       .gradient-bar {
-        width: 75%;
+        margin: 10px 0;
       }
 
       .download-button, .send-button {

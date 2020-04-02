@@ -10,16 +10,15 @@
         <div class="gradient-bar"></div>
       </div>
     </div>
-      <div v-if="masks.length > 0">
+      <div class="content-container" v-if="masks.length > 0">
         <div class="masks">
           <div class="mask card" v-for="{ id, name, subtitle, description } in masks" :key="id">
             <router-link :to="'/mask/' + id">
               <div class="copy-container">
-                <h3 class="name">{{name}}</h3>
-                <p class="subtitle">{{ subtitle }}</p>
+                <h3 class="typography-headline name">{{name}}</h3>
+                <p class="typography-featured">{{ subtitle }}</p>
                 <div class="gradient-bar"></div>
-                <br>
-                <p class="subtitle description">{{ description }}</p>
+                <p class="typography-featured description">{{ description }}</p>
               </div>
               <vue-image
                 :background-color="variables.accent"
@@ -62,13 +61,22 @@ export default {
   }
 
   .header-grid-copy {
+    @media screen and (max-width: $bp-s) {
+      padding-bottom: 0;
+    }
+
     .gradient-bar {
       margin-top: 60px;
+
+      @media screen and (max-width: $bp-s) {
+        display: none;
+      }
     }
   }
 
   .masks {
     @include grid-2-column();
+    grid-gap: 100px;
     padding-top: $space-s;
     margin: 50px auto 100px;
   }
@@ -82,7 +90,7 @@ export default {
   }
 
   .name {
-    margin-bottom: 0.25em;
+    margin: 0;
   }
 
   .subtitle {
