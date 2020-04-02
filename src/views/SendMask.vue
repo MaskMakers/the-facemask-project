@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="pagination" v-if="paginatedHospitalsLength > 1 && pageSize !== 'All'">
-        <button @click="goToPage('back')">&lt;</button>
+        <button @click="goToPage('back')"><vue-image :source="require(`@/assets/img/icon-arrow-right.svg`)"></vue-image></button>
         <button
           v-for="page in paginatedHospitalsLength"
           :key="page"
@@ -88,7 +88,7 @@
         >
           {{ page }}
         </button>
-        <button @click="goToPage('forward')">&gt;</button>
+        <button @click="goToPage('forward')"><vue-image :source="require(`@/assets/img/icon-arrow-right.svg`)"></vue-image></button>
       </div>
     </div>
   </div>
@@ -231,7 +231,7 @@ export default {
       var number = phone.match(/\d+/g)
       if (number) number.toString().replace(/,/g, '')
       if (!number) return '-'
-      return `<p><a href="tel:${number}">${phone}</a></p>`
+      return `<p class="typography-action"><a class="phone-link" href="tel:${number}">${phone}</a></p>`
     },
 
     clearSearch () {
@@ -269,6 +269,14 @@ export default {
 
 .header-grid-copy {
   max-width: 433px;
+
+  @media screen and (max-width: $bp-s) {
+    padding-bottom: 0;
+  }
+
+  p {
+    padding: 0;
+  }
 }
 
 .email-link br {
@@ -397,6 +405,7 @@ p {
 }
 
 .list-item, .list-header {
+  font-size: 15px;
   display: grid;
   grid-template-columns: 1fr 1.25fr 1fr 1.25fr 1fr 1fr 2fr;
   grid-column-gap: 1.5em;
@@ -410,17 +419,43 @@ p {
 
   &.list-header {
     font-weight: bold;
+    font-weight: 16px;
   }
 }
 
 .pagination {
   margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   button {
     margin: 0 6px;
     padding: 0;
     width: 40px;
     height: 40px;
+
+    &.active {
+      background-color: $text-color;
+      color: $white;
+    }
+
+    &:first-of-type, &:last-of-type {
+      background: none;
+      box-shadow: none;
+
+      /deep/ img {
+        width: auto;
+        height: 100%;
+        margin: auto;
+      }
+    }
+
+    &:first-of-type {
+      /deep/ img {
+        transform: rotate(180deg);
+      }
+    }
   }
 }
 </style>

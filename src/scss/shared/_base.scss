@@ -119,22 +119,33 @@ button, .button, select {
 
 select {
   appearance: none;
-  background: url('./assets/img/select-arrow.svg') no-repeat;
+  background: url('./assets/img/icon-arrow-down.svg') no-repeat;
   background-position: calc(100% - 1.5em) 50%;
-  background-size: 8px;
+  background-size: 15px;
   padding-right: 2.5em;
 }
 
 input:not([type="range"]) {
   @include inverse-neumorphism();
   font-weight: 600;
+  font-family: $sans-serif-bold;
   font-size: $base-small;
   color: $text-color;
   box-sizing: border-box;
-  padding: 15px 50px;
+  padding: 20px 40px;
   border: none;
   border-radius: 40px;
+  letter-spacing: .5px;
   appearance: none;
+
+  &.input-search {
+    background: url('./assets/img/icon-search.svg') no-repeat;
+    background-position: calc(100% - 1.5em) 50%;
+    background-size: 15px;
+    padding-right: 2.5em;
+    z-index: 1;
+    position: relative;
+  }
 }
 
 // dope ass range slider
@@ -160,11 +171,13 @@ input[type="range"] {
   // for whatever reason, SCSS doesn't work with combined pseudo-selectors
   // so lets use mixins!
   @mixin track() {
+    @include inverse-neumorphism();
     width: 100%;
     height: 14px;
     cursor: pointer;
     animate: 0.2s;
-    background: $gray;
+    padding: 3px;
+    box-sizing: content-box;
     border-radius: 14px;
     border: none;
     appearance: none;
