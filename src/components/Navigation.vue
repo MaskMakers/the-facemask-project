@@ -2,7 +2,7 @@
   <nav class="navigation">
     <div class="logo-container">
       <router-link to="/">
-        <img :src="require('@/assets/img/mask-makers-logo.svg')" alt="The Facemask Project logo">
+        <img :src="require('@/assets/img/mask-makers-logo.svg')" alt="Mask Makers Logo">
       </router-link>
     </div>
     <div class="links-container">
