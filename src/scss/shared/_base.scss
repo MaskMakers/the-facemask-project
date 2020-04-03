@@ -136,7 +136,7 @@ select {
 input:not([type="range"]) {
   @include inverse-neumorphism();
   font-weight: 600;
-  font-family: $sans-serif-bold;
+  font-family: $sans-serif;
   font-size: $base-small;
   color: $text-color;
   box-sizing: border-box;
@@ -165,6 +165,7 @@ input[type="range"] {
   appearance: none;
   -webkit-appearance: none;
   outline: none;
+  background: transparent;
 
   // remove outline on chrome
   &:focus {
