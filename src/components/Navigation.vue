@@ -2,7 +2,7 @@
   <nav class="navigation">
     <div class="logo-container">
       <router-link to="/">
-        <img :src="require('@/assets/img/facemask-logo.png')" alt="The Facemask Project logo">
+        <img :src="require('@/assets/img/mask-makers-logo.svg')" alt="Mask Makers Logo">
       </router-link>
     </div>
     <div class="links-container">
@@ -27,12 +27,20 @@ export default {
   @include neumorphism(false);
 
   .logo-container {
-    max-width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      display: block;
+    }
 
     img {
-      display: inline-block;
-      width: 60px;
-      margin: -0.25em 0 -0.5em;
+      width: 150px;
+
+      @media screen and (max-width: $bp-s) {
+        width: 120px;
+      }
     }
   }
 

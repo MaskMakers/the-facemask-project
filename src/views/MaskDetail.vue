@@ -2,31 +2,24 @@
   <div class="mask-detail-container basic-page-container">
     <div v-if="currentMask">
       <div class="header-grid">
-      <div class="mask-header-image">
-        <vue-image
-          :width='500'
-          :height='500'
-          :background-color="variables.accent"
-          :source="require(`@/assets/img/masks/${$route.params.maskId}.jpg`)"
-        ></vue-image>
-      </div>
-      <div>
-        <h1>{{ currentMask.name }}</h1>
+      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)}"></div>
+      <div class="header-grid-copy">
+        <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <div class="gradient-bar"></div>
         <br>
         <p class="subtitle">{{ currentMask.description }}</p>
       </div>
     </div>
+    <div class="content-container">
       <div class="steps">
         <div class="step" v-for="({ id, step, title, description, templateLink, image }, index) in currentMaskSteps" :key="step">
           <div class="step-card">
             <div class="copy">
               <div class="copy-title">
                 <h2 class="step-number">{{ step }}</h2>
-                <p class="title">{{ title }}</p>
+                <p class="typography-featured title">{{ title }}</p>
               </div>
               <div class="gradient-bar"></div>
-              <br>
               <p class="description" v-if="description">{{ description }}</p>
             </div>
             <vue-image
@@ -43,15 +36,8 @@
             <router-link class="button" to="/send-a-mask">Send a mask</router-link>
           </div>
         </div>
-        <div class="step step-place-holder" v-if="currentMaskSteps.length % 2">
-          <vue-image
-            :width='1000'
-            :height='500'
-            :background-color="variables.accent"
-            :source="require('@/assets/img/placeholder.jpg')"
-          ></vue-image>
-        </div>
       </div>
+    </div>
     </div>
     <loading v-else />
   </div>
@@ -124,30 +110,42 @@ export default {
 
 <style lang="scss" scoped>
 .mask-detail-container {
-  margin-top: 50px;
+  padding: 0;
 
   /deep/ .loading-wrapper, .steps {
     margin-top: 50px;
   }
 
+  .header-grid-image {
+    @media screen and (max-width: $bp-s) {
+      @include aspect-ratio(4, 3);
+    }
+  }
+
+  .header-grid-copy {
+    @media screen and (max-width: $bp-s) {
+      padding-bottom: 0;
+    }
+
+    h1 {
+      text-transform: uppercase;
+    }
+  }
+
   .steps {
+    @include neumorphism(false);
     @include grid-2-column();
+    padding: 45px 90px;
+    border-radius: 20px;
     margin: $space-l auto;
 
     @media screen and (max-width: $bp-s) {
       margin-bottom: 0;
-      padding-bottom: 20px;
+      padding: 40px;
     }
 
     .step {
       text-align: left;
-
-      .step-card {
-        @include neumorphism(false);
-        padding: 24px;
-        box-sizing: border-box;
-        border-radius: 24px;
-      }
 
       .image {
         width: 100%;
@@ -161,23 +159,28 @@ export default {
       }
 
       .step-number {
-        font-size: $base-large * 3;
+        font-size: 72px;
         line-height: 1.05;
         margin-bottom: 0;
       }
 
       .title {
-        margin: 0 0 0 $space-s;
+        margin: 0 0 0 10px;
         width: 125px;
+        line-height: 1.25;
       }
 
       .gradient-bar {
-        width: 75%;
+        margin: 4px 0 13px;
       }
 
       .download-button, .send-button {
         margin: $space-m auto 0;
         text-align: center;
+
+        a {
+          width: 50%;
+        }
       }
     }
 

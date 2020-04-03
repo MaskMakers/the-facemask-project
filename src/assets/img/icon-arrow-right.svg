@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="15px" viewBox="0 0 9 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>Arrow Left</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="13.9922488 3.375 7.49748109 10.1233063 1.00674362 3.37814118 0.375 4.03464825 7.49748109 11.4363204 14.625 4.03360119"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Send-a-Mask---Desktop" transform="translate(-731.000000, -1329.000000)">
+            <g id="Page-Numbers" transform="translate(457.000000, 1316.000000)">
+                <g id="Icons-/-Abstract-/-Chevron---Down" transform="translate(278.500000, 20.500000) rotate(-90.000000) translate(-278.500000, -20.500000) translate(271.000000, 13.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Down-Chevron" fill="#253746" fill-rule="evenodd" transform="translate(7.500000, 7.405660) rotate(-360.000000) translate(-7.500000, -7.405660) " xlink:href="#path-1"></use>
+                    <g id="Colors-/-Core-/-Primary-Dark" mask="url(#mask-2)" fill="#253746" fill-rule="evenodd">
+                        <g id="Colors-/-Navyscale-/-Navy-800">
+                            <polygon id="Rectangle" points="0 0 15 0 15 15 0 15"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
