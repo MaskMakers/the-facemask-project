@@ -65,6 +65,12 @@ export default {
       padding-bottom: 0;
     }
 
+    .typography-headline {
+      @media screen and (max-width: $bp-s) {
+        margin-bottom: 10px;
+      }
+    }
+
     .gradient-bar {
       margin-top: 60px;
 
@@ -83,6 +89,7 @@ export default {
 
   .mask {
     text-align: left;
+    color: $text-color;
 
     a {
       color: $text-color;
