@@ -75,6 +75,8 @@ export default {
     max-width: 800px;
     width: 100%;
     margin: 50px auto;
+    padding: 0 40px;
+    box-sizing: border-box;
 
     @media screen and (max-width: $bp-s) {
       margin: 40px auto;
