@@ -98,10 +98,21 @@ export default {
     .subtitle {
       font-family: $sans-serif-bold;
     }
+
+    .name, .subtitle {
+      transition: color 0.3s;
+    }
+
+    &:hover {
+      .name, .subtitle {
+        color: $accent-color;
+      }
+    }
   }
 
   .name {
     margin: 0;
+    line-height: 0.9;
   }
 
   .subtitle {
