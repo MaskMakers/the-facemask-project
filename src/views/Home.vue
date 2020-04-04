@@ -73,15 +73,13 @@ export default {
 
   .hero-copy {
     max-width: 800px;
-    width: 100%;
+    width: 80%;
     margin: 50px auto;
-    padding: 0 40px;
+    padding: 0;
     box-sizing: border-box;
 
     @media screen and (max-width: $bp-s) {
-      margin: 40px auto;
-
-      br { display: none }
+      margin: 40px auto 80px;
     }
   }
 
@@ -95,6 +93,8 @@ export default {
 
   .home-headline {
     @media screen and (max-width: $bp-s) {
+      padding: 0;
+
       br { display: none }
     }
   }
