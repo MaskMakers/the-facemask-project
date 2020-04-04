@@ -131,6 +131,10 @@ export default {
 
     h1 {
       text-transform: uppercase;
+
+      @media screen and (max-width: $bp-s) {
+        font-size: 42px;
+      }
     }
 
     p {
