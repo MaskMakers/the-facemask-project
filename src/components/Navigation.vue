@@ -36,6 +36,7 @@ export default {
     }
 
     img {
+      display: block;
       width: 150px;
 
       @media screen and (max-width: $bp-s) {
@@ -49,10 +50,17 @@ export default {
     align-items: center;
 
     a {
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-family: $sans-serif-bold;
       margin: 0.25em 0 0.25em $space-s;
       color: $text-color;
       position: relative;
       line-height: 1.1;
+
+      @media screen and (max-width: $bp-xxs) {
+        font-size: 0.5em;
+      }
 
       &.router-link-exact-active {
         color: $secondary-color;

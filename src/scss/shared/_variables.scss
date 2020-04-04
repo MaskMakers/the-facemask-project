@@ -22,6 +22,7 @@ $gradient-footer: linear-gradient(to top, #68baa1 0%, #87c7b3 100%);
 
 /* Breakpoints */
 // breakpoints should be used with max-width's (non-mobile first)
+$bp-xxs: 420px;
 $bp-xs: 480px;
 $bp-s: 767px;
 $bp-m: 1024px;
