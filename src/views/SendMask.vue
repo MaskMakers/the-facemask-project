@@ -79,7 +79,9 @@
         </div>
       </div>
       <div class="pagination" v-if="paginatedHospitalsLength > 1 && pageSize !== 'All'">
-        <button @click="goToPage('back')"><vue-image :source="require(`@/assets/img/icon-arrow-right.svg`)"></vue-image></button>
+        <button @click="goToPage('back')">
+          <ArrowIcon/>
+        </button>
         <button
           v-for="page in paginatedHospitalsLength"
           :key="page"
@@ -88,7 +90,9 @@
         >
           {{ page }}
         </button>
-        <button @click="goToPage('forward')"><vue-image :source="require(`@/assets/img/icon-arrow-right.svg`)"></vue-image></button>
+        <button @click="goToPage('forward')">
+          <ArrowIcon/>
+        </button>
       </div>
     </div>
   </div>
@@ -98,9 +102,13 @@
 import { mapState } from 'vuex'
 import variables from '../scss/shared/_variables.scss'
 import debounce from '../helpers/debounce'
+import ArrowIcon from '../components/ArrowIcon'
 
 export default {
   name: 'SendMask',
+  components: {
+    ArrowIcon
+  },
 
   data () {
     return {
@@ -443,16 +451,27 @@ p {
     &:first-of-type, &:last-of-type {
       background: none;
       box-shadow: none;
+      transform: translateY(2px);
 
-      /deep/ img {
-        width: auto;
-        height: 100%;
-        margin: auto;
+      svg {
+        height: 45%;
+      }
+
+      /deep/ polygon {
+        transition: .3s;
+        fill: $text-color;
+      }
+
+      &:hover {
+        /deep/ polygon {
+          fill: $accent-color;
+          transition: .3s;
+        }
       }
     }
 
     &:first-of-type {
-      /deep/ img {
+      svg {
         transform: rotate(180deg);
       }
     }
