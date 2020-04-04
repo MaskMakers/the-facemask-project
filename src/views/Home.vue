@@ -127,6 +127,12 @@ export default {
       }
     }
 
+    &:hover {
+      .link-text {
+        color: $accent-color;
+      }
+    }
+
     .link-text {
       text-transform: uppercase;
     }
