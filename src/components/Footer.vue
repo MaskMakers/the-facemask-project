@@ -27,12 +27,13 @@
   background: $gradient-footer;
   color: #fff;
   box-sizing: border-box;
+  text-align: left;
 
   .footer-wrapper {
     max-width: 1400px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 300px;
+    grid-gap: 30px;
     margin: 0 auto;
 
     @media screen and (max-width: $bp-m) {
@@ -61,6 +62,12 @@
     }
   }
 
+  .disclaimer-container {
+    p {
+      max-width: 400px;
+    }
+  }
+
   .social-container {
     h2 {
       display: inline;
@@ -68,7 +75,7 @@
 
     a {
       background-color: #87c7b3;
-      margin: 10px auto 0;
+      margin: 10px 0 0;
       width: 60px;
       height: 60px;
       overflow: hidden;
