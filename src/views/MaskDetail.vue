@@ -6,8 +6,30 @@
       <div class="header-grid-copy">
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <h2>{{ currentMask.subtitle }}</h2>
-        <div class="gradient-bar"></div>
-        <p class="subtitle">{{ currentMask.description }}</p>
+        <div class="list">
+          <div class="fabric list-item">
+            <p class="list-title">Fabric:</p>
+            <p class="list-description">{{currentMask.fabric}}</p>
+          </div>
+          <br>
+          <div class="skill list-item">
+            <p class="list-title">Skill Level:</p>
+            <p class="list-description">{{currentMask.skill}}</p>
+          </div>
+          <br>
+          <div class="time list-item">
+            <p class="list-title">Estimated Time:</p>
+            <p class="list-description">{{currentMask.time}}</p>
+          </div>
+          <br>
+          <div class="seam list-item">
+            <p class="list-title">Seam Allowance:</p>
+            <p class="list-description">{{currentMask.seamAllowance}}</p>
+          </div>
+        </div>
+        <div class="download-button">
+            <a class="button accent-button" :href="'/assets/mask-templates/'" target="_blank" download>Download Template</a>
+          </div>
       </div>
     </div>
     <div class="content-container">
@@ -28,13 +50,14 @@
               <p class="description" v-if="description">{{ description }}</p>
             </div>
           </div>
-          <div class="download-button" v-if="templateLink">
-            <a class="button accent-button" :href="'/assets/mask-templates/' + templateLink" target="_blank" download>Download Template</a>
-          </div>
           <div class="send-button" v-if="index == currentMaskSteps.length - 1">
             <router-link class="button accent-button" to="/send-a-mask">Send a mask</router-link>
           </div>
         </div>
+      </div>
+      <div class="fabrics card">
+        <h2 class="typography-headline">Fabrics and Filters</h2>
+        <p>Continue sewing around the corner and along the long side, stopping 2” before you reach your starting stitches.</p>
       </div>
     </div>
     </div>
@@ -133,17 +156,33 @@ export default {
     margin-top: 50px;
   }
 
+  button, .button {
+    &:hover, &.active {
+      color: $white;
+      background-color: $accent-color;
+    }
+  }
+
+  .header-grid {
+    @media screen and (max-width: $bp-m - 1) {
+      display: block;
+      margin-bottom: 60px;
+    }
+  }
+
   .header-grid-image {
-    @media screen and (max-width: $bp-s) {
-      @include aspect-ratio(4, 3);
+    @media screen and (max-width: $bp-m - 1) {
+      @include aspect-ratio(16, 9);
     }
   }
 
   .header-grid-copy {
     max-width: none;
+    text-align: left;
 
     @media screen and (max-width: $bp-s) {
       padding-bottom: 0;
+      padding-top: 40px;
       max-width: 80%;
     }
 
@@ -152,8 +191,6 @@ export default {
       line-height: 1;
       font-size: 55px;
       max-width: 7em;
-      margin-left: auto;
-      margin-right: auto;
 
       @media screen and (max-width: $bp-s) {
         font-size: 42px;
@@ -171,8 +208,31 @@ export default {
       margin: 0 auto;
     }
 
-    .gradient-bar {
-      margin: 30px auto 20px;
+    .list {
+      margin-top: 30px;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      text-align: left;
+
+      @media screen and (max-width: $bp-s) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      p {
+        margin: 0;
+        padding-left: 0;
+      }
+
+      .list-title {
+        font-weight: bold;
+      }
+    }
+
+    .download-button {
+      margin-top: 40px;
     }
   }
 
@@ -238,6 +298,21 @@ export default {
         width: 200%;
         height: 100%;
       }
+    }
+  }
+
+  .fabrics {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 90px;
+    box-sizing: content-box;
+
+    @media screen and (max-width: $bp-s) {
+      margin-top: 60px;
+    }
+
+    h2 {
+      text-transform: uppercase;
     }
   }
 }

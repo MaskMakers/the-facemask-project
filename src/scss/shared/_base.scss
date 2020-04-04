@@ -254,7 +254,7 @@ input[type="range"] {
 .basic-page-container {
   margin: 0 auto 50px;
   padding: 0 30px;
-  max-width: $page-width;
+  // max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
 
@@ -268,6 +268,7 @@ input[type="range"] {
   max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .link {

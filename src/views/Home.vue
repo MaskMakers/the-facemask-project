@@ -12,11 +12,11 @@
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Make A Mask</h2>
-        <img src="~@/assets/img/icon-sewing-fpo.png" alt="Sewing Machine">
+        <img src="~@/assets/img/icon-sewing.jpg" alt="Sewing Machine Icon">
       </router-link>
       <router-link to="/send-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Send A Mask</h2>
-        <img src="~@/assets/img/icon-sewing-fpo.png" alt="Sewing Machine">
+        <img src="~@/assets/img/icon-hospital.jpg" alt="Hospital Icon">
       </router-link>
     </div>
     <div class="about-container">
@@ -143,6 +143,10 @@ export default {
 
     .link-text {
       text-transform: uppercase;
+    }
+
+    img {
+      width: 70%;
     }
   }
 
