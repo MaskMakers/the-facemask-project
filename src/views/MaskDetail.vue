@@ -6,26 +6,24 @@
       <div class="header-grid-copy">
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <h2>{{ currentMask.subtitle }}</h2>
-        <div class="gradient-bar"></div>
-        <p class="subtitle">{{ currentMask.description }}</p>
         <div class="list">
-          <div class="fabric">
-            <p class="list-title">Fabric</p>
+          <div class="fabric list-item">
+            <p class="list-title">Fabric:</p>
             <p class="list-description">{{currentMask.fabric}}</p>
           </div>
           <br>
-          <div class="skill">
-            <p class="list-title">skill</p>
+          <div class="skill list-item">
+            <p class="list-title">Skill Level:</p>
             <p class="list-description">{{currentMask.skill}}</p>
           </div>
           <br>
-          <div class="time">
-            <p class="list-title">time</p>
+          <div class="time list-item">
+            <p class="list-title">Estimated Time:</p>
             <p class="list-description">{{currentMask.time}}</p>
           </div>
           <br>
-          <div class="seam">
-            <p class="list-title">Seam Allowance</p>
+          <div class="seam list-item">
+            <p class="list-title">Seam Allowance:</p>
             <p class="list-description">{{currentMask.seamAllowance}}</p>
           </div>
         </div>
@@ -33,7 +31,7 @@
     </div>
     <div class="content-container">
       <div class="steps">
-        <div class="step" v-for="({ id, step, title, description, fabric, skillLevel, time, seamAllowance, templateLink, image }, index) in currentMaskSteps" :key="step">
+        <div class="step" v-for="({ id, step, title, description, templateLink, image }, index) in currentMaskSteps" :key="step">
           <div class="step-card">
             <vue-image
               :source='requireImage(step)'
@@ -162,6 +160,7 @@ export default {
 
   .header-grid-copy {
     max-width: none;
+    text-align: left;
 
     @media screen and (max-width: $bp-s) {
       padding-bottom: 0;
@@ -173,8 +172,6 @@ export default {
       line-height: 1;
       font-size: 55px;
       max-width: 7em;
-      margin-left: auto;
-      margin-right: auto;
 
       @media screen and (max-width: $bp-s) {
         font-size: 42px;
@@ -192,8 +189,23 @@ export default {
       margin: 0 auto;
     }
 
-    .gradient-bar {
-      margin: 30px auto 20px;
+    .list {
+      margin-top: 30px;
+    }
+
+    .list-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      text-align: left;
+
+      p {
+        margin: 0;
+      }
+
+      .list-title {
+        // font-family: $sans-serif-bold;
+        font-weight: bold;
+      }
     }
   }
 
