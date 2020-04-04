@@ -40,6 +40,7 @@
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr 1fr;
       text-align: left;
+      grid-gap: 0;
     }
   }
 
