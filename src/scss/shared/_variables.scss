@@ -21,6 +21,7 @@ $gradient: linear-gradient(to right, #C3D8A1 0%, #48AFAE 100%);
 
 /* Breakpoints */
 // breakpoints should be used with max-width's (non-mobile first)
+$bp-xxs: 420px;
 $bp-xs: 480px;
 $bp-s: 767px;
 $bp-m: 1024px;
