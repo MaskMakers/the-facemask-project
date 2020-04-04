@@ -1,7 +1,7 @@
 <template>
   <div class="make-a-mask-container basic-page-container">
     <div class="header-grid">
-      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-pattern.jpg')}">
+      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-selection.jpg')}">
         <h1 class="typography-hero">Make <br>A <br>Mask</h1>
       </div>
       <div class="header-grid-copy">
@@ -98,10 +98,21 @@ export default {
     .subtitle {
       font-family: $sans-serif-bold;
     }
+
+    .name, .subtitle {
+      transition: color 0.3s;
+    }
+
+    &:hover {
+      .name, .subtitle {
+        color: $accent-color;
+      }
+    }
   }
 
   .name {
     margin: 0;
+    line-height: 0.9;
   }
 
   .subtitle {
