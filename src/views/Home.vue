@@ -31,7 +31,13 @@
       </div>
     </div>
     <div class="quote-container">
-      <h2 class="typography-headline featured-quote">“I have good news, Its all going to get better and its all going to get worse and its up to us to make the worse parts better.”</h2>
+      <h2 class="typography-headline featured-quote">
+        “I have good news,<br>
+        Its all going to get better<br>
+        and its all going to get worse<br>
+        and its up to us to make<br>
+        the worse parts better.”
+      </h2>
       <span class="typography-action-small">John Maeda</span>
     </div>
   </div>
@@ -104,7 +110,7 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-gap: 100px;
     max-width: 900px;
-    margin: 0 auto 96px;
+    margin: 0 auto 10em;
 
     @media screen and (max-width: $bp-m) {
       grid-gap: $space-m;
@@ -144,11 +150,16 @@ export default {
     display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 10em;
 
     @media screen and (max-width: $bp-s) {
       display: flex;
-      flex-direction: column-reverse;
+      flex-direction: column;
+      margin-bottom: 0;
+
+      .featured-info {
+        margin-bottom: 10em;
+      }
     }
   }
 
@@ -158,12 +169,17 @@ export default {
     @media screen and (max-width: $bp-s) {
       width: 100%;
       padding: 100px $space-m;
-      margin-bottom: 120px;
+      margin-bottom: 10em;
     }
 
     h2 {
       color: $white;
       text-transform: uppercase;
+
+      @media screen and (max-width: $bp-s) {
+        padding: 0 1em;
+        font-size: 2.25em;
+      }
     }
   }
 
@@ -176,15 +192,23 @@ export default {
   .quote-container {
     max-width: 587px;
     margin: 0 auto;
+    padding-bottom: 5em;
 
     span {
       font-weight: bold;
+    }
+
+    @media(max-width: $bp-xxs) {
+      br {
+        display: none;
+      }
     }
   }
 
   .featured-quote {
     color: $accent-color;
     margin-bottom: 18px;
+    line-height: 1.25;
   }
 
   /deep/ .vue-image {
