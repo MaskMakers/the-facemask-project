@@ -131,9 +131,11 @@ export default {
 
     h1 {
       text-transform: uppercase;
+      line-height: 1;
 
       @media screen and (max-width: $bp-s) {
         font-size: 42px;
+        line-height: 1.1;
       }
     }
 
