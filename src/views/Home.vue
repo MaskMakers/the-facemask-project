@@ -71,6 +71,18 @@ export default {
     }
   }
 
+  .hero-copy {
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+
+    @media screen and (max-width: $bp-s) {
+      margin: 40px auto;
+
+      br { display: none }
+    }
+  }
+
   .gradient-bar {
     margin: 40px auto 0;
 
@@ -80,11 +92,7 @@ export default {
   }
 
   .home-headline {
-    margin: 46px auto;
-
     @media screen and (max-width: $bp-s) {
-      margin: 40px auto;
-
       br { display: none }
     }
   }
