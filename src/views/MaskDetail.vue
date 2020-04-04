@@ -5,6 +5,7 @@
       <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)}"></div>
       <div class="header-grid-copy">
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
+        <h2>{{ currentMask.subtitle }}</h2>
         <div class="gradient-bar"></div>
         <p class="subtitle">{{ currentMask.description }}</p>
       </div>
@@ -13,26 +14,25 @@
       <div class="steps">
         <div class="step" v-for="({ id, step, title, description, templateLink, image }, index) in currentMaskSteps" :key="step">
           <div class="step-card">
+            <vue-image
+              :source='requireImage(step)'
+              :width='500'
+              :height='322'
+              :background-color='variables.accent'
+            ></vue-image>
             <div class="copy">
               <div class="copy-title">
                 <h2 class="step-number">{{ step }}</h2>
                 <p class="typography-featured title">{{ title }}</p>
               </div>
-              <div class="gradient-bar"></div>
               <p class="description" v-if="description">{{ description }}</p>
             </div>
-            <vue-image
-              :source='require(`@/assets/img/steps/${$route.params.maskId}/step-` + (index + 1) + `.jpg`)'
-              :width='500'
-              :height='300'
-              :background-color='variables.accent'
-            ></vue-image>
           </div>
           <div class="download-button" v-if="templateLink">
-            <a class="button" :href="'/assets/mask-templates/' + templateLink" target="_blank" download>Download Template</a>
+            <a class="button accent-button" :href="'/assets/mask-templates/' + templateLink" target="_blank" download>Download Template</a>
           </div>
           <div class="send-button" v-if="index == currentMaskSteps.length - 1">
-            <router-link class="button" to="/send-a-mask">Send a mask</router-link>
+            <router-link class="button accent-button" to="/send-a-mask">Send a mask</router-link>
           </div>
         </div>
       </div>
@@ -80,6 +80,15 @@ export default {
         }
       })
 
+      steps.push({
+        description: '',
+        id: this.$route.params.maskId,
+        image: '',
+        step: String(steps.length + 1),
+        templateLink: '',
+        title: 'Send Mask in!'
+      })
+
       return steps
     },
 
@@ -101,6 +110,15 @@ export default {
             description: `Make ${this.aOrAn} ${mask.name}`
           })
         }
+      }
+    }
+  },
+  methods: {
+    requireImage (step) {
+      try {
+        return require(`@/assets/img/steps/${this.$route.params.maskId}/step-` + step + `.jpg`)
+      } catch {
+        return ''
       }
     }
   }
@@ -132,11 +150,20 @@ export default {
     h1 {
       text-transform: uppercase;
       line-height: 1;
+      font-size: 55px;
+      max-width: 7em;
+      margin-left: auto;
+      margin-right: auto;
 
       @media screen and (max-width: $bp-s) {
         font-size: 42px;
         line-height: 1.1;
       }
+    }
+
+    h2 {
+      font-size: 1.6em;
+      margin-top: -0.5em;
     }
 
     p {
@@ -152,7 +179,7 @@ export default {
   .steps {
     @include neumorphism(false);
     @include grid-2-column();
-    padding: 45px 90px;
+    padding: 90px;
     border-radius: 20px;
     margin: $space-l auto;
 
@@ -172,7 +199,7 @@ export default {
 
       .copy-title {
         display: flex;
-        align-items: center;
+        margin-top: $space-m;
       }
 
       .step-number {

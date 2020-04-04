@@ -436,7 +436,7 @@ p {
     height: 40px;
 
     &.active {
-      background-color: $text-color;
+      background-color: $accent-color;
       color: $white;
     }
 

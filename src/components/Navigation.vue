@@ -6,8 +6,8 @@
       </router-link>
     </div>
     <div class="links-container">
-      <router-link to="/make-a-mask" class="button button-small">Make A Mask</router-link>
-      <router-link to="/send-a-mask" class="button button-small">Send A Mask</router-link>
+      <router-link to="/make-a-mask" class="button button-small accent-button">Make A Mask</router-link>
+      <router-link to="/send-a-mask" class="button button-small accent-button">Send A Mask</router-link>
     </div>
   </nav>
 </template>
@@ -50,9 +50,6 @@ export default {
     align-items: center;
 
     a {
-      text-transform: uppercase;
-      letter-spacing: 0;
-      font-family: $sans-serif-bold;
       margin: 0.25em 0 0.25em $space-s;
       color: $text-color;
       position: relative;

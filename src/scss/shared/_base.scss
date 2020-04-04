@@ -147,6 +147,12 @@ button, .button, select {
   &.button-small {
     padding: 10px 20px;
   }
+
+  &.accent-button {
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-family: $sans-serif-bold;
+  }
 }
 
 select {
