@@ -1,11 +1,14 @@
 <template>
   <div class="home-container basic-page-container">
     <h1 class="visuallyhidden">Mask Makers</h1>
-    <h2 class="typography-headline home-headline">
-      Make a mask at home.
-      <br>
-      Send it to a hospital that needs one.
-    </h2>
+    <div class="hero-copy">
+      <h2 class="typography-headline home-headline">
+        Make a mask at home.
+        <br>
+        Send it to a hospital that needs one.
+      </h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed consequat sapien, vel interdum sapien. Duis tristique nunc nec nisl aliquam finibus. Fusce lorem nibh, varius eu tincidunt in, rutrum eu nulla. Suspendisse in tincidunt metus, eu dapibus turpis. Aenean eu tincidunt dolor, nec cursus ligula. </p>
+    </div>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Make A Mask</h2>
@@ -68,6 +71,18 @@ export default {
     }
   }
 
+  .hero-copy {
+    max-width: 800px;
+    width: 80%;
+    margin: 50px auto;
+    padding: 0;
+    box-sizing: border-box;
+
+    @media screen and (max-width: $bp-s) {
+      margin: 40px auto 80px;
+    }
+  }
+
   .gradient-bar {
     margin: 40px auto 0;
 
@@ -77,10 +92,8 @@ export default {
   }
 
   .home-headline {
-    margin: 46px auto;
-
     @media screen and (max-width: $bp-s) {
-      margin: 40px auto;
+      padding: 0;
 
       br { display: none }
     }
@@ -113,6 +126,12 @@ export default {
 
       &:not(:last-of-type) {
         margin-bottom: 40px;
+      }
+    }
+
+    &:hover {
+      .link-text {
+        color: $accent-color;
       }
     }
 

@@ -49,6 +49,12 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 37px;
   line-height: 1;
   margin-bottom: 30px;
+  transition: .3s color;
+
+  &:hover {
+    color: $accent-color;
+    transition: .3s color;
+  }
 }
 
 .typography-headline {
@@ -94,6 +100,10 @@ ul {
 
 a {
   text-decoration: none;
+
+  &:hover {
+    color: $accent-color;
+  }
 }
 
 p {
