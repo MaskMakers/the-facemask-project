@@ -22,7 +22,7 @@
               <p class="description" v-if="description">{{ description }}</p>
             </div>
             <vue-image
-              :source='image'
+              :source='require(`@/assets/img/steps/${$route.params.maskId}/step-` + (index + 1) + `.jpg`)'
               :width='500'
               :height='300'
               :background-color='variables.accent'
