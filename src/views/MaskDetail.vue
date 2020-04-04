@@ -8,11 +8,32 @@
         <h2>{{ currentMask.subtitle }}</h2>
         <div class="gradient-bar"></div>
         <p class="subtitle">{{ currentMask.description }}</p>
+        <div class="list">
+          <div class="fabric">
+            <p class="list-title">Fabric</p>
+            <p class="list-description">{{currentMask.fabric}}</p>
+          </div>
+          <br>
+          <div class="skill">
+            <p class="list-title">skill</p>
+            <p class="list-description">{{currentMask.skill}}</p>
+          </div>
+          <br>
+          <div class="time">
+            <p class="list-title">time</p>
+            <p class="list-description">{{currentMask.time}}</p>
+          </div>
+          <br>
+          <div class="seam">
+            <p class="list-title">Seam Allowance</p>
+            <p class="list-description">{{currentMask.seamAllowance}}</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="content-container">
       <div class="steps">
-        <div class="step" v-for="({ id, step, title, description, templateLink, image }, index) in currentMaskSteps" :key="step">
+        <div class="step" v-for="({ id, step, title, description, fabric, skillLevel, time, seamAllowance, templateLink, image }, index) in currentMaskSteps" :key="step">
           <div class="step-card">
             <vue-image
               :source='requireImage(step)'
