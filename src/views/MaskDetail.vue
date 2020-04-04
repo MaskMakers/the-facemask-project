@@ -6,7 +6,6 @@
       <div class="header-grid-copy">
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <div class="gradient-bar"></div>
-        <br>
         <p class="subtitle">{{ currentMask.description }}</p>
       </div>
     </div>
@@ -123,12 +122,30 @@ export default {
   }
 
   .header-grid-copy {
+    max-width: none;
+
     @media screen and (max-width: $bp-s) {
       padding-bottom: 0;
+      max-width: 80%;
     }
 
     h1 {
       text-transform: uppercase;
+      line-height: 1;
+
+      @media screen and (max-width: $bp-s) {
+        font-size: 42px;
+        line-height: 1.1;
+      }
+    }
+
+    p {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .gradient-bar {
+      margin: 30px auto 20px;
     }
   }
 
@@ -166,12 +183,11 @@ export default {
 
       .title {
         margin: 0 0 0 10px;
-        width: 125px;
         line-height: 1.25;
       }
 
       .gradient-bar {
-        margin: 4px 0 13px;
+        margin: 10px 0 13px;
       }
 
       .download-button, .send-button {

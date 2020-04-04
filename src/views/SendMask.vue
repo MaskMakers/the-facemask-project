@@ -2,7 +2,7 @@
   <div class="hospital-list-container basic-page-container">
     <div class="header-grid">
       <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks-envelope.jpg`)}">
-        <h1 class="typography-hero">Send A Mask</h1>
+        <h1 class="typography-hero">Send <br>A <br>Mask</h1>
       </div>
       <div class="header-grid-copy">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>

@@ -2,7 +2,7 @@
   <div class="make-a-mask-container basic-page-container">
     <div class="header-grid">
       <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-pattern.jpg')}">
-        <h1 class="typography-hero">Make A Mask</h1>
+        <h1 class="typography-hero">Make <br>A <br>Mask</h1>
       </div>
       <div class="header-grid-copy">
         <h2 class="typography-headline">Choose a mask template</h2>
@@ -16,7 +16,7 @@
             <router-link :to="'/mask/' + id">
               <div class="copy-container">
                 <h3 class="typography-headline name">{{name}}</h3>
-                <p class="typography-featured">{{ subtitle }}</p>
+                <p class="typography-featured subtitle">{{ subtitle }}</p>
                 <div class="gradient-bar"></div>
                 <p class="typography-featured description">{{ description }}</p>
               </div>
@@ -65,6 +65,12 @@ export default {
       padding-bottom: 0;
     }
 
+    .typography-headline {
+      @media screen and (max-width: $bp-s) {
+        margin-bottom: 10px;
+      }
+    }
+
     .gradient-bar {
       margin-top: 60px;
 
@@ -83,9 +89,14 @@ export default {
 
   .mask {
     text-align: left;
+    color: $text-color;
 
     a {
       color: $text-color;
+    }
+
+    .subtitle {
+      font-family: $sans-serif-bold;
     }
   }
 

@@ -33,12 +33,22 @@ h1, h2, h3, h4, h5, h6 {
 
 // Typography Helper Classes
 .typography-hero {
-  font-size: 42px;
-  line-height: 1.1;
+  font-size: 76px;
+  line-height: .9;
+
+  @media screen and (max-width: $bp-m) {
+    font-size: 60px;
+  }
+
+  @media screen and (max-width: $bp-s) {
+    font-size: 48px;
+  }
 }
 
 .typography-hero-cta {
   font-size: 37px;
+  line-height: 1;
+  margin-bottom: 30px;
 }
 
 .typography-headline {
@@ -88,7 +98,7 @@ a {
 
 p {
   @extend .typography-base;
-  line-height: 1.5;
+  line-height: 1.35;
   margin-top: 0;
   margin-bottom: 1rem;
 
@@ -305,10 +315,11 @@ input[type="range"] {
 .header-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 
   @media screen and (max-width: $bp-s) {
     display: block;
+    margin-bottom: 60px;
   }
 
   &-image {
@@ -321,7 +332,7 @@ input[type="range"] {
       padding: 40px;
 
       @media screen and (max-width: $bp-s) {
-        padding: 150px 20px;
+        padding: 110px 20px;
       }
     }
   }
