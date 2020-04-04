@@ -2,18 +2,18 @@
   <div id="app">
     <Navigation/>
     <router-view/>
-    <Social/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import Navigation from '@/components/Navigation'
-import Social from './components/Social'
+import Footer from '@/components/Footer'
 
 export default {
   components: {
     Navigation,
-    Social
+    Footer
   },
   async beforeMount () {
     await this.$store.dispatch('tabletop/getSheet')
