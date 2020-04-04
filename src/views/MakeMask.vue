@@ -23,6 +23,8 @@
               <vue-image
                 :background-color="variables.accent"
                 :source="require(`@/assets/img/masks/${id}-default.jpg`)"
+                :width='500'
+                :height='335'
               ></vue-image>
             </router-link>
           </div>
