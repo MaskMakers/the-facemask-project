@@ -125,7 +125,8 @@ export default {
       searchText: '',
       currentState: '',
       scrollPercent: 0,
-      resizeListener: null
+      resizeListener: null,
+      windowSize: 0
     }
   },
 
@@ -184,6 +185,7 @@ export default {
     const searchParams = new URLSearchParams(window.location.search)
     this.currentState = searchParams.get('state') || ''
     this.searchText = searchParams.get('search') || ''
+    this.windowSize = window.innerWidth
     this.resizeListener = debounce(this.resetRangeSlider.bind(this), 250)
 
     window.addEventListener('resize', this.resizeListener)
@@ -247,6 +249,7 @@ export default {
     },
 
     updateScrollPositionFromRange () {
+      this.windowSize = window.innerWidth
       const listContainer = document.querySelector('.list-container')
       const list = document.querySelector('.list')
 
@@ -261,8 +264,10 @@ export default {
     },
 
     resetRangeSlider () {
-      this.scrollPercent = 0
-      this.updateScrollPositionFromRange()
+      if (window.innerWidth !== this.windowSize) {
+        this.scrollPercent = 0
+        this.updateScrollPositionFromRange()
+      }
     }
   }
 }

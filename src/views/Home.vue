@@ -167,9 +167,10 @@ export default {
 
   /deep/ .image-bg {
     padding: 118px $space-l;
+    width: calc(100% - #{$space-l * 2});
 
     @media screen and (max-width: $bp-s) {
-      width: 100%;
+      width: calc(100% - #{$space-m * 2});
       padding: 100px $space-m;
       margin-bottom: 10em;
     }
