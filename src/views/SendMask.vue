@@ -80,7 +80,7 @@
       </div>
       <div class="pagination" v-if="paginatedHospitalsLength > 1 && pageSize !== 'All'">
         <button @click="goToPage('back')">
-          <ArrowIcon/>
+          <pagination-arrow-icon />
         </button>
         <button
           v-for="page in paginatedHospitalsLength"
@@ -91,7 +91,7 @@
           {{ page }}
         </button>
         <button @click="goToPage('forward')">
-          <ArrowIcon/>
+          <pagination-arrow-icon />
         </button>
       </div>
     </div>
@@ -101,12 +101,12 @@
 <script>
 import { mapState } from 'vuex'
 import debounce from '../helpers/debounce'
-import ArrowIcon from '../components/ArrowIcon'
+import PaginationArrowIcon from '../components/PaginationArrowIcon'
 
 export default {
   name: 'SendMask',
   components: {
-    ArrowIcon
+    PaginationArrowIcon
   },
 
   data () {
