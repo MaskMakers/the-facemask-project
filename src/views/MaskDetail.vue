@@ -131,6 +131,7 @@ export default {
   },
   methods: {
     requireImage (step) {
+      console.log(step, `@/assets/img/steps/${this.$route.params.maskId}/step-` + step + `.jpg`)
       try {
         return require(`@/assets/img/steps/${this.$route.params.maskId}/step-` + step + `.jpg`)
       } catch {
