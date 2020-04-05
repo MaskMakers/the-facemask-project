@@ -1,9 +1,9 @@
 <template>
   <div class="make-a-mask-container basic-page-container">
     <div class="header-grid">
-      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-selection.jpg')}">
+      <vue-background-image parent-class="header-grid-image image-bg" :source="require('@/assets/img/masks-selection.jpg')">
         <h1 class="typography-hero">Make <br>A <br>Mask</h1>
-      </div>
+      </vue-background-image>
       <div class="header-grid-copy">
         <h2 class="typography-headline">Choose a mask template</h2>
         <p class="typography-featured">The template you choose will be dependant on who you are making them for and what materials you have available.</p>
@@ -21,7 +21,6 @@
                 <p class="typography-featured description">{{ description }}</p>
               </div>
               <vue-image
-                :background-color="variables.accent"
                 :source="require(`@/assets/img/masks/${id}-default.jpg`)"
                 :width='500'
                 :height='335'
@@ -36,7 +35,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import variables from '../scss/shared/_variables.scss'
 
 export default {
   name: 'MakeMask',
@@ -45,11 +43,6 @@ export default {
     ...mapState('tabletop', [
       'masks'
     ])
-  },
-  data () {
-    return {
-      variables
-    }
   }
 }
 </script>

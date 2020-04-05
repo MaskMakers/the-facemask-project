@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 
 Vue.component('loading', () => import('@/components/Loading'))
 Vue.component('vue-image', () => import('@/components/VueImage'))
+Vue.component('vue-background-image', () => import('@/components/VueBackgroundImage'))
 
 new Vue({
   router,

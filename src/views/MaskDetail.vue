@@ -2,7 +2,8 @@
   <div class="mask-detail-container basic-page-container">
     <div v-if="currentMask">
       <div class="header-grid">
-      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)}"></div>
+      <vue-background-image parent-class="header-grid-image image-bg" :source="require(`@/assets/img/masks/${$route.params.maskId}-hero.jpg`)">
+      </vue-background-image>
       <div class="header-grid-copy">
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <h2>{{ currentMask.subtitle }}</h2>
@@ -40,7 +41,6 @@
               :source='requireImage(step)'
               :width='500'
               :height='322'
-              :background-color='variables.accent'
             ></vue-image>
             <div class="copy">
               <div class="copy-title">
@@ -68,16 +68,9 @@
 <script>
 import { mapState } from 'vuex'
 import { setMetaForMaskDetail } from '../helpers/meta/setMeta'
-import variables from '../scss/shared/_variables.scss'
 
 export default {
   name: 'MaskDetail',
-  components: {},
-  data () {
-    return {
-      variables
-    }
-  },
   computed: {
     ...mapState('tabletop', [
       'masks',
