@@ -3,9 +3,9 @@
     { "src": "/", "dest": "/index.html" },
     { "src": "/send-a-mask", "dest": "/send-a-mask.html" },
     { "src": "/make-a-mask", "dest": "/make-a-mask.html" },
-    { "src": "/mask/accordion-mask-1", "dest": "/mask/accordion-mask-1.html" },
-    { "src": "/mask/accordion-mask-2", "dest": "/mask/accordion-mask-2.html" },
-    { "src": "/mask/fitted-mask-1", "dest": "/mask/fitted-mask-1.html" },
-    { "src": "/mask/fitted-mask-2", "dest": "/mask/fitted-mask-2.html" }
+    { "src": "/mask/accordion-mask-elastic", "dest": "/mask/accordion-mask-elastic.html" },
+    { "src": "/mask/accordion-mask-string-ties", "dest": "/mask/accordion-mask-string-ties.html" },
+    { "src": "/mask/fitted-mask-elastic", "dest": "/mask/fitted-mask-elastic.html" },
+    { "src": "/mask/fitted-mask-string-ties", "dest": "/mask/fitted-mask-string-ties.html" }
   ]
 }
