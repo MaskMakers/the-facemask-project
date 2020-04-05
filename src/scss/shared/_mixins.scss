@@ -5,7 +5,7 @@
 
 // Change to div always maintain aspect ratio
 @mixin aspect-ratio($width, $height) {
-  position: relative;
+  // position: relative; //for vue-background-image to not jump this has to be not there
 
   &:before {
     display: block;
