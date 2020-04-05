@@ -11,6 +11,7 @@
     "tabletop": "^1.6.2",
     "vue": "^2.6.11",
     "vue-cli-plugin-sitemap": "^2.1.1",
+    "vue-gtm": "^2.2.0",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2",
     "vuex-persist": "^2.2.0"
