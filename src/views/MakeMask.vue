@@ -99,10 +99,19 @@ export default {
 
     .subtitle {
       font-family: $sans-serif-bold;
+      margin-bottom: 0;
     }
 
     .name, .subtitle {
       transition: color 0.3s;
+    }
+
+    .gradient-bar {
+      margin: 20px 0 18px;
+
+      @media screen and (max-width: $bp-s) {
+        margin: 12px 0 10px;
+      }
     }
 
     &:hover {
