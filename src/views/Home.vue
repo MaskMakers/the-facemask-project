@@ -12,11 +12,11 @@
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Make A Mask</h2>
-        <img src="~@/assets/img/icon-sewing.jpg" alt="Sewing Machine Icon">
+        <img src="~@/assets/img/icon-sewing.gif" alt="Sewing Machine Animated Icon">
       </router-link>
       <router-link to="/send-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Send A Mask</h2>
-        <img src="~@/assets/img/icon-hospital.jpg" alt="Hospital Icon">
+        <img src="~@/assets/img/icon-hospital.gif" alt="Hospital Animated Icon">
       </router-link>
     </div>
     <div class="about-container">
@@ -122,13 +122,13 @@ export default {
   }
 
   .hero-link {
-    padding: $space-xl $space-s 5em;
+    padding: $space-xl $space-s $space-l;
     box-sizing: border-box;
     text-align: center;
     display: block;
 
     @media screen and (max-width: $bp-s) {
-      padding: $space-m $space-s 5em;
+      padding: $space-m $space-s $space-s;
 
       &:not(:last-of-type) {
         margin-bottom: 40px;

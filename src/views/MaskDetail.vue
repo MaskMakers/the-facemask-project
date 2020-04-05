@@ -245,7 +245,8 @@ export default {
 
     @media screen and (max-width: $bp-s) {
       margin-bottom: 0;
-      padding: 40px;
+      padding: 30px;
+      grid-gap: $space-xl;
     }
 
     .step {
@@ -260,12 +261,21 @@ export default {
       .copy-title {
         display: flex;
         margin-top: $space-m;
+
+        @media screen and (max-width: $bp-s) {
+          margin-top: $space-s;
+        }
       }
 
       .step-number {
         font-size: 72px;
         line-height: 1.05;
         margin-bottom: 0;
+
+        @media screen and (max-width: $bp-s) {
+          font-size: 50px;
+          line-height: .95;
+        }
       }
 
       .title {

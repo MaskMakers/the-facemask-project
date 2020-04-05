@@ -52,12 +52,16 @@ h1, h2, h3, h4, h5, h6 {
 .typography-hero-cta {
   font-size: 37px;
   line-height: 1;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   transition: .3s color;
 
   &:hover {
     color: $accent-color;
     transition: .3s color;
+  }
+
+  @media screen and (max-width: $bp-s) {
+    margin-bottom: 0;
   }
 }
 
