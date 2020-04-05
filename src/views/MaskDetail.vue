@@ -8,11 +8,6 @@
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <h2>{{ currentMask.subtitle }}</h2>
         <div class="list">
-          <div class="fabric list-item">
-            <p class="list-title">Fabric:</p>
-            <p class="list-description">{{currentMask.fabric}}</p>
-          </div>
-          <br>
           <div class="skill list-item">
             <p class="list-title">Skill Level:</p>
             <p class="list-description">{{currentMask.skill}}</p>
@@ -27,9 +22,14 @@
             <p class="list-title">Seam Allowance:</p>
             <p class="list-description">{{currentMask.seamAllowance}}</p>
           </div>
+          <br>
+          <div class="fabric list-item">
+            <p class="list-title">Fabric:</p>
+            <p class="list-description">{{currentMask.fabric}}</p>
+          </div>
         </div>
         <div class="download-button">
-            <a class="button accent-button" :href="'/assets/mask-templates/'" target="_blank" download>Download Template</a>
+            <a class="button accent-button" :href="`/pdf/${currentMask.template}`" target="_blank" download>Download Template</a>
           </div>
       </div>
     </div>
@@ -56,8 +56,39 @@
         </div>
       </div>
       <div class="fabrics card no-hover">
-        <h2 class="typography-headline">Fabrics and Filters</h2>
-        <p>Continue sewing around the corner and along the long side, stopping 2” before you reach your starting stitches.</p>
+        <h2 class="typography-headline">Fabrics & Filters</h2>
+        <p>Here’s the deal, we’re not trying to be prescriptive—we want you to use what is readily at-hand, easy, and available. There may be a few materials that you have lying around that you didn’t know are great to repurpose for masks, and that’s where we come in…</p>
+        <div class="fabric-item">
+          <h2>EFFECTIVE FABRICS</h2>
+          <h3>Materials To Use</h3>
+          <p>Woven cotton, cotton/polyester blends, silk, flannel, quilter’s cotton, unused mechanic/car shop towels, non-woven polypropylene (NWPP) and linen. Think—dish towels, T-Shirts, pillow cases, sheets, and scarves.</p>
+          <p>Pro Tip: You’re going to want to use two layers (four is even better) of these materials to make your masks truly effective.</p>
+          <p>Why these materials? They’re breathable, accessible, and easy to work with! Breathability is key. If you can't breath well through the mask you are more likely to adjust it.</p>
+          <h3>Materials NOT too use</h3>
+          <p>Synthetics, polyester, spandex - These are bad ideas because the virus can survive on those surfaces for a long period of time.</p>
+        </div>
+        <div class="fabric-item">
+          <h2>EFFECTIVE FILTERS</h2>
+          <h3>Materials To Use</h3>
+          <p>(MUST be sandwiched between fabric for safety)</p>
+          <p>Coffee filters, A 1900+ furnace filter (2 layers), tyvek, vacuum cleaner bag, non-woven polypropylene (NWPP), unused mechanic/car shop towels</p>
+          <h3>Materials NOT too use</h3>
+          <p>HEPA filters have glass particulate that you DO NOT want to be breathing.</p>
+        </div>
+        <div class="fabric-item">
+          <h2>Cleaning & Care</h2>
+          <ul>
+            <li>Wash hands for 20 seconds (yeah, yeah—hum Happy Birthday twice) with soap and water before touching or putting on a mask.</li>
+            <li>If wearing the mask, DO NOT fidget, touch, or adjust it.</li>
+            <li>Remove the mask at the back, DO NOT touch the front.</li>
+            <li>Wash your hands for 20 seconds after you remove the mask</li>
+            <li>Discard filter and wash masks daily and before wearing again. Use color safe bleach or boil for 20 minutes.</li>
+          </ul>
+        </div>
+        <div class="fabric-item">
+          <h2>KEEP IN MIND</h2>
+          <p>Wearing a mask does not mean you do not have to practice other recommended activities: stay at home unless going out for essentials/exercise, avoid groups, maintain social distance of 6+ feet from people, wash your hands, do not touch your face.</p>
+        </div>
       </div>
     </div>
     </div>
@@ -102,7 +133,7 @@ export default {
         image: '',
         step: String(steps.length + 1),
         templateLink: '',
-        title: 'Send Mask in!'
+        title: 'Package the masks, be sure to include the note that is in the pdf, and send to a hospital in need.'
       })
 
       return steps
@@ -172,6 +203,11 @@ export default {
   .header-grid-copy {
     max-width: none;
     text-align: left;
+
+    @media screen and (max-width: $bp-m) {
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
     @media screen and (max-width: $bp-s) {
       padding-bottom: 0;
@@ -309,15 +345,42 @@ export default {
     margin: 0 auto;
     padding: 90px;
     box-sizing: content-box;
+    text-align: left;
 
     @media screen and (max-width: $bp-s) {
       margin-top: 60px;
       padding: 50px;
     }
 
+    .typography-headline {
+      margin-bottom: 0;
+      font-size: 34px;
+    }
+
     h2 {
       text-transform: uppercase;
     }
+
+    h3 {
+      font-size: 22px;
+      margin-bottom: 0;
+    }
+
+    p {
+      max-width: 900px;
+    }
+
+    ul {
+      padding-left: 1.4em;
+
+      li {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .fabric-item {
+    margin: 70px 0 0;
   }
 }
 </style>
