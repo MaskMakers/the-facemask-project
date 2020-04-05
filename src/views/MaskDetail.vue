@@ -102,7 +102,7 @@ export default {
         image: '',
         step: String(steps.length + 1),
         templateLink: '',
-        title: 'Send Mask in!'
+        title: 'Package the masks, be sure to include the note that is in the pdf, and send to a hospital in need.'
       })
 
       return steps
