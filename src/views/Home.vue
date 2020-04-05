@@ -25,9 +25,9 @@
           <p class="typography-base">{{decoder(mission)}}</p>
           <div class="gradient-bar"></div>
         </div>
-        <div class="image-bg" :style="{backgroundImage: 'url(' + require('@/assets/img/masks-pattern.jpg')}">
+        <vue-background-image parent-class="image-bg" :source="require('@/assets/img/masks-pattern.jpg')">
           <h2 class="typography-hero">Everyday Heroes<br> Helping <br>Everyday Heroes</h2>
-        </div>
+        </vue-background-image>
       </div>
     </div>
     <div class="quote-container">
@@ -44,7 +44,6 @@
 </template>
 
 <script>
-import variables from '../scss/shared/_variables.scss'
 import decoder from '../helpers/decoder.js'
 
 export default {
@@ -52,7 +51,6 @@ export default {
   mounted () {},
   data () {
     return {
-      variables,
       decoder,
       mission: 'The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of&nbsp;the&nbsp;pandemic!'
     }
@@ -167,7 +165,7 @@ export default {
     }
   }
 
-  .image-bg {
+  /deep/ .image-bg {
     padding: 118px $space-l;
 
     @media screen and (max-width: $bp-s) {
@@ -213,14 +211,6 @@ export default {
     color: $accent-color;
     margin-bottom: 18px;
     line-height: 1.25;
-  }
-
-  /deep/ .vue-image {
-    @media(min-width: $bp-s + 1) {
-      width: 200%;
-      max-width: 200%;
-      margin-right: -100%;
-    }
   }
 }
 </style>

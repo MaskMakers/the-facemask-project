@@ -49,6 +49,8 @@ export default {
 
           const steps = data['Steps'].elements
           store.dispatch('formatSteps', steps)
+        }).catch(() => {
+          store.dispatch('tabletop/getFallbackData')
         })
       }
     },

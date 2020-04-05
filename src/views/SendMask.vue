@@ -1,15 +1,15 @@
 <template>
   <div class="hospital-list-container basic-page-container">
     <div class="header-grid">
-      <div class="header-grid-image image-bg" :style="{backgroundImage: 'url(' + require(`@/assets/img/masks-envelope.jpg`)}">
+      <vue-background-image parent-class="header-grid-image image-bg" :source="require(`@/assets/img/masks-envelope.jpg`)">
         <h1 class="typography-hero">Send <br>A <br>Mask</h1>
-      </div>
+      </vue-background-image>
       <div class="header-grid-copy">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         <p>
           This data was provided by <a href="https://publichealth.berkeley.edu/" target="_blank">UC Berkeley School of Public Health</a>.
           If you would like to view their document directly, please <a href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
-          or email <a class="email-link hover" href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks<br>@gmail.com</a> for more info!
+          or email <a class="email-link hover" href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks @ gmail.com</a> for more info!
         </p>
       </div>
     </div>
@@ -100,7 +100,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import variables from '../scss/shared/_variables.scss'
 import debounce from '../helpers/debounce'
 import ArrowIcon from '../components/ArrowIcon'
 
@@ -112,7 +111,6 @@ export default {
 
   data () {
     return {
-      variables,
       currentPage: 0,
       pageSize: 50,
       pageSizeOptions: [

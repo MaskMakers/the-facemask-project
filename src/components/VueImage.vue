@@ -16,11 +16,13 @@
 </template>
 
 <script>
+import variables from '../scss/shared/_variables.scss'
+
 export default {
   props: {
     backgroundColor: {
       type: String,
-      default: `#efefef`
+      default: variables.accent
     },
     width: {
       type: Number,
