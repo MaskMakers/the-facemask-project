@@ -58,10 +58,10 @@ module.exports = {
         '/',
         '/send-a-mask',
         '/make-a-mask',
-        '/mask/accordion-mask-1',
-        '/mask/accordion-mask-2',
-        '/mask/fitted-mask-1',
-        '/mask/fitted-mask-2'
+        '/mask/accordion-mask-elastic',
+        '/mask/accordion-mask-string-ties',
+        '/mask/fitted-mask-elastic',
+        '/mask/fitted-mask-string-ties'
       ],
       useRenderEvent: true,
       headless: true,
