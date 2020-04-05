@@ -3,19 +3,24 @@
     <h1 class="visuallyhidden">Mask Makers</h1>
     <div class="hero-copy">
       <h2 class="typography-headline home-headline">
-        Make a mask at home.
+        MAKE A MASK AT HOME.
         <br>
-        Send it to a hospital that needs one.
+        SEND IT TO A HOSPITAL THAT NEEDS ONE.
       </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed consequat sapien, vel interdum sapien. Duis tristique nunc nec nisl aliquam finibus. Fusce lorem nibh, varius eu tincidunt in, rutrum eu nulla. Suspendisse in tincidunt metus, eu dapibus turpis. Aenean eu tincidunt dolor, nec cursus ligula. </p>
+      <p>
+        Mask Maskers is a group of volunteers working to connect<br>
+        people who make masks to healthcare workers who need masks.
+      </p>
     </div>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Make A Mask</h2>
+        <p>Choose a template based on your skill level and materials you have at home.</p>
         <img src="~@/assets/img/icon-sewing.gif" alt="Sewing Machine Animated Icon">
       </router-link>
       <router-link to="/send-a-mask" class="hero-link card">
         <h2 class="link-text typography-hero-cta">Send A Mask</h2>
+        <p>Choose a hospital that needs the type of mask that you’ve made.</p>
         <img src="~@/assets/img/icon-hospital.gif" alt="Hospital Animated Icon">
       </router-link>
     </div>
@@ -38,7 +43,9 @@
         and its up to us to make<br>
         the worse parts better.”
       </h2>
-      <span class="typography-action-small">John Maeda</span>
+      <span class="typography-action-small">
+        <strong>John Maeda</strong>, world-renowned designer & advocate for humanizing technology
+      </span>
     </div>
   </div>
 </template>
@@ -52,7 +59,7 @@ export default {
   data () {
     return {
       decoder,
-      mission: 'The Facemask Project is a grassroots way of helping to protect the medical staffs in our communities through the COVID-19 pandemic, by encouraging ordinary citizens under quarantine (and with a sewing machine) to become heroes of&nbsp;the&nbsp;pandemic!'
+      mission: 'Mask Makers is a grassroots effort to help protect healthcare workers on the frontlines of the COVID-19 pandemic. Our volunteer-driven mission is to connect ordinary citizens who are sheltering in place (with needle and thread!) to the doctors, nurses and hospital staff who need more masks.'
     }
   },
   methods: {
@@ -84,6 +91,10 @@ export default {
 
     @media screen and (max-width: $bp-s) {
       margin: 40px auto 80px;
+
+      br {
+        display: none;
+      }
     }
   }
 
@@ -96,6 +107,9 @@ export default {
   }
 
   .home-headline {
+    line-height: 1;
+    margin-bottom: 0.1em;
+
     @media screen and (max-width: $bp-s) {
       padding: 0;
 
@@ -120,17 +134,24 @@ export default {
   }
 
   .hero-link {
-    padding: $space-xl $space-s $space-l;
+    padding: $space-xl $space-s $space-s;
     box-sizing: border-box;
     text-align: center;
     display: block;
 
     @media screen and (max-width: $bp-s) {
-      padding: $space-m $space-s $space-s;
+      padding: $space-m $space-s 0;
 
       &:not(:last-of-type) {
         margin-bottom: 40px;
       }
+    }
+
+    p {
+      font-size: 1em;
+      color: $primary-color;
+      padding: 0 1em;
+      margin-bottom: 0;
     }
 
     &:hover {
@@ -187,19 +208,15 @@ export default {
   }
 
   .featured-info {
-    max-width: 400px;
+    max-width: 340px;
     margin: 0 auto;
     padding: 0 $space-l;
   }
 
   .quote-container {
-    max-width: 587px;
+    max-width: 640px;
     margin: 0 auto;
     padding-bottom: 5em;
-
-    span {
-      font-weight: bold;
-    }
 
     @media(max-width: $bp-xxs) {
       br {
@@ -212,6 +229,10 @@ export default {
     color: $accent-color;
     margin-bottom: 18px;
     line-height: 1.25;
+
+    @media(min-width: $bp-l + 1) {
+      font-size: 40px;
+    }
   }
 }
 </style>

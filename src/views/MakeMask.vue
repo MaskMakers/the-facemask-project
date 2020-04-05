@@ -5,8 +5,11 @@
         <h1 class="typography-hero">Make <br>A <br>Mask</h1>
       </vue-background-image>
       <div class="header-grid-copy">
-        <h2 class="typography-headline">Choose a mask template</h2>
-        <p class="typography-featured">The template you choose will be dependant on who you are making them for and what materials you have available.</p>
+        <h2 class="typography-headline">PICK A TEMPLATE<br>& GET SEWING</h2>
+        <p class="typography-featured">
+          Consider your skill level, what materials you have available and who you’re making a mask for.
+          Since some facilities request specific mask designs, you may want to <router-link class="hover strong" to="/send-a-mask">choose your hospital</router-link> first.
+          </p>
         <div class="gradient-bar"></div>
       </div>
     </div>
@@ -18,7 +21,7 @@
                 <h3 class="typography-headline name">{{name}}</h3>
                 <p class="typography-featured subtitle">{{ subtitle }}</p>
                 <div class="gradient-bar"></div>
-                <p class="typography-featured description">{{ description }}</p>
+                <div class="typography-featured description" v-html="description"></div>
               </div>
               <vue-image
                 :source="require(`@/assets/img/masks/${id}-default.jpg`)"
@@ -61,6 +64,8 @@ export default {
     }
 
     .typography-headline {
+      line-height: 1.1;
+
       @media screen and (max-width: $bp-s) {
         margin-bottom: 10px;
       }
@@ -87,6 +92,10 @@ export default {
     color: $text-color;
 
     a {
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
+      height: 100%;
       color: $text-color;
     }
 
@@ -125,6 +134,12 @@ export default {
 
   .gradient-bar {
     width: 75%;
+  }
+
+  .description {
+    padding-left: 1em;
+    margin-bottom: 1em;
+    font-size: 18px;
   }
 }
 </style>
