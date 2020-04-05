@@ -11,6 +11,16 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 //   renderRoutes.push(route.src)
 // })
 
+const availableRoutes = [
+  '/',
+  '/send-a-mask',
+  '/make-a-mask',
+  '/mask/accordion-mask-elastic',
+  '/mask/accordion-mask-string-ties',
+  '/mask/fitted-mask-elastic',
+  '/mask/fitted-mask-string-ties'
+]
+
 module.exports = {
   runtimeCompiler: true,
 
@@ -54,15 +64,7 @@ module.exports = {
       registry: undefined,
       // @TODO Fix somehow?
       // renderRoutes,
-      renderRoutes: [
-        '/',
-        '/send-a-mask',
-        '/make-a-mask',
-        '/mask/accordion-mask-elastic',
-        '/mask/accordion-mask-string-ties',
-        '/mask/fitted-mask-elastic',
-        '/mask/fitted-mask-string-ties'
-      ],
+      renderRoutes: availableRoutes,
       useRenderEvent: true,
       headless: true,
       onlyProduction: true,
@@ -79,6 +81,11 @@ module.exports = {
           .replace('id="app"', 'id="app" data-server-rendered="true"')
         return route
       }
+    },
+
+    sitemap: {
+      baseURL: 'https://beamaskmaker.org',
+      urls: availableRoutes
     }
   }
 }
