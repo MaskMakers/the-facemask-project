@@ -80,7 +80,7 @@ export default {
   }
 
   .logo-container {
-    width: 200px;
+    width: 264px;
     margin-right: 30px;
 
     /deep/ svg {
@@ -95,8 +95,17 @@ export default {
   .copy-container {
     text-align: left;
 
+    h2 {
+      &:first-of-type {
+        @media screen and (max-width: $bp-s) {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
     a {
       text-decoration: underline;
+      font-weight: bold;
     }
   }
 
@@ -145,8 +154,13 @@ export default {
   }
 
   .footer-legal {
-    margin-top: 80px;
+    margin-top: 10px;
     max-width: 1000px;
+    font-size: 16px;
+
+    @media screen and (max-width: $bp-s) {
+      margin-top: 56px;
+    }
   }
 }
 </style>
