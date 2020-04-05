@@ -163,7 +163,7 @@ export default {
     }
   }
 
-  .header-grid-image {
+  /deep/ .header-grid-image {
     @media screen and (max-width: $bp-m - 1) {
       @include aspect-ratio(16, 9);
     }
