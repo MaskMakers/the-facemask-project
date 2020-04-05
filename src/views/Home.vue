@@ -14,12 +14,16 @@
     </div>
     <div class="hero-links-container">
       <router-link to="/make-a-mask" class="hero-link card">
-        <h2 class="link-text typography-hero-cta">Make A Mask</h2>
+        <h2 class="link-text typography-hero-cta">
+          Make A <span>Mask<arrow-icon /></span>
+        </h2>
         <p>Choose a template based on your skill level and materials you have at home.</p>
-        <img src="~@/assets/img/icon-sewing.gif" alt="Sewing Machine Animated Icon">
+        <img  class="arrow" src="~@/assets/img/icon-sewing.gif" alt="Sewing Machine Animated Icon">
       </router-link>
       <router-link to="/send-a-mask" class="hero-link card">
-        <h2 class="link-text typography-hero-cta">Send A Mask</h2>
+        <h2 class="link-text typography-hero-cta">
+          Send A <span>Mask<arrow-icon /></span>
+        </h2>
         <p>Choose a hospital that needs the type of mask that you’ve made.</p>
         <img src="~@/assets/img/icon-hospital.gif" alt="Hospital Animated Icon">
       </router-link>
@@ -158,6 +162,10 @@ export default {
       .link-text {
         color: $accent-color;
       }
+
+      /deep/ svg {
+        fill: $accent-color;
+      }
     }
 
     .link-text {
@@ -166,6 +174,18 @@ export default {
 
     img {
       width: 70%;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+
+    /deep/ svg {
+      display: inline-block;
+      margin-top: -8px;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+      fill: $primary-color;
     }
   }
 
