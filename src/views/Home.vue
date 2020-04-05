@@ -183,7 +183,7 @@ export default {
     /deep/ svg {
       display: inline-block;
       margin-top: -8px;
-      margin-left: 0.75rem;
+      margin-left: 0.3rem;
       vertical-align: middle;
       fill: $primary-color;
     }
