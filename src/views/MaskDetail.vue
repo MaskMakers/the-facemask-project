@@ -55,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="fabrics card">
+      <div class="fabrics card no-hover">
         <h2 class="typography-headline">Fabrics and Filters</h2>
         <p>Continue sewing around the corner and along the long side, stopping 2” before you reach your starting stitches.</p>
       </div>
@@ -309,6 +309,7 @@ export default {
 
     @media screen and (max-width: $bp-s) {
       margin-top: 60px;
+      padding: 50px;
     }
 
     h2 {
