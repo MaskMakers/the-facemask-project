@@ -8,11 +8,6 @@
         <h1 class="typography-hero">{{ currentMask.name }}</h1>
         <h2>{{ currentMask.subtitle }}</h2>
         <div class="list">
-          <div class="fabric list-item">
-            <p class="list-title">Fabric:</p>
-            <p class="list-description">{{currentMask.fabric}}</p>
-          </div>
-          <br>
           <div class="skill list-item">
             <p class="list-title">Skill Level:</p>
             <p class="list-description">{{currentMask.skill}}</p>
@@ -27,9 +22,14 @@
             <p class="list-title">Seam Allowance:</p>
             <p class="list-description">{{currentMask.seamAllowance}}</p>
           </div>
+          <br>
+          <div class="fabric list-item">
+            <p class="list-title">Fabric:</p>
+            <p class="list-description">{{currentMask.fabric}}</p>
+          </div>
         </div>
         <div class="download-button">
-            <a class="button accent-button" :href="'/assets/mask-templates/'" target="_blank" download>Download Template</a>
+            <a class="button accent-button" :href="`/pdf/${currentMask.template}`" target="_blank" download>Download Template</a>
           </div>
       </div>
     </div>
@@ -172,6 +172,11 @@ export default {
   .header-grid-copy {
     max-width: none;
     text-align: left;
+
+    @media screen and (max-width: $bp-m) {
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
     @media screen and (max-width: $bp-s) {
       padding-bottom: 0;

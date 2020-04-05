@@ -72,6 +72,8 @@ export default {
   }
 
   .footer-item {
+    padding: 0 10px;
+
     &:not(:last-of-type) {
       @media screen and (max-width: $bp-m) {
         margin-bottom: 50px;
@@ -81,7 +83,7 @@ export default {
 
   .logo-container {
     width: 264px;
-    margin-right: 30px;
+    margin-right: 6px;
 
     /deep/ svg {
       width: 100%;
