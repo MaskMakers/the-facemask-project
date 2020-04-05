@@ -254,7 +254,6 @@ input[type="range"] {
 .basic-page-container {
   margin: 0 auto 50px;
   padding: 0 30px;
-  // max-width: $page-width;
   width: 100%;
   box-sizing: border-box;
 
@@ -290,7 +289,6 @@ input[type="range"] {
 }
 
 .card {
-  @include neumorphism();
   overflow: hidden;
   box-sizing: border-box;
   padding: 24px 0 0;
@@ -302,6 +300,14 @@ input[type="range"] {
     @media screen and (max-width: $bp-s) {
       padding: 0 25px 10px;
     }
+  }
+
+  &.no-hover {
+    @include neumorphism(false);
+  }
+
+  &:not(.no-hover) {
+    @include neumorphism();
   }
 }
 
