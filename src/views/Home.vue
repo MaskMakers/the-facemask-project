@@ -115,7 +115,6 @@ export default {
 
   .home-headline {
     line-height: 1;
-    margin-bottom: 0.1em;
 
     @media screen and (max-width: $bp-s) {
       padding: 0;
