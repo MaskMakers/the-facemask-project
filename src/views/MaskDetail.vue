@@ -63,8 +63,8 @@
           <h3>Materials To Use</h3>
           <p>Woven cotton, cotton/polyester blends, silk, flannel, quilter’s cotton, unused mechanic/car shop towels, non-woven polypropylene (NWPP) and linen. Think—dish towels, T-Shirts, pillow cases, sheets, and scarves.</p>
           <p>Pro Tip: You’re going to want to use two layers (four is even better) of these materials to make your masks truly effective.</p>
-          <p>Why these materials? They’re breathable, accessible, and easy to work with! Breathability is key. If you can't breath well through the mask you are more likely to adjust it.</p>
-          <h3>Materials NOT too use</h3>
+          <p>Why these materials? They’re breathable, accessible, and easy to work with! Breathability is key. If you can't breathe well through the mask you are more likely to adjust it.</p>
+          <h3>Materials NOT To Use</h3>
           <p>Synthetics, polyester, spandex - These are bad ideas because the virus can survive on those surfaces for a long period of time.</p>
         </div>
         <div class="fabric-item">
@@ -72,7 +72,7 @@
           <h3>Materials To Use</h3>
           <p>(MUST be sandwiched between fabric for safety)</p>
           <p>Coffee filters, A 1900+ furnace filter (2 layers), tyvek, vacuum cleaner bag, non-woven polypropylene (NWPP), unused mechanic/car shop towels</p>
-          <h3>Materials NOT too use</h3>
+          <h3>Materials NOT To Use</h3>
           <p>HEPA filters have glass particulate that you DO NOT want to be breathing.</p>
         </div>
         <div class="fabric-item">
@@ -352,13 +352,18 @@ export default {
       padding: 50px;
     }
 
+    @media screen and (max-width: $bp-xxs) {
+      padding: 32px;
+    }
+
     .typography-headline {
-      margin-bottom: 0;
       font-size: 34px;
     }
 
     h2 {
       text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: 10px;
     }
 
     h3 {

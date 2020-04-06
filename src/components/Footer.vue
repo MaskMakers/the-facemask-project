@@ -8,8 +8,9 @@
         </router-link>
       </div>
       <div class="footer-item copy-container">
-        <h2>Have a Question?</h2>
-        <h2>Have Mask Suggestions?</h2>
+        <h2>Questions?</h2>
+        <h2>Suggestions?</h2>
+        <h2>Contributions?</h2>
         <p>Email us at <a href="mailto:beamaskmaker@gmail.com">beamaskmaker@gmail.com</a></p>
       </div>
       <div class="footer-item social-container">
@@ -20,7 +21,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <p>While these masks are intended to reduce the risk of getting and spreading the COVID19 virus, the masks produced by these templates do not guarantee 100% protection from the virus. While we follow the CDC recommendations for wearing masks, please refer to the CDC website for information on mask recommendations how to stay safe</p>
+      <p>While these masks are intended to reduce the risk of getting and spreading the COVID-19 virus, the masks produced by these templates do not guarantee 100% protection from the virus. While we follow the CDC recommendations for wearing masks, please refer to the CDC website for information on mask recommendations and how to stay safe.</p>
     </div>
   </div>
 </div>
@@ -45,6 +46,10 @@ export default {
   color: #fff;
   box-sizing: border-box;
   text-align: left;
+
+  @media (max-width: 400px) {
+    padding: 80px 25px;
+  }
 
   h2, a {
     color: #fff;
@@ -87,6 +92,10 @@ export default {
     width: 264px;
     margin-right: 6px;
 
+    @media (max-width: 400px) {
+      width: 200px;
+    }
+
     /deep/ svg {
       width: 100%;
 
@@ -98,14 +107,6 @@ export default {
 
   .copy-container {
     text-align: left;
-
-    h2 {
-      &:first-of-type {
-        @media screen and (max-width: $bp-s) {
-          margin-bottom: 20px;
-        }
-      }
-    }
 
     a {
       text-decoration: underline;
@@ -158,7 +159,7 @@ export default {
   }
 
   .footer-legal {
-    margin-top: 10px;
+    margin-top: 30px;
     max-width: 1000px;
     font-size: 16px;
 

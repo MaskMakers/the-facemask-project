@@ -41,10 +41,10 @@
     </div>
     <div class="quote-container">
       <h2 class="typography-headline featured-quote">
-        “I have good news,<br>
-        Its all going to get better<br>
-        and its all going to get worse<br>
-        and its up to us to make<br>
+        “I have good news.<br class="small">
+        It's all going to get better<br>
+        and it's all going to get worse<br>
+        and it's up to us to make<br>
         the worse parts better.”
       </h2>
       <span class="typography-action-small">
@@ -237,12 +237,18 @@ export default {
   }
 
   .quote-container {
-    max-width: 640px;
+    max-width: 645px;
     margin: 0 auto;
     padding-bottom: 5em;
 
     @media(max-width: $bp-xxs) {
-      br {
+      h2 {
+        font-size: 19px;
+      }
+    }
+
+    @media(max-width: 400px) {
+      br:not(.small) {
         display: none;
       }
     }
