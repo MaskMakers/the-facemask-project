@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="download-button">
-            <a class="button accent-button" :href="`/pdf/${currentMask.template}`" target="_blank" download>Download Template</a>
+            <a class="button accent-button" :href="`/pdf/${currentMask.template}`" target="_blank">Download Template</a>
           </div>
       </div>
     </div>
