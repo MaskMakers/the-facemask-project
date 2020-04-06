@@ -438,6 +438,10 @@ p {
     font-weight: bold;
     font-weight: 16px;
   }
+
+  /deep/ a {
+    color: $accent-color;
+  }
 }
 
 .pagination {
