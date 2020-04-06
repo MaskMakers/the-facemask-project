@@ -3,7 +3,9 @@
   <div class="footer-wrapper">
     <div class="footer-grid">
       <div class="footer-item logo-container">
-        <Logo/>
+        <router-link to="/">
+          <Logo/>
+        </router-link>
       </div>
       <div class="footer-item copy-container">
         <h2>Have a Question?</h2>

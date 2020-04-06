@@ -8,7 +8,7 @@
         <h2 class="typography-headline">FIND A HOSPITAL <br>THAT YOU CAN HELP</h2>
         <p>Search below to find a hospital that’s accepting mask donations. You can help out your own community or spread the love far and wide.</p>
         <p>
-          This data was provided by graduate students at schools of public health. If you would like to view their document directly, please. <a class="hover strong" href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
+          This data was provided by graduate students at schools of public health. If you would like to view their document directly, please <a class="hover strong" href="https://docs.google.com/document/d/12a5YO0Z9RpHZk9Zkzl4NOj9CbjzhFfoKjPLFFC-21LU/preview#heading=h.o8glz8qqtcdo" target="_blank">click here</a>,
           or email <a class="email-link hover strong" href="mailto:we.need.handmade.masks@gmail.com" target="_blank">we.need.handmade.masks @ gmail.com</a> for more info.
         </p>
       </div>
