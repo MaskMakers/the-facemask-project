@@ -3,8 +3,9 @@
     <h1 class="visuallyhidden">Mask Makers</h1>
     <div class="hero-copy">
       <h2 class="typography-headline home-headline">
-        MAKE A MASK AT HOME.<br>
-        {{decoder(hero)}}
+        {{decoder(heroOne)}}
+        <br>
+        {{decoder(heroTwo)}}
       </h2>
       <p>
         Mask Maskers is a group of volunteers working to connect<br>
@@ -62,7 +63,8 @@ export default {
   data () {
     return {
       decoder,
-      hero: 'SEND IT TO A HOSPITAL THAT NEEDS&nbsp;ONE.',
+      heroOne: 'MAKE A MASK AT&nbsp;HOME.',
+      heroTwo: 'SEND IT TO A HOSPITAL THAT NEEDS&nbsp;ONE.',
       heroCopy: 'people who make masks to healthcare workers who need&nbsp;masks.',
       mission: 'Mask Makers is a grassroots effort to help protect healthcare workers on the frontlines of the COVID-19 pandemic. Our volunteer-driven mission is to connect ordinary citizens who are sheltering in place (with needle and thread!) to the doctors, nurses and hospital staff who need more masks.'
     }
@@ -96,6 +98,7 @@ export default {
 
     @media screen and (max-width: $bp-s) {
       margin: 40px auto 80px;
+      width: 87%;
     }
 
     p br {
