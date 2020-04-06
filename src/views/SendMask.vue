@@ -126,7 +126,9 @@ export default {
       currentState: '',
       scrollPercent: 0,
       resizeListener: null,
-      windowSize: 0
+      windowSize: 0,
+      gtmSearchListener: 0,
+      gtmStateListener: 0
     }
   },
 
@@ -222,11 +224,33 @@ export default {
 
       if (this.searchText !== '') {
         query += '?search=' + this.searchText
+
+        clearTimeout(this.gtmSearchListener)
+        this.gtmSearchListener = setTimeout(() => {
+          this.$gtm.trackEvent({
+            event: 'customEvent',
+            category: 'Search',
+            action: 'Search Change',
+            label: this.searchText,
+            value: this.searchText
+          })
+        }, 1000)
       }
 
       if (this.currentState !== '') {
         const prepend = this.searchText !== '' ? '&' : '?'
         query += `${prepend}state=${this.currentState}`
+
+        clearTimeout(this.gtmStateListener)
+        this.gtmStateListener = setTimeout(() => {
+          this.$gtm.trackEvent({
+            event: 'customEvent',
+            category: 'Search',
+            action: 'State Change',
+            label: this.currentState,
+            value: this.currentState
+          })
+        }, 1000)
       }
 
       window.history.replaceState(null, null, query)
