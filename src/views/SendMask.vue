@@ -245,7 +245,7 @@ export default {
         this.gtmStateListener = setTimeout(() => {
           this.$gtm.trackEvent({
             event: 'customEvent',
-            category: 'Search',
+            category: 'State',
             action: 'State Change',
             label: this.currentState,
             value: this.currentState
