@@ -41,7 +41,7 @@
     </div>
     <div class="quote-container">
       <h2 class="typography-headline featured-quote">
-        “I have good news,<br class="small">
+        “I have good news.<br class="small">
         It's all going to get better<br>
         and it's all going to get worse<br>
         and it's up to us to make<br>
