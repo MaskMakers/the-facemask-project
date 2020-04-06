@@ -67,7 +67,7 @@
                 <div class="phone" v-html="generatePhoneText(phone)"></div>
                 <div class="need">{{ need }}</div>
                 <div class="pattern" v-html="pattern"></div>
-                <div class="delivery">{{ delivery }}</div>
+                <div class="delivery" v-html="delivery"></div>
               </div>
             </div>
             <p v-else>
