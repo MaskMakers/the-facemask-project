@@ -191,6 +191,9 @@ export default {
     this.resizeListener = debounce(this.resetRangeSlider.bind(this), 250)
 
     window.addEventListener('resize', this.resizeListener)
+
+    // for initial GTM call
+    this.updatePageAndURL()
   },
 
   beforeRouteLeave (to, from, next) {
