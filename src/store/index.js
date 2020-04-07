@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import firebase from './modules/firebase'
+import tabletop from './modules/tabletop'
 import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
 
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
-  modules: ['firebase']
+  modules: ['tabletop']
 })
 
 // reset when storage is older than a half hour
@@ -35,7 +35,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    firebase
+    tabletop
   },
   plugins: localPlugins
 })

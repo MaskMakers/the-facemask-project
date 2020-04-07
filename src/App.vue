@@ -16,7 +16,7 @@ export default {
     Footer
   },
   async beforeMount () {
-    await this.$store.dispatch('firebase/getData')
+    await this.$store.dispatch('tabletop/getSheet')
 
     // wait a few seconds to allow fetching all the data
     // before emitting the prerender hook
