@@ -10,8 +10,8 @@ const vuexLocal = new VuexPersistence({
   modules: ['firebase']
 })
 
-// reset when storage is more than 24 hours
-const hours = 4
+// reset when storage is older than a half hour
+const hours = 0.5
 const now = new Date().getTime()
 const setupTime = localStorage.getItem('setupTime')
 if (setupTime == null) {
