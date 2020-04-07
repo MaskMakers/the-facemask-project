@@ -191,6 +191,9 @@ export default {
     this.resizeListener = debounce(this.resetRangeSlider.bind(this), 250)
 
     window.addEventListener('resize', this.resizeListener)
+
+    // for initial GTM call
+    this.updatePageAndURL()
   },
 
   beforeRouteLeave (to, from, next) {
@@ -245,7 +248,7 @@ export default {
         this.gtmStateListener = setTimeout(() => {
           this.$gtm.trackEvent({
             event: 'customEvent',
-            category: 'Search',
+            category: 'State',
             action: 'State Change',
             label: this.currentState,
             value: this.currentState
