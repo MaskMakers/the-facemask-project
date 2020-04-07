@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="download-button">
-            <a class="button accent-button" :href="`/pdf/${currentMask.template}`" target="_blank">Download Template</a>
+            <a class="button accent-button" :href="`/pdf/${currentMask.template}`" target="_blank" @click="logDownload()">Download Template</a>
           </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ import { setMetaForMaskDetail } from '../helpers/meta/setMeta'
 export default {
   name: 'MaskDetail',
   computed: {
-    ...mapState('tabletop', [
+    ...mapState('firebase', [
       'masks',
       'steps'
     ]),
@@ -167,6 +167,16 @@ export default {
       } catch {
         return ''
       }
+    },
+
+    logDownload (type) {
+      this.$gtm.trackEvent({
+        event: 'customEvent',
+        category: 'Download',
+        action: 'Download Mask Template',
+        label: this.currentMask.name,
+        value: null
+      })
     }
   }
 }

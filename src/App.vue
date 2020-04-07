@@ -16,7 +16,7 @@ export default {
     Footer
   },
   async beforeMount () {
-    await this.$store.dispatch('tabletop/getSheet')
+    await this.$store.dispatch('firebase/getData')
 
     // wait a few seconds to allow fetching all the data
     // before emitting the prerender hook
@@ -27,7 +27,7 @@ export default {
     // if we still don't have sheet data after 9 seconds
     // fallback to cached data
     setTimeout(() => {
-      this.$store.dispatch('tabletop/getFallbackData')
+      this.$store.dispatch('firebase/getFallbackData')
     }, 9000)
   }
 }
