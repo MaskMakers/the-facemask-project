@@ -235,7 +235,7 @@ export default {
             category: 'Search',
             action: 'Search Change',
             label: this.searchText,
-            value: this.searchText
+            value: null
           })
         }, 1000)
       }
@@ -251,7 +251,7 @@ export default {
             category: 'State',
             action: 'State Change',
             label: this.currentState,
-            value: this.currentState
+            value: null
           })
         }, 1000)
       }
