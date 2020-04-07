@@ -43,7 +43,7 @@ export default {
   name: 'MakeMask',
   components: {},
   computed: {
-    ...mapState('tabletop', [
+    ...mapState('firebase', [
       'masks'
     ])
   }

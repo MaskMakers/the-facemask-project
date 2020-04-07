@@ -1,5 +1,14 @@
-import Tabletop from 'tabletop'
-import rawFallbackData from '@/assets/tabletop-fallback-data.json'
+import firebase from 'firebase/app'
+import 'firebase/database'
+import rawFallbackData from '@/assets/firebase-fallback-data.json'
+
+// firebase setup
+firebase.initializeApp({
+  apiKey: 'AIzaSyBmxq9lhljIr45GZ9zvlyeDh3cd0blBvPQ',
+  authDomain: 'the-facemask-project.firebaseapp.com',
+  databaseURL: 'https://the-facemask-project.firebaseio.com',
+  storageBucket: 'the-facemask-project.appspot.com'
+})
 
 export default {
   namespaced: true,
@@ -34,25 +43,23 @@ export default {
   },
 
   actions: {
-    getSheet (store) {
-      if (store.state.hospitals.length <= 0) {
-        // get Sheet
-        Tabletop.init({
-          key: 'https://docs.google.com/spreadsheets/d/1rmgPd6HEt8xRymQTVyFzbPgP0WCvA00i3Xn7rr2Ohfk/pubhtml'
-        }).then((data) => {
-          const hospitals = data['Hospitals'].elements
-          store.dispatch('formatHospitals', hospitals)
-          store.dispatch('formatStates', hospitals)
+    getData (store) {
+      firebase.database().ref('/').once('value').then((snapshot) => {
+        var data = snapshot.val()
+        console.log(data)
 
-          const masks = data['Masks'].elements
-          store.dispatch('formatMasks', masks)
+        const hospitals = data['Hospitals']
+        store.dispatch('formatHospitals', hospitals)
+        store.dispatch('formatStates', hospitals)
 
-          const steps = data['Steps'].elements
-          store.dispatch('formatSteps', steps)
-        }).catch(() => {
-          store.dispatch('tabletop/getFallbackData')
-        })
-      }
+        const masks = data['Masks']
+        store.dispatch('formatMasks', masks)
+
+        const steps = data['Steps']
+        store.dispatch('formatSteps', steps)
+      }).catch(() => {
+        store.dispatch('tabletop/getFallbackData')
+      })
     },
 
     getFallbackData (store) {

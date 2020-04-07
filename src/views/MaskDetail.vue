@@ -103,7 +103,7 @@ import { setMetaForMaskDetail } from '../helpers/meta/setMeta'
 export default {
   name: 'MaskDetail',
   computed: {
-    ...mapState('tabletop', [
+    ...mapState('firebase', [
       'masks',
       'steps'
     ]),

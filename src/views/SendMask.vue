@@ -133,7 +133,7 @@ export default {
   },
 
   computed: {
-    ...mapState('tabletop', [
+    ...mapState('firebase', [
       'hospitals',
       'states'
     ]),
