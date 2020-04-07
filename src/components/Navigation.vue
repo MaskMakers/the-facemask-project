@@ -4,6 +4,7 @@
       <router-link to="/">
         <img :src="require('@/assets/img/mask-makers-logo.svg')" alt="Mask Makers Logo">
       </router-link>
+      <p class="staging">STAGING ENVIRONMENT</p>
     </div>
     <div class="links-container">
       <router-link to="/make-a-mask" class="button button-small accent-button">Make A Mask</router-link>
@@ -43,6 +44,12 @@ export default {
         width: 120px;
       }
     }
+  }
+
+  .staging {
+    margin-left: 1em;
+    font-weight: bold;
+    color: $red;
   }
 
   .links-container {
