@@ -45,8 +45,7 @@ export default {
   actions: {
     getData (store) {
       firebase.database().ref('/').once('value').then((snapshot) => {
-        var data = snapshot.val()
-        console.log(data)
+        const data = snapshot.val()
 
         const hospitals = data['Hospitals']
         store.dispatch('formatHospitals', hospitals)
@@ -58,7 +57,7 @@ export default {
         const steps = data['Steps']
         store.dispatch('formatSteps', steps)
       }).catch(() => {
-        store.dispatch('tabletop/getFallbackData')
+        store.dispatch('getFallbackData')
       })
     },
 
