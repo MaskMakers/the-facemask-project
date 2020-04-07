@@ -174,7 +174,7 @@ export default {
         event: 'customEvent',
         category: 'Download',
         action: 'Download Mask Template',
-        label: this.currentMask.name,
+        label: `${this.currentMask.name} ${this.currentMask.subtitle}`,
         value: null
       })
     }
