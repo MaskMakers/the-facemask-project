@@ -32,6 +32,7 @@ function setMetaHelper (data = localBaseMeta) {
   metaOptions.itemprop.image = Object.prototype.hasOwnProperty.call(data, 'image') ? data.image : localBaseMeta.image
   metaOptions.property['twitter:image'] = metaOptions.itemprop.image
   metaOptions.property['og:image'] = metaOptions.itemprop.image
+
   // others
   metaOptions.type = Object.prototype.hasOwnProperty.call(data, 'type') ? data.type : ''
 
