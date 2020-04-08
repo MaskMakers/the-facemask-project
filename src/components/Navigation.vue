@@ -48,6 +48,7 @@ export default {
 
   .staging {
     margin-left: 1em;
+    margin-bottom: 0;
     font-weight: bold;
     color: $red;
   }
