@@ -18,7 +18,8 @@ const availableRoutes = [
   '/mask/accordion-mask-elastic',
   '/mask/accordion-mask-string-ties',
   '/mask/fitted-mask-elastic',
-  '/mask/fitted-mask-string-ties'
+  '/mask/fitted-mask-string-ties',
+  '/mask/fitted-mask-loops'
 ]
 
 module.exports = {
