@@ -153,7 +153,7 @@ export default {
       handler (mask) {
         if (mask && mask.name) {
           setMetaForMaskDetail({
-            title: `${mask.name}`,
+            title: `${mask.name} ${mask.subtitle}`,
             description: `Make ${this.aOrAn} ${mask.name}`
           })
         }
