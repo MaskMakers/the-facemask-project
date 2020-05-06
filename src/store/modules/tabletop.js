@@ -38,7 +38,7 @@ export default {
       if (store.state.hospitals.length <= 0) {
         // get Sheet
         Tabletop.init({
-          key: 'https://docs.google.com/spreadsheets/d/1mzIwUV2dixvPDW3CeacdajDFZ4rEqFVXHwgMSwOdhXA/pubhtml'
+          key: 'https://docs.google.com/spreadsheets/d/1rmgPd6HEt8xRymQTVyFzbPgP0WCvA00i3Xn7rr2Ohfk/pubhtml'
         }).then((data) => {
           const hospitals = data['Hospitals'].elements
           store.dispatch('formatHospitals', hospitals)
