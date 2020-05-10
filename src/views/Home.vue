@@ -39,17 +39,22 @@
         </vue-background-image>
       </div>
     </div>
-    <div class="quote-container">
-      <h2 class="typography-headline featured-quote">
-        “I have good news.<br class="small">
-        It's all going to get better<br>
-        and it's all going to get worse<br>
-        and it's up to us to make<br>
-        the worse parts better.”
-      </h2>
-      <span class="typography-action-small">
-        <strong>John Maeda</strong>, world-renowned designer & advocate for humanizing technology
-      </span>
+    <div class="section-split">
+      <div class="go-fund-me">
+        <embed height="556px" width="100%" src="https://www.gofundme.com/mvc.php?route=widgets/mediawidget&fund=mask-makers-support-fund&image=1&coinfo=1&preview=1" type="text/html"/>
+      </div>
+      <div class="quote-container">
+        <h2 class="typography-headline featured-quote">
+          “I have good news.<br class="small">
+          It's all going to get better<br>
+          and it's all going to get worse<br>
+          and it's up to us to make<br>
+          the worse parts better.”
+        </h2>
+        <span class="typography-action-small">
+          <strong>John Maeda</strong>, world-renowned designer & advocate for humanizing technology
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +64,6 @@ import decoder from '../helpers/decoder.js'
 
 export default {
   name: 'Home',
-  mounted () {},
   data () {
     return {
       decoder,
@@ -236,10 +240,42 @@ export default {
     padding: 0 $space-l;
   }
 
+  .section-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: $space-l;
+    max-width: $page-width;
+    margin: 0 auto;
+    padding: 0 $space-xl;
+
+    @media screen and (max-width: $bp-s) {
+      display: block;
+    }
+  }
+
+  .go-fund-me {
+    @media screen and (max-width: $bp-xs) {
+      height: 415px !important;
+    }
+
+    @media screen and (max-width: $bp-xxs) {
+      height: 415px !important;
+    }
+  }
+
   .quote-container {
     max-width: 645px;
     margin: 0 auto;
     padding-bottom: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media screen and (max-width: $bp-s) {
+      display: block;
+      margin-top: 6em;
+      padding: 0;
+    }
 
     @media(max-width: $bp-xxs) {
       h2 {
